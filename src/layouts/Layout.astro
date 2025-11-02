@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import ThemeToggle from "@/components/ThemeToggle";
 import "@/styles/global.css";
 ---
 
@@ -10,9 +12,29 @@ import "@/styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 
 		<title>First-Year Guide</title>
+
+		<!-- Prevent flash of wrong theme -->
+		<script is:inline>
+			if (
+				localStorage.theme === "dark" ||
+				(!("theme" in localStorage) &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches)
+			) {
+				document.documentElement.classList.add("dark");
+			}
+		</script>
+
+		<ClientRouter />
 	</head>
-	<body>
-		<article class="w-full max-w-2xl px-4 pt-12 mx-auto prose lg:prose-xl">
+
+	<body
+		class="w-full max-w-2xl px-4 mx-auto bg-white dark:bg-zinc-900 min-h-screen flex flex-col gap-y-6"
+	>
+		<header transition:persist class="flex justify-end gap-2 pt-8">
+			<ThemeToggle client:load />
+		</header>
+
+		<article class="prose prose-zinc dark:prose-invert lg:prose-xl">
 			<slot />
 		</article>
 	</body>
