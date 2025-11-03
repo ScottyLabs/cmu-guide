@@ -2,9 +2,6 @@
 	"editor.formatOnSave": true,
 	"files.insertFinalNewline": true,
 	"typescript.preferences.importModuleSpecifier": "non-relative",
-	"markdownlint.config": {
-		"MD025": false,
-	},
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	}

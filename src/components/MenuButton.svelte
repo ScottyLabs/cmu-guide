@@ -10,7 +10,7 @@
 
 <button
 	onclick={toggle}
-	class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 transition-colors"
+	class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 transition-colors"
 	aria-label="Toggle menu"
 >
 	{#if isOpen}

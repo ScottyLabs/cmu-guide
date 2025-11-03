@@ -17,9 +17,6 @@ Since pagefind requires a build artifact, search will `bun preview` after runnin
 
 ## Project Structure
 
-Astro looks for `.md` files in the [`src/pages/`](src/pages/) directory. Each page is exposed as a route based on its file name.
-
-* Any static assets, like images, should be placed in the [`public/`](public/) directory.
-* When customizing the sidebar icon for pages, map the string to an icon in the [`Sidebar.astro`](src/components/Sidebar.astro) file.
+Astro looks for `.md` files in the [`src/pages/`](src/pages/) directory. Each page is exposed as a route based on its file name. Any static assets, like images, should be placed in the [`public/`](public/) directory.
 
 For more comprehensive instructions, visit the visit the [Markdown content](https://docs.astro.build/en/guides/markdown-content/) docs, or more generally, the [Astro documentation](https://docs.astro.build).

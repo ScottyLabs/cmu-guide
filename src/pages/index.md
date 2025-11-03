@@ -1,10 +1,11 @@
 ---
-title: Home
-layout: ../layouts/Layout.astro
+category: primary
+categoryOrder: 1
 order: 1
-icon: home
+
+title: Home
+description: Welcome to the CMU First-Year Guide!
+layout: ../layouts/Layout.astro
 ---
 
-# Home
-
-Welcome!
+Check out [the example](/example).
