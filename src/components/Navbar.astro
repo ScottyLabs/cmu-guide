@@ -1,0 +1,98 @@
+---
+import { GithubLogo, HamburgerMenu, Cross2, Clipboard } from "svelte-radix";
+
+import LinkButton from "@/components/LinkButton.svelte";
+import ThemeToggle from "@/components/ThemeToggle.svelte";
+import SearchCommand from "@/components/SearchCommand.svelte";
+import Button from "@/components/Button.svelte";
+---
+
+<nav
+	class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700"
+	data-pagefind-ignore
+	transition:persist
+>
+	<div class="flex items-center h-18">
+		<!-- Left section -->
+		<div class="flex items-center gap-4 sm:w-64 px-8">
+			<!-- Mobile menu button -->
+			<Button
+				class="lg:hidden"
+				data-mobile-menu-button
+				data-menu-open="false"
+			>
+				<HamburgerMenu class="size-6 dark:invert menu-icon-hamburger" />
+				<Cross2 class="size-6 dark:invert menu-icon-cross hidden" />
+			</Button>
+
+			<!-- Logo -->
+			<a href="/" class="font-bold text-lg dark:text-white">
+				cmu.guide
+			</a>
+		</div>
+
+		<!-- Right section -->
+		<div
+			class="flex-1 flex items-center justify-end md:justify-between pr-4"
+		>
+			<SearchCommand client:load />
+
+			<div class="flex items-center gap-2">
+				<LinkButton
+					href="https://github.com/scottylabs/cmu-guide"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<GithubLogo class="size-6 dark:invert" />
+				</LinkButton>
+
+				<ThemeToggle client:load />
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script lang="ts">
+	function updateMenuIcon() {
+		const menuButton = document.querySelector("[data-mobile-menu-button]");
+		if (!menuButton) return;
+
+		const hamburger = menuButton.querySelector(".menu-icon-hamburger");
+		const cross = menuButton.querySelector(".menu-icon-cross");
+		const isOpen = menuButton.getAttribute("data-menu-open") === "true";
+
+		if (isOpen) {
+			hamburger?.classList.add("hidden");
+			cross?.classList.remove("hidden");
+		} else {
+			hamburger?.classList.remove("hidden");
+			cross?.classList.add("hidden");
+		}
+	}
+
+	updateMenuIcon();
+
+	// Update on changes
+	const observer = new MutationObserver(updateMenuIcon);
+	const menuButton = document.querySelector("[data-mobile-menu-button]");
+	if (menuButton) {
+		observer.observe(menuButton, {
+			attributes: true,
+			attributeFilter: ["data-menu-open"],
+		});
+	}
+
+	// Re-initialize after page transitions
+	document.addEventListener("astro:after-swap", () => {
+		updateMenuIcon();
+		const newMenuButton = document.querySelector(
+			"[data-mobile-menu-button]",
+		);
+		if (newMenuButton) {
+			observer.observe(newMenuButton, {
+				attributes: true,
+				attributeFilter: ["data-menu-open"],
+			});
+		}
+	});
+</script>

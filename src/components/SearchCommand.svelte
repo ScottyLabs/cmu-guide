@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Command, Dialog } from "bits-ui";
 	import { MagnifyingGlass, File, FileText } from "svelte-radix";
+	import Kbd from "@/components/Kbd.svelte";
 
 	let dialogOpen = $state(false);
 	let searchQuery = $state("");
@@ -47,21 +48,21 @@
 
 <Dialog.Root bind:open={dialogOpen}>
 	<Dialog.Trigger
-		class="p-2 rounded-lg sm:border sm:border-zinc-200 hover:bg-zinc-100 sm:dark:bg-zinc-700 sm:dark:border-zinc-500 dark:hover:bg-zinc-600 transition-all inline-flex items-center sm:min-w-64 justify-between"
+		class="mr-2 md:mr-0 p-2 md:p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 md:bg-zinc-100 md:hover:bg-zinc-200 md:dark:bg-zinc-800 md:dark:hover:bg-zinc-700 transition-all inline-flex items-center md:min-w-80 justify-between"
 	>
-		<div class="flex flex-row gap-2">
-			<MagnifyingGlass class="size-6 sm:size-5 dark:invert" />
-			<span
-				class="hidden sm:inline text-sm text-zinc-600 dark:text-zinc-300"
-				>Search the guide...</span
-			>
+		<div class="flex flex-row gap-2 items-center">
+			<MagnifyingGlass
+				class="size-6 text-black dark:text-white md:text-zinc-400 md:dark:text-zinc-400"
+			/>
+			<span class="hidden md:inline text-sm text-zinc-400">
+				Search the guide...
+			</span>
 		</div>
 
-		<kbd
-			class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 dark:text-white rounded"
-		>
-			<span>⌘</span>K
-		</kbd>
+		<div class="hidden md:flex items-center gap-0.5">
+			<Kbd>⌘</Kbd>
+			<Kbd>K</Kbd>
+		</div>
 	</Dialog.Trigger>
 
 	<Dialog.Portal>
@@ -69,7 +70,7 @@
 			class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
 		/>
 		<Dialog.Content
-			class="fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] sm:max-w-[640px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]"
+			class="fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] md:max-w-[640px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]"
 		>
 			<Dialog.Title class="sr-only">Search</Dialog.Title>
 			<Dialog.Description class="sr-only">
@@ -93,11 +94,7 @@
 						value={searchQuery}
 						oninput={(e) => handleSearch(e.currentTarget.value)}
 					/>
-					<kbd
-						class="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 rounded"
-					>
-						ESC
-					</kbd>
+					<Kbd>ESC</Kbd>
 				</div>
 
 				<Command.List
@@ -163,18 +160,12 @@
 					class="border-t border-zinc-200 dark:border-zinc-700 px-4 py-2 text-xs text-zinc-500 dark:text-zinc-400"
 				>
 					<div class="flex items-center justify-between">
-						<span
-							>Press <kbd
-								class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 rounded"
-								>↑↓</kbd
-							> to navigate</span
-						>
-						<span
-							>Press <kbd
-								class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 rounded"
-								>↵</kbd
-							> to select</span
-						>
+						<span>
+							Press <Kbd>↑↓</Kbd> to navigate
+						</span>
+						<span>
+							Press <Kbd>↵</Kbd> to select
+						</span>
 					</div>
 				</div>
 			</Command.Root>

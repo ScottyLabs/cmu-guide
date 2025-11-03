@@ -1,6 +1,8 @@
 ---
 title: Example 1
 layout: ../layouts/Layout.astro
+order: 2
+icon: box
 ---
 
 # Example 1

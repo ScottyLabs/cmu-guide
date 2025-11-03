@@ -1,0 +1,116 @@
+---
+import { getNavigation } from "@/utils/navigation";
+import { Box, Home } from "svelte-radix";
+
+const currentPath = Astro.url.pathname;
+const navigation = await getNavigation();
+
+const iconMap = {
+	home: Home,
+	box: Box,
+};
+---
+
+<!-- Mobile overlay -->
+<div
+	id="sidebar-overlay"
+	class="lg:hidden fixed inset-0 bg-black/50 z-40 hidden"
+	data-sidebar-overlay
+>
+</div>
+
+<!-- Sidebar -->
+<aside
+	id="sidebar"
+	class="fixed left-0 top-16 bottom-0 w-64 border-r border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-y-auto pt-8 px-4 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
+	data-sidebar
+>
+	<nav>
+		<ul class="space-y-2">
+			{
+				navigation.map((item) => {
+					const IconComponent = item.icon
+						? iconMap[item.icon as keyof typeof iconMap]
+						: null;
+
+					return (
+						<li>
+							<a
+								href={item.href}
+								class:list={[
+									"flex items-center gap-3 px-3 py-2 text-sm font-semibold rounded-lg transition-colors",
+									currentPath === item.href
+										? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium"
+										: "text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800",
+								]}
+								data-sidebar-link
+							>
+								{IconComponent && (
+									<IconComponent class="size-5" />
+								)}
+
+								<span>{item.title}</span>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</nav>
+</aside>
+
+<script lang="ts">
+	function initSidebar() {
+		const sidebar = document.querySelector("[data-sidebar]");
+		const overlay = document.querySelector("[data-sidebar-overlay]");
+		const menuButton = document.querySelector("[data-mobile-menu-button]");
+		const sidebarLinks = document.querySelectorAll("[data-sidebar-link]");
+
+		if (!sidebar || !overlay || !menuButton) return;
+
+		function closeSidebar() {
+			sidebar.classList.add("-translate-x-full");
+			overlay.classList.add("hidden");
+			menuButton.setAttribute("data-menu-open", "false");
+		}
+
+		function openSidebar() {
+			sidebar.classList.remove("-translate-x-full");
+			overlay.classList.remove("hidden");
+			menuButton.setAttribute("data-menu-open", "true");
+		}
+
+		function toggleSidebar() {
+			const isOpen = menuButton.getAttribute("data-menu-open") === "true";
+			if (isOpen) {
+				closeSidebar();
+			} else {
+				openSidebar();
+			}
+		}
+
+		menuButton.addEventListener("click", toggleSidebar);
+		overlay.addEventListener("click", closeSidebar);
+
+		// Close on link click on mobile
+		sidebarLinks.forEach((link) => {
+			link.addEventListener("click", () => {
+				if (window.innerWidth < 1024) {
+					// lg breakpoint
+					closeSidebar();
+				}
+			});
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") {
+				closeSidebar();
+			}
+		});
+	}
+
+	initSidebar();
+
+	// Re-initialize after Astro page transitions
+	document.addEventListener("astro:after-swap", initSidebar);
+</script>
