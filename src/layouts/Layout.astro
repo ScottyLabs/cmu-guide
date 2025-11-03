@@ -13,7 +13,7 @@ const title = frontmatter.title as string;
 const description = frontmatter.description as string;
 
 // GitHub edit link
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const filePath =
 	currentPath === "/" ? "index.md" : `${currentPath.slice(1)}.md`;
 const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pages/${filePath}`;

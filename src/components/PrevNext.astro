@@ -2,7 +2,7 @@
 import { getNavigation } from "@/utils/navigation";
 import { ArrowLeft, ArrowRight } from "svelte-radix";
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const navigation = await getNavigation();
 
 // Find the current page index in the flat navigation list
