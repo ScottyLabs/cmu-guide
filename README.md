@@ -13,8 +13,13 @@ This project uses [Bun](https://bun.sh/). All commands are run from the root of 
 | `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `bun astro -- --help` | Get help using the Astro CLI                     |
 
+Since pagefind requires a build artifact, search will `bun preview` after running `bun build`.
+
 ## Project Structure
 
-Astro looks for `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name. Any static assets, like images, can be placed in the `public/` directory.
+Astro looks for `.md` files in the [`src/pages/`](src/pages/) directory. Each page is exposed as a route based on its file name.
 
-For more complete instructions, visit the visit the [Markdown content](https://docs.astro.build/en/guides/markdown-content/) docs, or more generally, the [Astro documentation](https://docs.astro.build).
+* Any static assets, like images, should be placed in the [`public/`](public/) directory.
+* When customizing the sidebar icon for pages, map the string to an icon in the [`Sidebar.astro`](src/components/Sidebar.astro) file.
+
+For more comprehensive instructions, visit the visit the [Markdown content](https://docs.astro.build/en/guides/markdown-content/) docs, or more generally, the [Astro documentation](https://docs.astro.build).
