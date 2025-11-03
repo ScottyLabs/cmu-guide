@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
@@ -15,7 +15,6 @@
 		"@astrojs/svelte": "^7.2.1",
 		"@tailwindcss/vite": "^4.1.16",
 		"astro": "^5.15.3",
-		"astro-pagefind": "^1.8.5",
 		"bits-ui": "^2.14.2",
 		"svelte": "^5.43.2",
 		"tailwindcss": "^4.1.16",
@@ -23,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.19",
+		"pagefind": "^1.4.0",
 		"svelte-radix": "^3.0.0"
 	}
 }

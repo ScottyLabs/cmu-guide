@@ -21,12 +21,19 @@
 			return;
 		}
 
-		if (typeof window !== "undefined" && window.pagefind) {
+		if (!window.pagefind) {
+			console.error("Pagefind not loaded yet");
+			return;
+		}
+
+		try {
 			const results = await window.pagefind.search(value);
 			const data = await Promise.all(
 				results.results.slice(0, 8).map((r: any) => r.data()),
 			);
 			searchResults = data;
+		} catch (error) {
+			console.error("Search error:", error);
 		}
 	}
 
@@ -70,6 +77,8 @@
 			</Dialog.Description>
 
 			<Command.Root
+				loop={true}
+				shouldFilter={false}
 				class="flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xl"
 			>
 				<div
@@ -81,6 +90,7 @@
 					<Command.Input
 						class="flex h-12 w-full bg-transparent py-3 px-3 text-sm outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 disabled:cursor-not-allowed disabled:opacity-50 dark:text-white"
 						placeholder="Search the guide..."
+						value={searchQuery}
 						oninput={(e) => handleSearch(e.currentTarget.value)}
 					/>
 					<kbd
@@ -93,61 +103,60 @@
 				<Command.List
 					class="max-h-[400px] overflow-y-auto overflow-x-hidden p-2"
 				>
-					<Command.Viewport>
-						{#if searchQuery.length === 0}
-							<div
-								class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
+					{#if searchQuery.length === 0}
+						<div
+							class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
+						>
+							<MagnifyingGlass
+								class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
+							/>
+							<p>Start typing to search...</p>
+						</div>
+					{:else if searchResults.length === 0}
+						<Command.Empty
+							class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
+						>
+							<FileText
+								class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
+							/>
+							<p>No results found for "{searchQuery}"</p>
+						</Command.Empty>
+					{:else}
+						<Command.Group>
+							<Command.GroupHeading
+								class="px-2 py-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400"
 							>
-								<MagnifyingGlass
-									class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
-								/>
-								<p>Start typing to search...</p>
-							</div>
-						{:else if searchResults.length === 0}
-							<Command.Empty
-								class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
-							>
-								<FileText
-									class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
-								/>
-								<p>No results found for "{searchQuery}"</p>
-							</Command.Empty>
-						{:else}
-							<Command.Group>
-								<Command.GroupHeading
-									class="px-2 py-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400"
-								>
-									Results
-								</Command.GroupHeading>
-								<Command.GroupItems>
-									{#each searchResults as result}
-										<Command.Item
-											class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-zinc-100 dark:hover:bg-zinc-700 data-highlighted:bg-zinc-100 dark:data-highlighted:bg-zinc-700 transition-colors"
-											onclick={() =>
-												handleResultClick(result.url)}
-										>
-											<File
-												class="w-4 h-4 mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0"
-											/>
-											<div class="flex-1 min-w-0">
-												<div
-													class="font-medium text-sm text-zinc-900 dark:text-zinc-100 truncate"
-												>
-													{result.meta.title ||
-														"Untitled"}
-												</div>
-												<div
-													class="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-1"
-												>
-													{@html result.excerpt}
-												</div>
+								Results
+							</Command.GroupHeading>
+							<Command.GroupItems>
+								{#each searchResults as result}
+									<Command.Item
+										value={result.url}
+										class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-zinc-100 dark:hover:bg-zinc-700 data-selected:bg-zinc-100 dark:data-selected:bg-zinc-700 transition-colors"
+										onclick={() =>
+											handleResultClick(result.url)}
+									>
+										<File
+											class="w-4 h-4 mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0"
+										/>
+										<div class="flex-1 min-w-0">
+											<div
+												class="font-medium text-sm text-zinc-900 dark:text-zinc-100 truncate"
+											>
+												{result.meta.title ||
+													"Untitled"}
 											</div>
-										</Command.Item>
-									{/each}
-								</Command.GroupItems>
-							</Command.Group>
-						{/if}
-					</Command.Viewport>
+											<div
+												class="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-1"
+											>
+												{@html result.excerpt}
+											</div>
+										</div>
+									</Command.Item>
+								{/each}
+							</Command.GroupItems>
+						</Command.Group>
+					{/if}
 				</Command.List>
 
 				<div

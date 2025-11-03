@@ -6,6 +6,9 @@ import LinkButton from "@/components/LinkButton.svelte";
 import ThemeToggle from "@/components/ThemeToggle.svelte";
 import SearchCommand from "@/components/SearchCommand.svelte";
 import "@/styles/global.css";
+
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title || "First-Year Guide";
 ---
 
 <html lang="en">
@@ -15,9 +18,14 @@ import "@/styles/global.css";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>First-Year Guide</title>
+		<title>{title}</title>
 
-		<script is:inline src="/pagefind/pagefind.js"></script>
+		<script is:inline>
+			window.addEventListener("DOMContentLoaded", async () => {
+				window.pagefind = await import("/pagefind/pagefind.js");
+				await window.pagefind.init();
+			});
+		</script>
 
 		<!-- Prevent flash of wrong theme -->
 		<script is:inline>
@@ -34,9 +42,13 @@ import "@/styles/global.css";
 	</head>
 
 	<body
-		class="w-full max-w-2xl px-4 mx-auto bg-white dark:bg-zinc-900 min-h-screen flex flex-col gap-y-6"
+		class="w-full max-w-2xl px-4 mx-auto bg-white dark:bg-zinc-900 min-h-screen flex flex-col gap-y-12"
 	>
-		<header transition:persist class="flex justify-end gap-2 pt-8">
+		<header
+			data-pagefind-ignore
+			transition:persist
+			class="flex justify-end gap-2 pt-8"
+		>
 			<SearchCommand client:load />
 
 			<LinkButton
