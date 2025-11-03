@@ -8,13 +8,14 @@
 		"dist"
 	],
 	"compilerOptions": {
+		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"target": "ESNext",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": [
 				"src/*"
 			]
 		},
-		"jsx": "react-jsx",
-		"jsxImportSource": "react"
 	}
 }

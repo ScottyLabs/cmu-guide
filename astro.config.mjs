@@ -1,7 +1,8 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import svelte from "@astrojs/svelte";
+import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,5 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()]
 	},
-	integrations: [react()]
+	integrations: [svelte(), pagefind()],
 });

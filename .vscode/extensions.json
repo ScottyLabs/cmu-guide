@@ -1,6 +1,8 @@
 {
 	"recommendations": [
 		"astro-build.astro-vscode",
-		"davidanson.vscode-markdownlint"
+		"davidanson.vscode-markdownlint",
+		"svelte.svelte-vscode",
+		"bradlc.vscode-tailwindcss"
 	],
 }
