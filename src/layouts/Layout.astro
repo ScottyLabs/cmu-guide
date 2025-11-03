@@ -1,13 +1,22 @@
 ---
+import { GithubLogo } from "svelte-radix";
+
 import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import PrevNext from "@/components/PrevNext.astro";
 import "@/styles/global.css";
 
 const { frontmatter, headings } = Astro.props;
 
 const title = frontmatter.title as string;
 const description = frontmatter.description as string;
+
+// GitHub edit link
+const currentPath = Astro.url.pathname;
+const filePath =
+	currentPath === "/" ? "index.md" : `${currentPath.slice(1)}.md`;
+const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pages/${filePath}`;
 
 type Heading = {
 	depth: number;
@@ -59,8 +68,20 @@ const headingList = headings as Heading[];
 						{title && <h1>{title}</h1>}
 						{description && <p>{description}</p>}
 
+						<a
+							href={githubEditUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
+						>
+							<GithubLogo class="size-4" />
+							Edit on GitHub
+						</a>
+
 						<slot />
 					</article>
+
+					<PrevNext />
 				</main>
 			</div>
 

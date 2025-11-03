@@ -1,0 +1,57 @@
+---
+import { getNavigation } from "@/utils/navigation";
+import { ArrowLeft, ArrowRight } from "svelte-radix";
+
+const currentPath = Astro.url.pathname;
+const navigation = await getNavigation();
+
+// Find the current page index in the flat navigation list
+const currentIndex = navigation.findIndex((item) => item.href === currentPath);
+
+// Get previous and next pages
+const prevPage = currentIndex > 0 ? navigation[currentIndex - 1] : null;
+const nextPage =
+	currentIndex < navigation.length - 1 ? navigation[currentIndex + 1] : null;
+---
+
+{
+	(prevPage || nextPage) && (
+		<nav class="border-t border-zinc-200 dark:border-zinc-700 mt-16 pt-8">
+			<div class="flex justify-between items-center gap-4">
+				{prevPage ? (
+					<a
+						href={prevPage.href}
+						class="flex-1 group flex flex-col gap-1 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+					>
+						<span class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+							Previous
+						</span>
+						<span class="text-sm font-medium text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors flex items-center gap-1">
+							<ArrowLeft class="size-4" />
+							{prevPage.title}
+						</span>
+					</a>
+				) : (
+					<div class="flex-1" />
+				)}
+
+				{nextPage ? (
+					<a
+						href={nextPage.href}
+						class="flex-1 group flex flex-col gap-1 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors text-right"
+					>
+						<span class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+							Next
+						</span>
+						<span class="text-sm font-medium text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors flex items-center gap-1 justify-end">
+							{nextPage.title}
+							<ArrowRight class="size-4" />
+						</span>
+					</a>
+				) : (
+					<div class="flex-1" />
+				)}
+			</div>
+		</nav>
+	)
+}
