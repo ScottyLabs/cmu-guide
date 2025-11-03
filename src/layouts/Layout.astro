@@ -12,8 +12,12 @@ const { frontmatter, headings } = Astro.props;
 const title = frontmatter.title as string;
 const description = frontmatter.description as string;
 
-// GitHub edit link
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+// Remove trailing slash
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
+
 const filePath =
 	currentPath === "/" ? "index.md" : `${currentPath.slice(1)}.md`;
 const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pages/${filePath}`;

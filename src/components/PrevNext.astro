@@ -2,8 +2,13 @@
 import { getNavigation } from "@/utils/navigation";
 import { ArrowLeft, ArrowRight } from "svelte-radix";
 
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const navigation = await getNavigation();
+
+// Remove trailing slash
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
 
 // Find the current page index in the flat navigation list
 const currentIndex = navigation.findIndex((item) => item.href === currentPath);
@@ -11,7 +16,9 @@ const currentIndex = navigation.findIndex((item) => item.href === currentPath);
 // Get previous and next pages
 const prevPage = currentIndex > 0 ? navigation[currentIndex - 1] : null;
 const nextPage =
-	currentIndex < navigation.length - 1 ? navigation[currentIndex + 1] : null;
+	currentIndex >= 0 && currentIndex < navigation.length - 1
+		? navigation[currentIndex + 1]
+		: null;
 ---
 
 {
