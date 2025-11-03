@@ -13,7 +13,7 @@ This project uses [Bun](https://bun.sh/). All commands are run from the root of 
 | `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `bun astro -- --help` | Get help using the Astro CLI                     |
 
-Since pagefind requires a build artifact, search will `bun preview` after running `bun build`.
+Since pagefind requires a build artifact, search will only work on `bun preview` after running `bun build`.
 
 ## Project Structure
 
