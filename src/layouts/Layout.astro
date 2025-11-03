@@ -1,6 +1,9 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
 import ThemeToggle from "@/components/ThemeToggle";
+import { LinkButton } from "@/components/Button";
 import "@/styles/global.css";
 ---
 
@@ -31,11 +34,21 @@ import "@/styles/global.css";
 		class="w-full max-w-2xl px-4 mx-auto bg-white dark:bg-zinc-900 min-h-screen flex flex-col gap-y-6"
 	>
 		<header transition:persist class="flex justify-end gap-2 pt-8">
+			<LinkButton
+				href="https://github.com/scottylabs/cmu-guide"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<GitHubLogoIcon className="size-5 dark:invert" />
+			</LinkButton>
+
 			<ThemeToggle client:load />
 		</header>
 
-		<article class="prose prose-zinc dark:prose-invert lg:prose-xl">
-			<slot />
-		</article>
+		<main>
+			<article class="prose prose-zinc dark:prose-invert lg:prose-xl">
+				<slot />
+			</article>
+		</main>
 	</body>
 </html>
