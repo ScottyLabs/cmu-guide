@@ -65,23 +65,40 @@ const headingList = headings as Heading[];
 		<div class="pt-16 md:pl-64 lg:pr-64">
 			<div class="max-w-4xl mx-auto px-8">
 				<main class="py-16">
+					{
+						title && (
+							<h1 class="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+								{title}
+							</h1>
+						)
+					}
+					{
+						description && (
+							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6">
+								{description}
+							</p>
+						)
+					}
+
+					<a
+						href={githubEditUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline mb-8"
+					>
+						<GithubLogo class="size-4" />
+						Edit page on GitHub
+					</a>
+
+					<!-- Mobile TOC -->
+					<div class="lg:hidden mb-8">
+						<TableOfContents headings={headingList} />
+					</div>
+
 					<article
 						data-pagefind-body
 						class="prose prose-zinc dark:prose-invert lg:prose-xl"
 					>
-						{title && <h1>{title}</h1>}
-						{description && <p>{description}</p>}
-
-						<a
-							href={githubEditUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
-						>
-							<GithubLogo class="size-4" />
-							Edit on GitHub
-						</a>
-
 						<slot />
 					</article>
 
@@ -89,7 +106,10 @@ const headingList = headings as Heading[];
 				</main>
 			</div>
 
-			<TableOfContents headings={headingList} />
+			<!-- Desktop TOC -->
+			<div class="hidden lg:block">
+				<TableOfContents headings={headingList} />
+			</div>
 		</div>
 	</body>
 </html>

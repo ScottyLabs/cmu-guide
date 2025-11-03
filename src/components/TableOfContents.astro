@@ -16,7 +16,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
 <aside
-	class="hidden lg:block w-64 fixed right-0 top-28 h-auto text-sm px-4"
+	class="w-full lg:w-64 lg:fixed lg:right-0 lg:top-28 h-auto text-sm lg:px-4"
 	aria-label="On this page"
 	data-toc
 >
@@ -26,17 +26,15 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 			<p class="text-zinc-500 dark:text-zinc-400">On this page</p>
 		</div>
 
-		<ul
-			class="space-y-2 border-l border-zinc-200 dark:border-zinc-700 pl-4"
-		>
+		<ul class="pl-4">
 			{
 				filteredHeadings.map((h) => (
-					<li class={h.depth === 3 ? "ml-4" : ""}>
+					<li>
 						<a
 							href={`#${h.slug}`}
 							data-toc-link
 							data-slug={h.slug}
-							class="block text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+							class={`block text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors border-l border-zinc-200 dark:border-zinc-700 -ml-4 py-1 ${h.depth === 3 ? "pl-8" : "pl-4"}`}
 						>
 							{h.text}
 						</a>
@@ -49,81 +47,83 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 <script>
 	function initTOC() {
-		const links = document.querySelectorAll("[data-toc-link]");
-		if (!links.length) return;
+		const tocElements = document.querySelectorAll("[data-toc]");
 
-		let userClicked = false;
-		let clickTimeout: ReturnType<typeof setTimeout> | null = null;
+		tocElements.forEach((tocElement) => {
+			const links = tocElement.querySelectorAll("[data-toc-link]");
+			if (!links.length) return;
 
-		function setActiveLink(slug: string) {
-			links.forEach((link) => {
-				link.classList.remove(
-					"!text-zinc-900",
-					"dark:!text-zinc-100",
-					"font-medium",
+			let userClicked = false;
+			let clickTimeout: ReturnType<typeof setTimeout> | null = null;
+
+			function setActiveLink(slug: string) {
+				links.forEach((link) => {
+					link.classList.remove(
+						"!text-zinc-900",
+						"dark:!text-zinc-100",
+						"font-medium",
+						"!border-l-zinc-900",
+						"dark:!border-l-zinc-100",
+					);
+				});
+
+				const tocLink = tocElement.querySelector(
+					`[data-toc-link][data-slug="${slug}"]`,
 				);
-			});
 
-			const tocLink = document.querySelector(
-				`[data-toc-link][data-slug="${slug}"]`,
-			);
-
-			if (tocLink) {
-				tocLink.classList.add(
-					"!text-zinc-900",
-					"dark:!text-zinc-100",
-					"font-medium",
-				);
-			}
-		}
-
-		// Handle clicks on TOC links
-		links.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				const slug = link.getAttribute("data-slug");
-				if (slug) {
-					userClicked = true;
-					setActiveLink(slug);
-
-					// Clear any existing timeout
-					if (clickTimeout) {
-						clearTimeout(clickTimeout);
-					}
-
-					// Re-enable intersection observer after scroll settles
-					clickTimeout = setTimeout(() => {
-						userClicked = false;
-					}, 1000);
+				if (tocLink) {
+					tocLink.classList.add(
+						"!text-zinc-900",
+						"dark:!text-zinc-100",
+						"font-medium",
+						"!border-l-zinc-900",
+						"dark:!border-l-zinc-100",
+					);
 				}
-			});
-		});
+			}
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				// Don't update based on scroll if user just clicked
-				if (userClicked) return;
+			// Handle clicks on TOC links
+			links.forEach((link) => {
+				link.addEventListener("click", (e) => {
+					const slug = link.getAttribute("data-slug");
+					if (slug) {
+						userClicked = true;
+						setActiveLink(slug);
 
-				entries.forEach((entry) => {
-					const id = entry.target.getAttribute("id");
-					if (entry.isIntersecting && id) {
-						setActiveLink(id);
+						if (clickTimeout) {
+							clearTimeout(clickTimeout);
+						}
+
+						// Re-enable intersection observer after scroll settles
+						clickTimeout = setTimeout(() => {
+							userClicked = false;
+						}, 1000);
 					}
 				});
-			},
-			{
-				rootMargin: "-100px 0px -66%",
-				threshold: 1,
-			},
-		);
+			});
 
-		// Observe all headings
-		const headings = document.querySelectorAll("h2[id], h3[id]");
-		headings.forEach((heading) => observer.observe(heading));
+			const observer = new IntersectionObserver(
+				(entries) => {
+					// Don't update based on scroll if user just clicked
+					if (userClicked) return;
 
-		// Cleanup
-		return () => {
-			headings.forEach((heading) => observer.unobserve(heading));
-		};
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						if (entry.isIntersecting && id) {
+							setActiveLink(id);
+						}
+					});
+				},
+				{
+					rootMargin: "-100px 0px -66%",
+					threshold: 1,
+				},
+			);
+
+			// Observe all headings
+			const headings = document.querySelectorAll("h2[id], h3[id]");
+			headings.forEach((heading) => observer.observe(heading));
+		});
 	}
 
 	initTOC();
