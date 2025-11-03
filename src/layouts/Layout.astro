@@ -1,6 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
-
 import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
@@ -44,8 +42,6 @@ const headingList = headings as Heading[];
 				document.documentElement.classList.add("dark");
 			}
 		</script>
-
-		<ClientRouter />
 	</head>
 
 	<body class="bg-white dark:bg-zinc-900 min-h-screen">
