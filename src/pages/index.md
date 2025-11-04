@@ -8,4 +8,6 @@ description: Welcome to the CMU First-Year Guide!
 layout: ../layouts/Layout.astro
 ---
 
+## Notes
+
 Check out [the example](/example).
