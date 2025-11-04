@@ -1,5 +1,6 @@
 ---
 import { GithubLogo } from "svelte-radix";
+import { execSync } from "node:child_process";
 
 import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
@@ -21,6 +22,52 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 const filePath =
 	currentPath === "/" ? "index.md" : `${currentPath.slice(1)}.md`;
 const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pages/${filePath}`;
+
+// Get Git metadata
+let lastEdited: string | null = null;
+let lastCommitUrl: string | null = null;
+let authors: string[] = [];
+
+try {
+	const filePathFull = `src/pages/${filePath}`;
+
+	// Get last commit hash
+	const hash = execSync(`git log -1 --format=%H "${filePathFull}"`, {
+		encoding: "utf-8",
+	}).trim();
+
+	if (hash) {
+		lastCommitUrl = `https://github.com/ScottyLabs/cmu-guide/commit/${hash}`;
+
+		// Get last commit date
+		const date = execSync(
+			`git log -1 --format=%cd --date=short "${filePathFull}"`,
+			{ encoding: "utf-8" },
+		).trim();
+
+		if (date) {
+			lastEdited = new Date(date).toLocaleDateString("en-US", {
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			});
+		}
+	}
+
+	// Get unique authors
+	const authorList = execSync(
+		`git log --format=%an "${filePathFull}" | sort -u`,
+		{ encoding: "utf-8", shell: "/bin/bash" },
+	)
+		.trim()
+		.split("\n")
+		.filter(Boolean);
+
+	authors = authorList;
+} catch (e) {
+	// Git info not available (e.g., in dev mode or file not committed)
+	console.warn(`Could not fetch Git info for ${filePath}`, e);
+}
 
 type Heading = {
 	depth: number;
@@ -84,11 +131,43 @@ const headingList = headings as Heading[];
 						href={githubEditUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline mb-8"
+						class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
 					>
 						<GithubLogo class="size-4" />
 						Edit page on GitHub
 					</a>
+
+					{
+						(lastEdited || authors.length > 0) && (
+							<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-800">
+								{lastEdited && lastCommitUrl && (
+									<div class="flex items-center gap-1.5">
+										<span class="text-zinc-500 dark:text-zinc-500">
+											Last edited:
+										</span>
+										<a
+											href={lastCommitUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-600 underline-offset-2 transition-colors"
+										>
+											{lastEdited}
+										</a>
+									</div>
+								)}
+								{authors.length > 0 && (
+									<div class="flex items-center gap-1.5 flex-wrap">
+										<span class="text-zinc-500 dark:text-zinc-500">
+											Contributors:
+										</span>
+										<span class="text-zinc-700 dark:text-zinc-300">
+											{authors.join(", ")}
+										</span>
+									</div>
+								)}
+							</div>
+						)
+					}
 
 					<!-- Mobile TOC -->
 					<div class="lg:hidden mb-8">
