@@ -32,7 +32,7 @@ try {
 	const filePathFull = `src/pages/${filePath}`;
 
 	// Get last commit hash
-	const hash = execSync(`git log -1 --format=%H "${filePathFull}"`, {
+	const hash = execSync(`git log -1 --format=%H -- "${filePathFull}"`, {
 		encoding: "utf-8",
 	}).trim();
 
@@ -41,7 +41,7 @@ try {
 
 		// Get last commit date
 		const date = execSync(
-			`git log -1 --format=%cd --date=short "${filePathFull}"`,
+			`git log -1 --format=%cd --date=short -- "${filePathFull}"`,
 			{ encoding: "utf-8" },
 		).trim();
 
@@ -54,16 +54,15 @@ try {
 		}
 	}
 
-	// Get unique authors
-	const authorList = execSync(
-		`git log --format=%an "${filePathFull}" | sort -u`,
-		{ encoding: "utf-8", shell: "/bin/bash" },
-	)
-		.trim()
-		.split("\n")
-		.filter(Boolean);
+	// Get unique authors for this specific file
+	const authorOutput = execSync(`git log --format=%an -- "${filePathFull}"`, {
+		encoding: "utf-8",
+	}).trim();
 
-	authors = authorList;
+	if (authorOutput) {
+		const uniqueAuthors = [...new Set(authorOutput.split("\n"))];
+		authors = uniqueAuthors.filter(Boolean);
+	}
 } catch (e) {
 	// Git info not available (e.g., in dev mode or file not committed)
 	console.warn(`Could not fetch Git info for ${filePath}`, e);
@@ -74,6 +73,7 @@ type Heading = {
 	slug: string;
 	text: string;
 };
+
 const headingList = headings as Heading[];
 ---
 
