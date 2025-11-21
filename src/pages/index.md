@@ -11,3 +11,5 @@ layout: ../layouts/Layout.astro
 ## Notes
 
 Check out [the example](/example).
+
+Hello world!
