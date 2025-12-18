@@ -10,7 +10,9 @@ layout: ../layouts/Layout.astro
 
 ## So You Want To Transfer To SCS
 (or double major, or minor, or something)
+
 An SCS Transfer’s Thoughts
+
 Written by Brandon Wu
 
 Last revised, January 2023
