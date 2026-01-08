@@ -42,7 +42,7 @@ try {
 		// Get last commit date
 		const date = execSync(
 			`git log -1 --format=%cd --date=short -- "${filePathFull}"`,
-			{ encoding: "utf-8" },
+			{ encoding: "utf-8" }
 		).trim();
 
 		if (date) {
@@ -249,7 +249,7 @@ const headingList = headings as Heading[];
 
 					<article
 						data-pagefind-body
-						class="prose prose-zinc dark:prose-invert lg:prose-xl"
+						class="prose prose-zinc dark:prose-invert lg:prose-base"
 					>
 						<slot />
 					</article>
