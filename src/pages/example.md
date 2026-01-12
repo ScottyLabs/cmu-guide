@@ -1,6 +1,6 @@
 ---
-category: examples
-categoryOrder: 2
+category: Examples
+categoryOrder: 5
 order: 1
 
 title: Example
@@ -17,13 +17,13 @@ layout: ../layouts/Layout.astro
 
 ### Bulleted list
 
-* Item A
-* Item B
+-   Item A
+-   Item B
 
 ## Table
 
 | Header 1 | Header 2 |
-|----------|----------|
+| -------- | -------- |
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 
