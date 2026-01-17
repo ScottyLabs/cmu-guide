@@ -10,19 +10,6 @@ layout: ../layouts/Layout.astro
 
 (hopefully) useful for: CMU undergraduate students curious about getting more major(s)
 
-## General Disclaimer
-*Written by*: Myrin
-*Last edited*: 03/19/2024
-For more specific and up-to-date information and requirements, inquire with your / the relevant academic advisor.
-
-# So you want to get another major
-
-So you want to get another major
-
-(hopefully) useful for: CMU undergraduate students curious about getting more major(s)
-
----
-
 ## General disclaimer
 
 - *Written by*: Myrin  
@@ -49,8 +36,8 @@ You’re not limited to just getting more major(s), although you’re certainly 
 
 See your many ~formalized~ academic options as an undergraduate student here, including getting a 5th-year masters or a salad of minors:
 
-- “Undergraduate Options”  
-- “Undergraduate Options” (PDF)
+- [“Undergraduate Options”](http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateoptions/)  
+- [“Undergraduate Options”](http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateoptions/undergraduateoptions.pdf) (PDF)
 
 There are also many less formalized/structured options for academic pursuit, such as:
 
@@ -146,4 +133,4 @@ CMU offers so many interesting courses, and I highly encourage you to try them. 
 ## Additional Resources
 
 **“Specifically, I want to get another major in Computer Science.”**  
-See: [“So You Want To Transfer to SCS”][https://cmu.guide/TransferToCS/]
+See: [“So You Want To Transfer to SCS”](https://cmu.guide/TransferToCS/)
