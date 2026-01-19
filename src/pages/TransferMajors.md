@@ -1,7 +1,7 @@
 ---
 category: Academic
 categoryOrder: 3
-order: 2
+order: 1
 
 title: So You Want to Get Another Major
 description: Document about transfer, addl, and minor requirements
