@@ -12,9 +12,9 @@
 		"vite": "npm:rolldown-vite@7.1.20"
 	},
 	"dependencies": {
-		"@astrojs/svelte": "^7.2.1",
+		"@astrojs/svelte": "7.2.5",
 		"@tailwindcss/vite": "^4.1.16",
-		"astro": "^5.15.3",
+		"astro": "5.16.7",
 		"bits-ui": "^2.14.2",
 		"svelte": "^5.43.2",
 		"tailwindcss": "^4.1.16",
