@@ -5,6 +5,7 @@ order: 1
 
 title: "Intro & Terminology"
 description: An International Student’s Guide to Carnegie Mellon University ! ࿐ ࿔*:･ﾟ
+  Original Doc by Mya '26+
 layout: ../layouts/Layout.astro
 ---
 
