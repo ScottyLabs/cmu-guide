@@ -1,6 +1,6 @@
 ---
 category: Examples
-categoryOrder: 5
+categoryOrder: 6
 order: 1
 
 title: Example
