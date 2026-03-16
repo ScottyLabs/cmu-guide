@@ -126,9 +126,9 @@ Do you want to know a hidden luxury that most CMU students take for granted? **K
 One of the most jarring aspects of readjustment is being thrust right alongside students whose CMU careers are completely intact. They completed every semester. They’re taking a full course load, and maybe a handful of jobs, TA positions, and club involvements while they’re at it. They have a bustling social life and are doggedly vying for internships and research and might even be winning awards. 
 
 **Let me be clear: you do not need to be where they are, because they have not gone through what you have.** This is not to discount everyone’s individual struggles, but no matter how much of an underachiever or “failure” you feel compared to everyone else, know that you are **not** doing inherently “less” with your life than they are. You are getting up and trying again at a university that previously almost broke you. You are doing the crucial work of regaining your mental stability. *That* is effort, and after all you’ve been through, that is a life well lived. 
-![alt text](src/assets/Picture9.png)
+![alt text](../assets/Picture9.png)
 *Figure 9: A star I made out of beads in art therapy at the psych ward*
-![alt text](src/assets/Picture10.png)
+![alt text](../assets/Picture10.png)
 *Figure 10: Fully moved into my dorm room the day I returned to campus*
-![alt text](src/assets/Picture11.png)
+![alt text](../assets/Picture11.png)
 *Figure 11: The glittering lights of Pittsburgh, taken at Scaife floor 2, 43 days after my leave of absence ended*

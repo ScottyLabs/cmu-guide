@@ -22,10 +22,10 @@ A **mandate** generally occurs after some sort of initial crisis has occurred, o
 
 It depends entirely on the crisis and how it’s impacting you right now. In my scenario, I was involuntarily admitted to UPMC Western Psych just over a week before starting my sophomore year, prompting Student Affairs to schedule a meeting and enforce a mandate. See **Figures 2 and 3** for the document sent to me and what your requirements could look like:
 
-![alt text](src/assets/Picture2.png)
+![alt text](../assets/Picture2.png)
 *Figure 2: Page 1, with annotations*
 
-![alt text](src/assets/Picture3.png)
+![alt text](../assets/Picture3.png)
 *Figure 3: Page 2, with annotations*
 
 *Note 1: I mention updating and communicating with a **liaison**. This person is a core member of your Student Affairs mandate team, and I will cover this shortly.* 
@@ -39,11 +39,11 @@ During your time under mandate, you will also be connected to people in multiple
 ### Academic advisor(s) 
 This will either be your first-year advisor or the advisor(s) designated to your major(s) or department(s), depending on your college’s major declaration timeline and your current class standing. You can look up who they are on [SIO](https://s3.andrew.cmu.edu/sio/mpa/) by going to *Academic Info -> Enrollment Status* **Figure 4**. Then scroll down to *Advisor Info* to see the names of all your academic advisors. 
 
-![alt text](src/assets/Picture4.png)
+![alt text](../assets/Picture4.png)
 *Figure 4: How to navigate SIO's interface to find your advisor(s)' names. Their contact info can also be found in the [CMU directory](https://directory.andrew.cmu.edu)*
 
 Please reach out to your advisor(s) if you do not have accommodations and must seek extensions due to outside circumstances, as a letter from your advisor carries a lot of weight. Some advisors will also have a link in their e-mail signature that lets you schedule an appointment with them (see Figure 5).
-![alt text](src/assets/Picture5.png)
+![alt text](../assets/Picture5.png)
 *Figure 5: Meeting scheduling mechanism from the e-mail signature of English advisor Laura Donaldson*
 
 If not, feel free to use **the following e-mail template** and to tweak it as you see fit:

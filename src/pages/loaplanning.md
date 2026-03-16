@@ -4,13 +4,13 @@ categoryOrder: 4
 order: 5
 
 title: If You DO Plan to Return 
-description: This is an example
+description: 
 layout: ../layouts/Layout.astro
 ---
 
 ## What do I need to do to return? 
 The moment you leave, Student Affairs will give you an **updated version** of your mandate with both new and old requirements. Here was mine **(Figure 6)**:
-![alt text](src/assets/Picture6.png)
+![alt text](../assets/Picture6.png)
 *Figure 6: Version 2 of my mandate, with annotations*
 
 In short, **once you fulfill the requirements in the updated mandate**, you can then enter conversations for a potential return (Anonymous). Student Affairs will then review your case and *decide if you’re ready to return* based on reports on your progress from outside treatment teams. 
@@ -39,9 +39,9 @@ If so, make sure you and the parent/guardian attending the meeting have agreed o
 ## Waiting for the Decision
 
 Ironically, the hardest part of the process is the part where you aren’t doing anything, since the decision might be delayed by everyone involved in your case finding a time to be in the same room at the same time to have a conversation. If you’re curious, **see Figures 7 and 8** of when everything happened during my leave, but since it was more truncated than most LOAs, your waits may be longer. 
-![alt text](src/assets/Picture7.png)
+![alt text](../assets/Picture7.png)
 *Figure 7: Part 1 of my LOA timeline (2025)*
-![alt text](src/assets/Picture8.png)
+![alt text](../assets/Picture8.png)
 *Figure 8: Part 2 of my LOA timeline (2026)*
 
 The delay **can** stretch into the start of next semester depending on timing, but just know that *you can still enroll* as long as you receive permission to return **within the semester’s first two weeks**, before the add course deadline. In the meantime, try to keep busy with hobbies, rest, or interaction with friends, and trust that progress is being made toward a decision.

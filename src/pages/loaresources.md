@@ -54,4 +54,4 @@ Cristol, Hope. “Living with Chronic Disease: What Is the Spoon Theory?” Edit
 
 ---
 *P.S. I'm rooting for you :)*
-![alt text](src/assets/Picture12.png)
+![alt text](../assets/Picture12.png)
