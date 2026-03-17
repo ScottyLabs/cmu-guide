@@ -84,7 +84,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 			// Handle clicks on TOC links
 			links.forEach((link) => {
-				link.addEventListener("click", (e) => {
+				link.addEventListener("click", (_e) => {
 					const slug = link.getAttribute("data-slug");
 					if (slug) {
 						userClicked = true;
