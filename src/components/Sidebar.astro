@@ -65,12 +65,12 @@ const groupedNav = navigation.reduce(
 	</nav>
 </aside>
 
-<script lang="ts">
+<script>
 	function initSidebar() {
-		const sidebar = document.querySelector("[data-sidebar]");
-		const overlay = document.querySelector("[data-sidebar-overlay]");
-		const menuButton = document.querySelector("[data-mobile-menu-button]");
-		const sidebarLinks = document.querySelectorAll("[data-sidebar-link]");
+		const sidebar = document.querySelector("[data-sidebar]")!;
+		const overlay = document.querySelector("[data-sidebar-overlay]")!;
+		const menuButton = document.querySelector("[data-mobile-menu-button]")!;
+		const sidebarLinks = document.querySelectorAll("[data-sidebar-link]")!;
 
 		if (!sidebar || !overlay || !menuButton) return;
 
