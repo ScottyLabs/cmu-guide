@@ -10,7 +10,7 @@ export interface Dorm {
 export const dorms: Dorm[] = [
 	{
 		name: "Boss and McGill",
-		color: "#ef4444",
+		color: "#CC0100",
 		pros: [
 			"Bathroom shared with a suite",
 			"Quiet and clean",
@@ -43,7 +43,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Donner",
-		color: "#3b82f6",
+		color: "#A4C2F4",
 		pros: [
 			"Near Resnik",
 			"Near Margaret",
@@ -113,7 +113,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Hamerschlag",
-		color: "#f59e0b", // pick any color you like for the banner
+		color: "#CC0100",
 		pros: [
 			"Average rooms (11 x 15.5 + closets)",
 			"Newly renovated bathrooms",
@@ -145,7 +145,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Henderson",
-		color: "#8b5cf6", // pick any color for the banner
+		color: "#EA9999",
 		pros: [
 			"Green building",
 			"Large rooms (15 x 13)",
@@ -171,7 +171,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Morewood Gardens",
-		color: "#3b82f6", // banner color
+		color: "#D4A619",
 		pros: [
 			"3 minutes to campus",
 			"Social",
@@ -208,7 +208,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Mudge",
-		color: "#ef4444", // pick any color for the banner
+		color: "#9900FF",
 		pros: [
 			"Large rooms (15 x 15.5)",
 			"Private bathrooms",
@@ -246,7 +246,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Scobell",
-		color: "#f59e0b", // pick any color for the banner
+		color: "#EA9999",
 		pros: [
 			"Newly renovated",
 			"Close to Resnik and Exchange (food)",
@@ -271,7 +271,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Residence on Fifth",
-		color: "#3b82f6", // pick any banner color
+		color: "#FF00FF",
 		pros: [
 			"Has kitchenette, big fridge, living room, AC and bathroom",
 			"Big fridge, no microwave",
@@ -310,7 +310,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Stever",
-		color: "#10b981", // pick a banner color
+		color: "#B7D7A8",
 		pros: [
 			"Awesome lounges, great social life",
 			"5 min. to campus",
@@ -344,7 +344,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Welch",
-		color: "#f97316", // pick any banner color
+		color: "#EA9999",
 		pros: [
 			"AC",
 			"Gender-inclusive",
@@ -369,7 +369,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Maggie Mo",
-		color: "#8b5cf6", // pick a banner color
+		color: "#EA9999",
 		pros: [
 			"Pretty Spacious",
 			"Kitchen Access",
@@ -396,7 +396,7 @@ export const dorms: Dorm[] = [
 	},
 	{
 		name: "Clyde House",
-		color: "#f59e0b", // pick any banner color
+		color: "#FF00FF",
 		pros: [
 			"Each studio has its own kitchenette, fridge, and bathroom",
 			"Large rooms",
