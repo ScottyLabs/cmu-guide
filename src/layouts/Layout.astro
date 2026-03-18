@@ -8,7 +8,7 @@ import TableOfContents from "@/components/TableOfContents.astro";
 import PrevNext from "@/components/PrevNext.astro";
 import "@/styles/global.css";
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, Content } = Astro.props;
 
 const title = frontmatter.title as string;
 const description = frontmatter.description as string;
@@ -19,8 +19,16 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 	currentPath = currentPath.slice(0, -1);
 }
 
-const filePath =
-	currentPath === "/" ? "index.md" : `${currentPath.slice(1)}.md`;
+let filePath = currentPath === "/" ? "index" : currentPath.slice(1);
+
+let ext = "mdx";
+try {
+	execSync(`test -f src/pages/${filePath}.mdx`);
+} catch {
+	ext = "md";
+}
+
+filePath = `${filePath}.${ext}`;
 const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pages/${filePath}`;
 
 // Get Git metadata
@@ -42,7 +50,7 @@ try {
 		// Get last commit date
 		const date = execSync(
 			`git log -1 --format=%cd --date=short -- "${filePathFull}"`,
-			{ encoding: "utf-8" }
+			{ encoding: "utf-8" },
 		).trim();
 
 		if (date) {
@@ -251,7 +259,7 @@ const headingList = headings as Heading[];
 						data-pagefind-body
 						class="prose prose-zinc dark:prose-invert lg:prose-base"
 					>
-						<slot />
+						{Content ? <Content /> : <slot />}
 					</article>
 
 					<PrevNext />

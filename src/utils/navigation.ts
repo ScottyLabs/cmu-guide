@@ -7,23 +7,21 @@ export interface NavItem {
 }
 
 export async function getNavigation(): Promise<NavItem[]> {
-	// Get all markdown files from pages directory
-	const pages = await import.meta.glob('../pages/*.md', { eager: true });
+	const mdPages = import.meta.glob('../pages/*.md', { eager: true });
+	const mdxPages = import.meta.glob('../pages/*.mdx', { eager: true });
+	const pages = { ...mdPages, ...mdxPages };
 	const navItems: NavItem[] = [];
 
-	for (const [path, page] of Object.entries(pages)) {
-		// Convert file path to URL path
-		let href = path
+	for (const [filePath, page] of Object.entries(pages)) {
+		let href = filePath
 			.replace('../pages', '')
-			.replace(/\.md$/, '')
+			.replace(/\.(md|mdx)$/, '')
 			.replace(/\/index$/, '');
 
-		// Handle index.md -> /
 		if (href === '') href = '/';
 
-		// Get frontmatter
 		const frontmatter = (page as any).frontmatter || {};
-		const title = frontmatter.title || path.split('/').pop()?.replace('.md', '') || 'Untitled';
+		const title = frontmatter.title || filePath.split('/').pop()?.replace(/\.(md|mdx)$/, '') || 'Untitled';
 
 		const category = frontmatter.category;
 		const categoryOrder = frontmatter.categoryOrder;

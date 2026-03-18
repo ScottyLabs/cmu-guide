@@ -1,0 +1,17 @@
+---
+category: Student Life
+categoryOrder: 2
+order: 1
+
+title: Dorms
+description: A helpful spreadsheet maintained by current students on first year dorms
+layout: ../layouts/Layout.astro
+
+---
+
+import DormGrid from "@/components/DormGrid.svelte";
+import HousingHeader from "@/components/HousingHeader.svelte";
+import { dorms } from "@/data/dorms";
+
+<HousingHeader />
+<DormGrid dorms={dorms} />
