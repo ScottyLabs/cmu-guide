@@ -164,8 +164,6 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 			});
 		});
 
-		initTOC();
-
 		requestAnimationFrame(() => {
 			const tocElements = document.querySelectorAll("[data-toc]");
 			tocElements.forEach((tocElement) => {
@@ -217,7 +215,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 	}
 
 	initTOC();
-	initDormTOC(); // try immediately in case data is already there
+	initDormTOC();
 
 	window.addEventListener("dorms-ready", initDormTOC);
 	document.addEventListener("astro:after-swap", initDormTOC);
