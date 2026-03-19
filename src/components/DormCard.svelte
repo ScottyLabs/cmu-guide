@@ -10,30 +10,38 @@
 	<div class="content">
 		<div class="col">
 			<div class="title">Pros</div>
-			{#each dorm.pros as item}
-				<div>• {item}</div>
-			{/each}
+			<ul>
+				{#each dorm.pros as item}
+					<li>{item}</li>
+				{/each}
+			</ul>
 		</div>
 
 		<div class="col">
 			<div class="title">Cons</div>
-			{#each dorm.cons as item}
-				<div>• {item}</div>
-			{/each}
+			<ul>
+				{#each dorm.cons as item}
+					<li>{item}</li>
+				{/each}
+			</ul>
 		</div>
 
 		<div class="col">
 			<div class="title">Info</div>
-			{#each dorm.info as item}
-				<div>• {item}</div>
-			{/each}
+			<ul>
+				{#each dorm.info as item}
+					<li>{item}</li>
+				{/each}
+			</ul>
 		</div>
 
 		<div class="col">
 			<div class="title">Amenities</div>
-			{#each dorm.amenities as item}
-				<div>• {item}</div>
-			{/each}
+			<ul>
+				{#each dorm.amenities as item}
+					<li>{item}</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
 </div>
