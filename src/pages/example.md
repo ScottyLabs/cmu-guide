@@ -17,8 +17,8 @@ layout: ../layouts/Layout.astro
 
 ### Bulleted list
 
--   Item A
--   Item B
+- Item A
+- Item B
 
 ## Table
 
