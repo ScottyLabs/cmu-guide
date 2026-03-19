@@ -134,36 +134,40 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 	function initDormTOC() {
 		console.log("initDormTOC running", (window as any).__dorms__);
 
-		const allTocs = document.querySelectorAll("[data-toc] ul");
-		let toc: Element | null = null;
-		allTocs.forEach((el: Element) => {
-			if (!el.closest(".lg\\:hidden")) toc = el;
-		});
-		if (!toc) return;
-
-		const dormToc = toc as Element;
 		const dorms = (window as any).__dorms__;
 		if (!dorms?.length) return;
 
-		dormToc
-			.querySelectorAll("[data-dorm-link]")
-			.forEach((el) => el.remove());
+		// Target ALL TOC <ul> elements (both mobile and desktop)
+		const allTocs = document.querySelectorAll("[data-toc] ul");
 
-		dorms.forEach((dorm: any) => {
-			const id = dorm.name.replace(/\s+/g, "-");
-			const li = document.createElement("li");
-			const a = document.createElement("a");
-			a.href = `#${id}`;
-			a.setAttribute("data-toc-link", "");
-			a.setAttribute("data-slug", id);
-			a.setAttribute("data-dorm-link", "");
-			a.textContent = dorm.name;
-			a.style.cssText =
-				"display: block; padding: 4px 0 4px 16px; color: #71717a; text-decoration: none; border-left: 1px solid #e4e4e7; margin-left: -16px; font-size: 0.875rem;";
-			a.addEventListener("mouseenter", () => (a.style.color = "#18181b"));
-			a.addEventListener("mouseleave", () => (a.style.color = "#71717a"));
-			li.appendChild(a);
-			dormToc.appendChild(li);
+		allTocs.forEach((toc: Element) => {
+			// Remove previously injected dorm links to avoid duplicates on re-runs
+			toc.querySelectorAll("[data-dorm-link]").forEach((el) =>
+				el.remove(),
+			);
+
+			dorms.forEach((dorm: any) => {
+				const id = dorm.name.replace(/\s+/g, "-");
+				const li = document.createElement("li");
+				const a = document.createElement("a");
+				a.href = `#${id}`;
+				a.setAttribute("data-toc-link", "");
+				a.setAttribute("data-slug", id);
+				a.setAttribute("data-dorm-link", "");
+				a.textContent = dorm.name;
+				a.style.cssText =
+					"display: block; padding: 4px 0 4px 16px; color: #71717a; text-decoration: none; border-left: 1px solid #e4e4e7; margin-left: -16px; font-size: 0.875rem;";
+				a.addEventListener(
+					"mouseenter",
+					() => (a.style.color = "#18181b"),
+				);
+				a.addEventListener(
+					"mouseleave",
+					() => (a.style.color = "#71717a"),
+				);
+				li.appendChild(a);
+				toc.appendChild(li);
+			});
 		});
 
 		initTOC();
