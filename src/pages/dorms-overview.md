@@ -42,6 +42,7 @@ Apartment dorms are different from residence hall dorms in that each room comes 
 
 - [CMU Official Housing Page](https://www.cmu.edu/housing/our-communities/first-year/index.html)
 - [2025-2026 Housing Rates](https://www.cmu.edu/housing/resident-services/rates-and-fees/25-26-housing-rates-non-staff1.pdf)
+- [Dorms Options 2026-2027](/dorms)
 
 ## Acknowledgements
 

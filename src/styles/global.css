@@ -3,3 +3,22 @@
 
 /* Apply dark: classes when .dark class exists */
 @custom-variant dark (&:where(.dark, .dark *));
+
+h2[id],
+h3[id],
+[data-dorm-anchor] {
+	scroll-margin-top: 80px;
+}
+
+@media (min-width: 1024px) {
+
+	h2[id],
+	h3[id],
+	[data-dorm-anchor] {
+		scroll-margin-top: 112px;
+	}
+}
+
+[id] {
+	scroll-margin-top: 80px;
+}

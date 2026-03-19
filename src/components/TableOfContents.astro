@@ -129,19 +129,13 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 	initTOC();
 
 	// Re-initialize after Astro page transitions
-	document.addEventListener("astro:after-swap", initTOC);
-
 	function initDormTOC() {
-		console.log("initDormTOC running", (window as any).__dorms__);
-
 		const dorms = (window as any).__dorms__;
 		if (!dorms?.length) return;
 
-		// Target ALL TOC <ul> elements (both mobile and desktop)
 		const allTocs = document.querySelectorAll("[data-toc] ul");
 
 		allTocs.forEach((toc: Element) => {
-			// Remove previously injected dorm links to avoid duplicates on re-runs
 			toc.querySelectorAll("[data-dorm-link]").forEach((el) =>
 				el.remove(),
 			);
@@ -156,7 +150,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 				a.setAttribute("data-dorm-link", "");
 				a.textContent = dorm.name;
 				a.style.cssText =
-					"display: block; padding: 4px 0 4px 16px; color: #71717a; text-decoration: none; border-left: 1px solid #e4e4e7; margin-left: -16px; font-size: 0.875rem;";
+					"display: block; padding: 4px 0 4px 32px; color: #71717a; text-decoration: none; border-left: 1px solid #e4e4e7; margin-left: -16px; font-size: 0.875rem;";
 				a.addEventListener(
 					"mouseenter",
 					() => (a.style.color = "#18181b"),
@@ -171,6 +165,55 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 		});
 
 		initTOC();
+
+		requestAnimationFrame(() => {
+			const tocElements = document.querySelectorAll("[data-toc]");
+			tocElements.forEach((tocElement) => {
+				const links = tocElement.querySelectorAll("[data-toc-link]");
+				if (!links.length) return;
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							const id = entry.target.getAttribute("id");
+							if (entry.isIntersecting && id) {
+								links.forEach((link) => {
+									link.classList.remove(
+										"!text-zinc-900",
+										"dark:!text-zinc-100",
+										"font-medium",
+										"!border-l-zinc-900",
+										"dark:!border-l-zinc-100",
+									);
+								});
+								const tocLink = tocElement.querySelector(
+									`[data-toc-link][data-slug="${id}"]`,
+								);
+								if (tocLink) {
+									tocLink.classList.add(
+										"!text-zinc-900",
+										"dark:!text-zinc-100",
+										"font-medium",
+										"!border-l-zinc-900",
+										"dark:!border-l-zinc-100",
+									);
+								}
+							}
+						});
+					},
+					{
+						rootMargin: "-100px 0px -66%",
+						threshold: 0,
+					},
+				);
+
+				document
+					.querySelectorAll("[data-dorm-anchor]")
+					.forEach((el) => {
+						observer.observe(el);
+					});
+			});
+		});
 	}
 
 	initTOC();
