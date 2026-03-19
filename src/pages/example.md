@@ -8,7 +8,6 @@ description: This is an example
 layout: ../layouts/Layout.astro
 ---
 
-## Lists
 
 ### Numbered list
 
