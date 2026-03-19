@@ -13,11 +13,6 @@
 	.grid {
 		display: grid;
 		gap: 16px;
-	}
-
-	@media (min-width: fit-content) {
-		.grid {
-			grid-template-columns: repeat(4, 1fr);
-		}
+		grid-template-columns: 1fr;
 	}
 </style>
