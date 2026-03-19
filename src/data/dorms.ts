@@ -1,3 +1,7 @@
+/*
+Data was last grabbed March 18th 3:00 AM
+*/
+
 export interface Dorm {
 	name: string;
 	color?: string; // Banner color

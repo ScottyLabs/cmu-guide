@@ -2,7 +2,7 @@
 	export let dorm;
 </script>
 
-<div class="card">
+<div id={dorm.name.replace(/\s+/g, "-")} class="card">
 	<div class="banner" style={`background-color: ${dorm.color || "#3b82f6"}`}>
 		{dorm.name}
 	</div>

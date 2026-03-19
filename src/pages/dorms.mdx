@@ -13,6 +13,12 @@ import DormGrid from "@/components/DormGrid.svelte";
 import HousingHeader from "@/components/HousingHeader.svelte";
 import { dorms } from "@/data/dorms";
 
+<script is:inline set:html={`
+    window.__dorms__ = ${JSON.stringify(dorms).replace(/</g, '\\u003c')};
+    window.dispatchEvent(new CustomEvent("dorms-ready"));
+`} />
+
+
 ## Preface
 The following data has been produced and maintained by current students. This rendention is based off of this
 [spreadsheet](https://docs.google.com/spreadsheets/d/1FkCaGv6nZAVP808w4iK7Awe5jEgMs-mg4xdmH-6jsr8/edit?usp=sharing) (Most recent update: 2026).
@@ -28,5 +34,18 @@ Colors are used for Carnegie Cup during O-Week; not too important
 All communal bathrooms are staff-cleaned.
 
 ## Dorms:
+
+<nav class="mb-6 text-zinc-700 dark:text-zinc-300">
+First Year Housing offered:
+  {dorms.map((d, i) => (
+    <>
+      <a href={`#${d.name.replace(/\s+/g, "-")}`} class="hover:underline">
+        {d.name}
+      </a>
+      {i < dorms.length - 1 ? ", " : ""}
+    </>
+  ))}
+</nav>
+
 
 <DormGrid dorms={dorms} />
