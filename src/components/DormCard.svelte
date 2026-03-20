@@ -51,7 +51,6 @@
 		border: 1px solid black;
 		border-radius: 12px;
 		overflow: hidden;
-		background: white;
 	}
 
 	.banner {
