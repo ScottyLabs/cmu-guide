@@ -65,6 +65,16 @@
 		font-size: 0.9rem;
 	}
 
+	@media (max-width: 640px) {
+		.content {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.col:nth-child(2) {
+			border-right: none;
+		}
+	}
+
 	.col {
 		padding: 8px;
 		border-top: 1px solid black;
