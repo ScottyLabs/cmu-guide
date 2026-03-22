@@ -71,8 +71,15 @@ const groupedNav = navigation.reduce(
 		const overlay = document.querySelector("[data-sidebar-overlay]");
 		const menuButton = document.querySelector("[data-mobile-menu-button]");
 		const sidebarLinks = document.querySelectorAll("[data-sidebar-link]");
+		const savedScrollPosition = sessionStorage.getItem(
+			"savedScrollPosition",
+		);
 
 		if (!sidebar || !overlay || !menuButton) return;
+
+		if (savedScrollPosition !== null) {
+			sidebar.scrollTop = parseInt(savedScrollPosition, 10);
+		}
 
 		function closeSidebar() {
 			sidebar.classList.add("-translate-x-full");
@@ -98,9 +105,13 @@ const groupedNav = navigation.reduce(
 		menuButton.addEventListener("click", toggleSidebar);
 		overlay.addEventListener("click", closeSidebar);
 
-		// Close on link click on mobile
+		// Close on link click on mobile + save scroll position
 		sidebarLinks.forEach((link) => {
 			link.addEventListener("click", () => {
+				sessionStorage.setItem(
+					"savedScrollPosition",
+					sidebar.scrollTop.toString(),
+				);
 				if (window.innerWidth < 1024) {
 					// lg breakpoint
 					closeSidebar();
