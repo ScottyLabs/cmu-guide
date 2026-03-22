@@ -12,7 +12,6 @@ layout: ../layouts/Layout.astro
 
 * [Official CMU page on obtaining accommodations](https://www.cmu.edu/disability-resources/students/obtaining-accommodations.html)  
 * [Official documentation guidelines](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-guidelines_9-2025.pdf)  
-* 
 
 ## How to Apply for Accommodations
 
@@ -80,10 +79,10 @@ Good \[morning/afternoon/evening\] Prof. \[prof last name\],
 
 I'm \[your name\] and I'm excited to be in \[class\] this semester. As we get closer to the start of classes, the ODR has recommended I reach out to clarify the details of my accommodations. I'd be happy to do this over email or in-person, whichever you prefer.
 
-My relevant accommodations include:
+My relevant accommodations include: <br>
 \[insert your accommodations here\]
 
-Thanks,
+Thanks,<br>
 \[your name\]
 ___
 
