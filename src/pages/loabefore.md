@@ -7,7 +7,7 @@ title: Before the Leave
 description: 
 layout: ../layouts/Layout.astro
 ---
----
+
 A mandated leave of absence is rarely out-of-the-blue and is often a decision culminating from weeks or months of worsening circumstances. Early on in this process, Student Affairs may have already mandated certain actions from you in order to stay enrolled. 
 
 ## Being on a Student Affairs Mandate

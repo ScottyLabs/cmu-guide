@@ -7,7 +7,6 @@ title: Intro
 description: Returning from an involuntary Leave of Absence.  
 layout: ../layouts/Layout.astro
 ---
----
 
 **It is highly recommended that you read the pages in the Leaves of Absence section in order from top to bottom**
 
