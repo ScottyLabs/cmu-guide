@@ -2,7 +2,8 @@
 import { getNavigation } from "@/utils/navigation";
 import { ArrowLeft, ArrowRight } from "svelte-radix";
 
-const navigation = await getNavigation();
+// Keep home in sidebar nav, but exclude it from linear previous/next flow
+const navigation = (await getNavigation()).filter((item) => item.href !== "/");
 
 // Remove trailing slash
 let currentPath = Astro.url.pathname;
