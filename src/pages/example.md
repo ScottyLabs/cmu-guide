@@ -6,8 +6,8 @@ order: 1
 title: Example
 description: This is an example
 layout: ../layouts/Layout.astro
+hideInNav: true
 ---
-
 
 ### Numbered list
 
