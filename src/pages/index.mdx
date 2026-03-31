@@ -16,31 +16,17 @@ contentBodyClass: max-w-none text-zinc-700 dark:text-zinc-300
 pageSpacing: py-8 md:py-10 lg:py-12
 ---
 
-export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
+export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
 
-<div className="not-prose w-full space-y-8 md:space-y-10 xl:space-y-12 text-zinc-700 dark:text-zinc-300">
+<div className="home-shell not-prose w-full space-y-8 md:space-y-10 xl:space-y-12 text-zinc-700 dark:text-zinc-300">
   <section
     aria-labelledby="hero-overview"
-    className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-800 dark:to-zinc-900 p-5 sm:p-6 lg:p-8 shadow-sm"
+    className="home-reveal home-hero rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-800 dark:to-zinc-900 p-5 sm:p-6 lg:p-8 shadow-sm"
   >
     <h2 id="hero-overview" className="sr-only">Hero</h2>
-    <p className="text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 max-w-3xl text-balance">
-      Welcome to <span className="font-bold text-[#C41230] dark:text-zinc-100">CMU's Student Guide</span>! We have compiled practical advice and insights from current students to help you navigate your CMU journey.
+    <p className="home-hero-lede text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 max-w-3xl text-balance">
+      Welcome to <span className="home-hero-emphasis font-bold text-[#C41230] dark:text-zinc-100">CMU's Student Guide</span>! We have compiled practical advice and insights from current students to help you navigate your CMU journey.
     </p>
-    <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3">
-      <a
-        href="#start-here"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#C41230] px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors hover:bg-[#A50F28] active:bg-[#8E0D22] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
-      >
-        Browse guides
-      </a>
-      <a
-        href="#search-help"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm font-semibold text-zinc-900 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700 active:bg-zinc-200 dark:active:bg-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-500"
-      >
-        Search the guide
-      </a>
-    </div>
     <p id="search-help" className="mt-4 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
       <span className="font-semibold text-zinc-700 dark:text-zinc-300">Tip:</span>{" "}
       Use the built-in search button in the top bar, or press
@@ -51,21 +37,21 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
     </p>
   </section>
 
-  <section id="start-here" aria-labelledby="start-here-title" className="space-y-4 md:space-y-5 scroll-mt-28">
+  <section id="start-here" aria-labelledby="start-here-title" className="home-reveal space-y-4 md:space-y-5 scroll-mt-28">
     <div>
-      <h2 id="start-here-title" className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+      <h2 id="start-here-title" className="home-section-title text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         Start here
       </h2>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
         Essential guides to kickstart your CMU experience
       </p>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+    <div className="home-card-grid grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
       <a
         href="/dorms-overview"
-        className="group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C41230]/45 dark:hover:border-[#C41230]/55 hover:bg-linear-to-br hover:from-[#C41230]/8 hover:via-white hover:to-zinc-50 dark:hover:from-[#C41230]/18 dark:hover:via-zinc-800 dark:hover:to-zinc-900 hover:shadow-md dark:hover:shadow-black/40 focus-visible:-translate-y-0.5 focus-visible:border-[#C41230]/55 focus-visible:bg-linear-to-br focus-visible:from-[#C41230]/10 focus-visible:via-white focus-visible:to-zinc-50 dark:focus-visible:from-[#C41230]/22 dark:focus-visible:via-zinc-800 dark:focus-visible:to-zinc-900 focus-visible:shadow-md dark:focus-visible:shadow-black/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+        className="home-card group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline"
       >
-        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Housing and Dorms</h3>
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Housing and Dorms <span className="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
           Compare living options, dorm realities, and move-in basics.
         </p>
@@ -73,9 +59,9 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
 
       <a
         href="/MinimalPackingList"
-        className="group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C41230]/45 dark:hover:border-[#C41230]/55 hover:bg-linear-to-br hover:from-[#C41230]/8 hover:via-white hover:to-zinc-50 dark:hover:from-[#C41230]/18 dark:hover:via-zinc-800 dark:hover:to-zinc-900 hover:shadow-md dark:hover:shadow-black/40 focus-visible:-translate-y-0.5 focus-visible:border-[#C41230]/55 focus-visible:bg-linear-to-br focus-visible:from-[#C41230]/10 focus-visible:via-white focus-visible:to-zinc-50 dark:focus-visible:from-[#C41230]/22 dark:focus-visible:via-zinc-800 dark:focus-visible:to-zinc-900 focus-visible:shadow-md dark:focus-visible:shadow-black/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+        className="home-card group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline"
       >
-        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Packing for CMU</h3>
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Packing for CMU <span className="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
           A practical packing list from student experience.
         </p>
@@ -83,9 +69,9 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
 
       <a
         href="/accommodations"
-        className="group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C41230]/45 dark:hover:border-[#C41230]/55 hover:bg-linear-to-br hover:from-[#C41230]/8 hover:via-white hover:to-zinc-50 dark:hover:from-[#C41230]/18 dark:hover:via-zinc-800 dark:hover:to-zinc-900 hover:shadow-md dark:hover:shadow-black/40 focus-visible:-translate-y-0.5 focus-visible:border-[#C41230]/55 focus-visible:bg-linear-to-br focus-visible:from-[#C41230]/10 focus-visible:via-white focus-visible:to-zinc-50 dark:focus-visible:from-[#C41230]/22 dark:focus-visible:via-zinc-800 dark:focus-visible:to-zinc-900 focus-visible:shadow-md dark:focus-visible:shadow-black/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+        className="home-card group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline"
       >
-        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Accommodations</h3>
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Accommodations <span className="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
           Understand the process, documentation, and support options.
         </p>
@@ -93,9 +79,9 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
 
       <a
         href="/MoochingOffCMU"
-        className="group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C41230]/45 dark:hover:border-[#C41230]/55 hover:bg-linear-to-br hover:from-[#C41230]/8 hover:via-white hover:to-zinc-50 dark:hover:from-[#C41230]/18 dark:hover:via-zinc-800 dark:hover:to-zinc-900 hover:shadow-md dark:hover:shadow-black/40 focus-visible:-translate-y-0.5 focus-visible:border-[#C41230]/55 focus-visible:bg-linear-to-br focus-visible:from-[#C41230]/10 focus-visible:via-white focus-visible:to-zinc-50 dark:focus-visible:from-[#C41230]/22 dark:focus-visible:via-zinc-800 dark:focus-visible:to-zinc-900 focus-visible:shadow-md dark:focus-visible:shadow-black/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+        className="home-card group block h-full rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5 md:p-6 shadow-sm no-underline"
       >
-        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Student Perks and Freebies</h3>
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">Student Perks and Freebies <span className="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
           Use benefits, discounts, and free resources around campus.
         </p>
@@ -103,52 +89,9 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
     </div>
   </section>
 
-  <section aria-labelledby="popular-guides-title" className="space-y-4 md:space-y-5">
-    <h2 id="popular-guides-title" className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-      Popular guides
-    </h2>
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-      <li>
-        <a href="/accommodations" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Accommodations
-        </a>
-      </li>
-      <li>
-        <a href="/dorms-overview" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Dorms Overview
-        </a>
-      </li>
-      <li>
-        <a href="/MinimalPackingList" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Minimal Packing List
-        </a>
-      </li>
-      <li>
-        <a href="/meal-plans" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Meal Plans
-        </a>
-      </li>
-      <li>
-        <a href="/TransferToCS" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Transfer to CS
-        </a>
-      </li>
-      <li>
-        <a href="/loaintro" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Intro to Leaves of Absence
-        </a>
-      </li>
-      <li>
-        <a href="/MoochingOffCMU" className="block rounded-lg border border-zinc-200 dark:border-zinc-700 px-4 py-3 text-zinc-800 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]">
-          Mooching off of CMU
-        </a>
-      </li>
-    </ul>
-  </section>
-
-  <section aria-label="About and contribute" className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
-    <div aria-labelledby="trust-title" className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-800/60 p-6 md:p-7">
-      <h2 id="trust-title" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+  <section aria-label="About and contribute" className="home-reveal home-cta-grid grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+    <div aria-labelledby="trust-title" className="home-panel rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-800/60 p-6 md:p-7">
+      <h2 id="trust-title" className="home-section-title text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         About us and this guide
       </h2>
       <p className="mt-3 text-zinc-700 dark:text-zinc-300">
@@ -160,27 +103,29 @@ export const CMU_CLASS_2030_DISCORD_URL = "https://discord.gg/ayQ7BQJTCN";
       </p>
     </div>
 
-    <div aria-labelledby="contribute-title" className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6 md:p-7">
-      <h2 id="contribute-title" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+    <div aria-labelledby="contribute-title" className="home-panel home-panel--accent rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6 md:p-7">
+      <h2 id="contribute-title" className="home-section-title text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         Help improve this guide
       </h2>
       <p className="mt-3 text-zinc-700 dark:text-zinc-300">
         Spot something outdated or missing? Suggest an edit — we're open-source on GitHub!
       </p>
-      <div className="mt-5 flex flex-wrap items-center gap-3">
+      <div className="home-cta-row mt-5 flex flex-wrap items-center gap-3">
         <a
           href="https://github.com/scottylabs/cmu-guide"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-600 px-4 py-2.5 font-medium text-zinc-900 dark:text-zinc-100 no-underline transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 active:bg-zinc-200 dark:active:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+          className="home-btn home-btn--secondary inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-600 px-4 py-2.5 font-medium text-zinc-900 dark:text-zinc-100 no-underline"
         >
-          Contribute on GitHub
+          <span>Contribute on GitHub</span>
         </a>
         <a
-          href={CMU_CLASS_2030_DISCORD_URL}
-          className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#C41230]/45 bg-[#C41230]/12 px-4 py-2.5 font-medium text-zinc-900 dark:text-zinc-100 no-underline transition-colors hover:bg-[#C41230]/20 dark:hover:bg-[#C41230]/25 active:bg-[#C41230]/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C41230]"
+          href={SCOTTYLABS_DISCORD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="home-btn home-btn--tertiary inline-flex min-h-11 items-center justify-center rounded-lg border border-[#C41230]/45 bg-[#C41230]/12 px-4 py-2.5 text-center font-medium text-zinc-900 dark:text-zinc-100 no-underline"
         >
-          Join the CMU Class of 2030 Discord
+          <span className="text-center">Join the ScottyLabs Discord</span>
         </a>
       </div>
     </div>
