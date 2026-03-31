@@ -21,7 +21,16 @@ export async function getNavigation(): Promise<NavItem[]> {
 		if (href === '') href = '/';
 
 		const frontmatter = (page as any).frontmatter || {};
-		const title = frontmatter.title || filePath.split('/').pop()?.replace(/\.(md|mdx)$/, '') || 'Untitled';
+		const title =
+			frontmatter.sidebar?.label ||
+			frontmatter.sidebarLabel ||
+			frontmatter.navTitle ||
+			frontmatter.title ||
+			filePath
+				.split('/')
+				.pop()
+				?.replace(/\.(md|mdx)$/, '') ||
+			'Untitled';
 
 		const category = frontmatter.category;
 		const categoryOrder = frontmatter.categoryOrder;
