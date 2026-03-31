@@ -1,5 +1,6 @@
 ---
 import { GithubLogo } from "svelte-radix";
+// @ts-ignore
 import { execSync } from "node:child_process";
 
 import Navbar from "@/components/Navbar.astro";
@@ -12,6 +13,16 @@ const { frontmatter, headings, Content } = Astro.props;
 
 const title = frontmatter.title as string;
 const description = frontmatter.description as string;
+const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
+const hidePrevNext = Boolean(frontmatter.hidePrevNext);
+const hidePageMeta = Boolean(frontmatter.hidePageMeta);
+const contentMaxWidthClass =
+	(frontmatter.contentMaxWidth as string) || "max-w-4xl";
+const pageSpacingClass =
+	(frontmatter.pageSpacing as string) || "py-16";
+const contentBodyClass =
+	(frontmatter.contentBodyClass as string) ||
+	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
 // Remove trailing slash
 let currentPath = Astro.url.pathname;
@@ -68,8 +79,10 @@ try {
 	}).trim();
 
 	if (authorOutput) {
-		const uniqueAuthors = [...new Set(authorOutput.split("\n"))];
-		authors = uniqueAuthors.filter(Boolean);
+		const uniqueAuthors = [...new Set(authorOutput.split("\n"))] as string[];
+		authors = uniqueAuthors.filter((author): author is string =>
+			Boolean(author),
+		);
 	}
 } catch (e) {
 	// Git info not available (e.g., in dev mode or file not committed)
@@ -190,9 +203,9 @@ const headingList = headings as Heading[];
 		<Sidebar />
 
 		<!-- Main content area -->
-		<div class="pt-16 md:pl-64 lg:pr-64">
-			<div class="max-w-4xl mx-auto px-8">
-				<main class="py-16">
+		<div class={`pt-16 md:pl-64 ${hideTableOfContents ? "" : "lg:pr-64"}`}>
+			<div class={`${contentMaxWidthClass} w-full mx-auto px-4 sm:px-6 lg:px-8`}>
+				<main class={pageSpacingClass}>
 					{
 						title && (
 							<h1 class="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
@@ -208,68 +221,80 @@ const headingList = headings as Heading[];
 						)
 					}
 
-					<a
-						href={githubEditUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
-					>
-						<GithubLogo class="size-4" />
-						Edit page on GitHub
-					</a>
+					{
+						!hidePageMeta && (
+							<>
+								<a
+									href={githubEditUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
+								>
+									<GithubLogo class="size-4" />
+									Edit page on GitHub
+								</a>
+
+								{
+									(lastEdited || authors.length > 0) && (
+										<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-700">
+											{lastEdited && lastCommitUrl && (
+												<div class="flex items-center gap-1.5">
+													<span class="text-zinc-500 dark:text-zinc-500">
+														Last edited:
+													</span>
+													<a
+														href={lastCommitUrl}
+														target="_blank"
+														rel="noopener noreferrer"
+														class="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-600 underline-offset-2 transition-colors"
+													>
+														{lastEdited}
+													</a>
+												</div>
+											)}
+											{authors.length > 0 && (
+												<div class="flex items-center gap-1.5 flex-wrap">
+													<span class="text-zinc-500 dark:text-zinc-500">
+														Contributors:
+													</span>
+													<span class="text-zinc-700 dark:text-zinc-300">
+														{authors.join(", ")}
+													</span>
+												</div>
+											)}
+										</div>
+									)
+								}
+							</>
+						)
+					}
 
 					{
-						(lastEdited || authors.length > 0) && (
-							<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-700">
-								{lastEdited && lastCommitUrl && (
-									<div class="flex items-center gap-1.5">
-										<span class="text-zinc-500 dark:text-zinc-500">
-											Last edited:
-										</span>
-										<a
-											href={lastCommitUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-600 underline-offset-2 transition-colors"
-										>
-											{lastEdited}
-										</a>
-									</div>
-								)}
-								{authors.length > 0 && (
-									<div class="flex items-center gap-1.5 flex-wrap">
-										<span class="text-zinc-500 dark:text-zinc-500">
-											Contributors:
-										</span>
-										<span class="text-zinc-700 dark:text-zinc-300">
-											{authors.join(", ")}
-										</span>
-									</div>
-								)}
+						!hideTableOfContents && (
+							<div class="lg:hidden mb-8">
+								<TableOfContents headings={headingList} />
 							</div>
 						)
 					}
 
-					<!-- Mobile TOC -->
-					<div class="lg:hidden mb-8">
-						<TableOfContents headings={headingList} />
-					</div>
-
 					<article
 						data-pagefind-body
-						class="prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base"
+						class={contentBodyClass}
 					>
 						{Content ? <Content /> : <slot />}
 					</article>
 
-					<PrevNext />
+					{!hidePrevNext && <PrevNext />}
 				</main>
 			</div>
 
-			<!-- Desktop TOC -->
-			<div class="hidden lg:block" style="overflow: visible;">
-				<TableOfContents headings={headingList} />
-			</div>
+			{
+				!hideTableOfContents && (
+					<div class="hidden lg:block" style="overflow: visible;">
+						<TableOfContents headings={headingList} />
+					</div>
+				)
+			}
 		</div>
 	</body>
 </html>
