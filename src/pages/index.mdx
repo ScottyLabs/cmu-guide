@@ -17,6 +17,7 @@ pageSpacing: py-8 md:py-10 lg:py-12
 ---
 
 import "../styles/home.css";
+import Kbd from "@/components/Kbd.svelte";
 
 export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
 
@@ -29,13 +30,26 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
     <p className="home-hero-lede text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 max-w-3xl text-balance">
       Welcome to <span className="home-hero-emphasis font-bold text-[#C41230] dark:text-zinc-100">CMU's Student Guide</span>! We have compiled practical advice and insights from current students to help you navigate your CMU journey.
     </p>
-    <p id="search-help" className="mt-4 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
-      <span className="font-semibold text-zinc-700 dark:text-zinc-300">Tip:</span>{" "}
-      Use the built-in search button in the top bar, or press
-      <strong> Ctrl + K </strong>
-      (Windows/Linux) or
-      <strong> Cmd + K </strong>
-      (macOS) from anywhere on the site.
+    <p
+      id="search-help"
+      className="mt-4 w-full max-w-none text-sm leading-6 text-zinc-600 dark:text-zinc-400 flex flex-wrap items-center gap-x-1.5 gap-y-1.5 whitespace-normal lg:flex-nowrap lg:whitespace-nowrap"
+    >
+      <span className="font-semibold text-zinc-700 dark:text-zinc-300">Tip:</span>
+      <span>Use the built-in search button in the top bar, or press</span>
+      <span className="inline-flex items-center gap-1 align-middle whitespace-nowrap">
+        <Kbd class="align-middle">Ctrl</Kbd>
+        <span aria-hidden="true" className="text-zinc-500 dark:text-zinc-400">+</span>
+        <Kbd class="align-middle">K</Kbd>
+        <span>(Windows/Linux)</span>
+      </span>
+      <span className="whitespace-nowrap">or</span>
+      <span className="inline-flex items-center gap-1 align-middle whitespace-nowrap">
+        <Kbd class="align-middle">⌘</Kbd>
+        <span aria-hidden="true" className="text-zinc-500 dark:text-zinc-400">+</span>
+        <Kbd class="align-middle">K</Kbd>
+        <span>(macOS)</span>
+      </span>
+      <span className="whitespace-nowrap">from anywhere on the site.</span>
     </p>
   </section>
 
