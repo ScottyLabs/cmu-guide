@@ -55,16 +55,6 @@
 	line-height: 1.7;
 }
 
-.home-hero-emphasis {
-	color: rgb(0 0 0);
-	-webkit-text-fill-color: currentcolor;
-	text-shadow: none;
-}
-
-.dark .home-hero-emphasis {
-	color: rgb(255 255 255);
-}
-
 .home-btn {
 	position: relative;
 	overflow: hidden;
