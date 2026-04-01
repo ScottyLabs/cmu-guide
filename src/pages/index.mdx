@@ -1,0 +1,162 @@
+---
+category: home
+categoryOrder: 1
+order: 1
+sidebar:
+  label: Home
+
+title: cmu.guide
+description: Your go-to guide for navigating the Tartan life, academics, and beyond!
+layout: ../layouts/Layout.astro
+hideTableOfContents: true
+hidePrevNext: true
+hidePageMeta: true
+hideHeader: true
+contentMaxWidth: max-w-7xl
+contentBodyClass: max-w-none text-zinc-700 dark:text-zinc-300
+pageSpacing: py-8 md:py-10 lg:py-12
+---
+
+import "../styles/home.css";
+import Kbd from "@/components/Kbd.svelte";
+
+export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
+
+<div class="home-shell not-prose w-full space-y-8 md:space-y-10 xl:space-y-12 text-zinc-700 dark:text-zinc-300">
+  <section
+    aria-labelledby="hero-overview"
+    class="home-reveal home-hero relative overflow-hidden rounded-2xl border border-zinc-200/90 dark:border-zinc-700/70 bg-linear-to-br from-zinc-50 via-rose-50/45 to-zinc-50 dark:from-zinc-900/96 dark:via-zinc-900/92 dark:to-zinc-900/96 p-5 sm:p-6 lg:p-8 shadow-sm"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute -left-24 -top-20 h-80 w-80 rounded-full bg-[#C41230]/11 dark:bg-[#C41230]/12 blur-3xl" />
+    <div aria-hidden="true" class="pointer-events-none absolute -right-24 -bottom-24 h-80 w-80 rounded-full bg-[#C41230]/10 dark:bg-[#C41230]/11 blur-3xl" />
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-14 top-1/4 h-48 rounded-full bg-zinc-200/30 dark:bg-zinc-600/14 blur-3xl" />
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-linear-to-br from-white/20 via-rose-100/10 to-white/18 dark:from-zinc-900/18 dark:via-zinc-900/8 dark:to-zinc-800/16" />
+
+    <div class="relative z-10">
+      <h2 id="hero-overview" class="sr-only">Hero</h2>
+      <h1 class="home-section-title text-5xl md:text-6xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 max-w-3xl text-balance mb-3 md:mb-4">
+        Welcome to cmu.guide!
+      </h1>
+      <p class="home-hero-lede text-xl md:text-2xl leading-relaxed text-zinc-700 dark:text-zinc-300/95 max-w-3xl text-balance">
+        We have compiled practical advice and insights from current students to help you navigate your CMU journey.
+      </p>
+      <p
+        id="search-help"
+        class="mt-4 w-full max-w-none text-base leading-7 text-zinc-600 dark:text-zinc-400 flex flex-wrap items-center gap-x-1.5 gap-y-1.5 whitespace-normal lg:flex-nowrap lg:whitespace-nowrap"
+      >
+        <span class="font-semibold text-zinc-700 dark:text-zinc-300">Tip:</span>
+        <span>Use the built-in search button in the top bar, or press</span>
+        <span class="inline-flex items-center gap-1 align-middle whitespace-nowrap">
+          <Kbd class="align-middle min-w-6 h-6 px-2 text-sm">Ctrl</Kbd>
+          <span aria-hidden="true" class="text-zinc-500 dark:text-zinc-400">+</span>
+          <Kbd class="align-middle min-w-6 h-6 px-2 text-sm">K</Kbd>
+          <span>(Windows/Linux)</span>
+        </span>
+        <span class="whitespace-nowrap">or</span>
+        <span class="inline-flex items-center gap-1 align-middle whitespace-nowrap">
+          <Kbd class="align-middle min-w-6 h-6 px-2 text-sm">⌘</Kbd>
+          <span aria-hidden="true" class="text-zinc-500 dark:text-zinc-400">+</span>
+          <Kbd class="align-middle min-w-6 h-6 px-2 text-sm">K</Kbd>
+          <span>(macOS)</span>
+        </span>
+        <span class="whitespace-nowrap">from anywhere on the site.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="start-here" aria-labelledby="start-here-title" class="home-reveal space-y-5 md:space-y-6 scroll-mt-28">
+    <div>
+      <h2 id="start-here-title" class="home-section-title text-3xl md:text-4xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+        Start here
+      </h2>
+      <p class="mt-2 text-base md:text-lg text-zinc-700 dark:text-zinc-300">
+        Essential guides to kickstart your CMU experience
+      </p>
+    </div>
+    <div class="home-card-grid grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+      <a
+        href="/dorms-overview"
+        class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
+      >
+        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Housing and Dorms <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
+          Compare living options, dorm realities, and move-in basics.
+        </p>
+      </a>
+
+      <a
+        href="/MinimalPackingList"
+        class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
+      >
+        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Packing for CMU <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
+          A practical packing list from student experience.
+        </p>
+      </a>
+
+      <a
+        href="/accommodations"
+        class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
+      >
+        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Accommodations <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
+          Understand the process, documentation, and support options.
+        </p>
+      </a>
+
+      <a
+        href="/MoochingOffCMU"
+        class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
+      >
+        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Student Perks and Freebies <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300">
+          Use benefits, discounts, and free resources around campus.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <section aria-label="About and contribute" class="home-reveal home-cta-grid mt-10 md:mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+    <div aria-labelledby="trust-title" class="home-panel rounded-2xl border border-zinc-200/45 dark:border-zinc-700/45 bg-zinc-50/70 dark:bg-zinc-900/46 p-5 md:p-6">
+      <h2 id="trust-title" class="home-section-title text-lg md:text-xl font-semibold tracking-tight text-zinc-700 dark:text-zinc-300">
+        About us and this guide
+      </h2>
+      <p class="mt-3 text-zinc-500 dark:text-zinc-400/90">
+        This guide is created by ScottyLabs, a student organization at CMU, to provide a helpful resource for students navigating university life.
+      </p>
+      <p class="mt-3 text-zinc-500 dark:text-zinc-400/90">
+        <span class="font-semibold text-zinc-600 dark:text-zinc-300/90">Note:</span>{" "}
+        individual circumstances may vary. Please always verify with official university resources and consult with your advisors!
+      </p>
+    </div>
+
+    <div aria-labelledby="contribute-title" class="home-panel home-panel--accent rounded-2xl border border-zinc-200/45 dark:border-zinc-700/45 bg-zinc-50/70 dark:bg-zinc-900/46 p-5 md:p-6">
+      <div>
+        <h2 id="contribute-title" class="home-section-title text-lg md:text-xl font-semibold tracking-tight text-zinc-700 dark:text-zinc-300">
+          Help improve this guide
+        </h2>
+        <p class="mt-3 text-zinc-500 dark:text-zinc-400/90">
+          Spot something outdated or missing? Suggest an edit — we're open-source on GitHub!
+        </p>
+        <div class="home-cta-row mt-5 flex flex-wrap items-center gap-3">
+          <a
+            href="https://github.com/scottylabs/cmu-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="home-btn home-btn--secondary home-btn--quiet inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 font-medium text-zinc-700 dark:text-zinc-300 no-underline"
+          >
+            <span>Contribute on GitHub</span>
+          </a>
+          <a
+            href={SCOTTYLABS_DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="home-btn home-btn--tertiary home-btn--quiet inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 text-center font-medium text-zinc-700 dark:text-zinc-300 no-underline"
+          >
+            <span class="text-center">Join our Discord</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

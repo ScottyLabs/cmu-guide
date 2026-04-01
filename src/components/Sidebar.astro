@@ -1,11 +1,16 @@
 ---
 import { getNavigation } from "@/utils/navigation";
 
-const currentPath = Astro.url.pathname;
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
 const navigation = await getNavigation();
+const homeItem = navigation.find((item) => item.href === "/");
+const sectionItems = navigation.filter((item) => item.href !== "/");
 
 // Group navigation items by category
-const groupedNav = navigation.reduce(
+const groupedNav = sectionItems.reduce(
 	(acc, item) => {
 		const category = item.category || "Miscellaneous";
 		if (!acc[category]) {
@@ -34,6 +39,27 @@ const groupedNav = navigation.reduce(
 >
 	<nav>
 		<div class="space-y-6">
+			{
+				homeItem && (
+					<ul class="space-y-1">
+						<li>
+							<a
+								href={homeItem.href}
+								class:list={[
+									"flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors",
+									currentPath === homeItem.href
+										? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium"
+										: "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100",
+								]}
+								data-sidebar-link
+							>
+								<span>{homeItem.title}</span>
+							</a>
+						</li>
+					</ul>
+				)
+			}
+
 			{
 				Object.entries(groupedNav).map(([category, items]) => (
 					<div>

@@ -7,11 +7,16 @@
 	let {
 		class: className = "",
 		children,
+		onclick,
 		...props
-	}: { class?: string; children?: Snippet } & any = $props();
+	}: {
+		class?: string;
+		children?: Snippet;
+		onclick?: (event: MouseEvent) => void;
+	} & any = $props();
 </script>
 
-<button {...props} class="{className} {BASE_CLASSES}">
+<button {...props} {onclick} class="{className} {BASE_CLASSES}">
 	{#if children}
 		{@render children()}
 	{/if}
