@@ -1,7 +1,10 @@
 ---
 import { getNavigation } from "@/utils/navigation";
 
-const currentPath = Astro.url.pathname;
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
 const navigation = await getNavigation();
 const homeItem = navigation.find((item) => item.href === "/");
 const sectionItems = navigation.filter((item) => item.href !== "/");
