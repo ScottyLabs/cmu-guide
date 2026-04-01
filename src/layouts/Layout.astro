@@ -16,6 +16,9 @@ const description = frontmatter.description as string;
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
 const hidePageMeta = Boolean(frontmatter.hidePageMeta);
+const hideHeader = Boolean(frontmatter.hideHeader);
+const hideTitle = hideHeader || Boolean(frontmatter.hideTitle);
+const hideDescription = hideHeader || Boolean(frontmatter.hideDescription);
 const contentMaxWidthClass =
 	(frontmatter.contentMaxWidth as string) || "max-w-4xl";
 const pageSpacingClass =
@@ -207,14 +210,14 @@ const headingList = headings as Heading[];
 			<div class={`${contentMaxWidthClass} w-full mx-auto px-4 sm:px-6 lg:px-8`}>
 				<main class={pageSpacingClass}>
 					{
-						title && (
+						!hideTitle && title && (
 							<h1 class="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
 								{title}
 							</h1>
 						)
 					}
 					{
-						description && (
+						!hideDescription && description && (
 							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6">
 								{description}
 							</p>
