@@ -75,6 +75,8 @@ layout: ../layouts/Layout.astro
     Similar to above, a wide array of discounts on hardware.
 -   **Apple** — https://www.apple.com/us-edu/store
     Apple is a lot more particular about their sales and they usually aren’t going to give you as large of a discount as the others but they will give you AirPods and other goodies when you buy more expensive items
+-   **XFinity Streaming** — https://xfinityoncampus.com/home
+    You can access a lot of movies and TV shows when on campus.
 
 ### Miscellany
 
