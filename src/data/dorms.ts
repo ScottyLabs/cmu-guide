@@ -29,8 +29,8 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Semi-suite:",
-			"$14,418 Single",
-			"$12,420 Double",
+			"$14,994 Single",
+			"$12,916 Double",
 			"3 floors",
 			"Capacity: 139",
 			"Co-ed Floors"
@@ -66,9 +66,9 @@ export const dorms: Dorm[] = [
 			"Occasional fire alarms"
 		],
 		info: [
-			"$13,142 Single",
-			"$11,248 Double",
-			"$10,078 Triple",
+			"$13,668 Single",
+			"$11,700 Double",
+			"$10,482 Triple",
 			"4 floors, ground level",
 			"Is owned by athletics",
 			"1st + 2nd Floors B + 3rd floors mixed",
@@ -100,7 +100,7 @@ export const dorms: Dorm[] = [
 			"AC only by necessity"
 		],
 		info: [
-			"$11,248 Double",
+			"$11,700 Double",
 			"Each floor is single gender",
 			"Capacity: 203",
 			"Elevator for 3rd to 7th floors"
@@ -135,8 +135,8 @@ export const dorms: Dorm[] = [
 			"Communal bathrooms"
 		],
 		info: [
-			"$13,142 Single",
-			"$11,248 Double",
+			"$13,668 Single",
+			"$11,700 Double",
 			"3 floors",
 			"Capacity: 160"
 		],
@@ -162,8 +162,8 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Semi-suite:",
-			"$14,418 Single",
-			"$12,420 Double",
+			"$14,994 Single",
+			"$12,916 Double",
 			"Capacity: 58"
 		],
 		amenities: [
@@ -192,9 +192,9 @@ export const dorms: Dorm[] = [
 			"Fire alarms ;;-;;"
 		],
 		info: [
-			"$14,418 Single",
-			"$12,420 Double",
-			"$11,248 Triple",
+			"$14,994 Single",
+			"$12,916 Double",
+			"$11,700 Triple",
 			"Co-ed floors",
 			"Gender inclusive option",
 			"Around 80% Upperclassmen",
@@ -230,13 +230,13 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Traditional:",
-			"$13,142 Single",
-			"$11,248 Double",
-			"$10,078 Triple",
+			"$13,668 Single",
+			"$11,700 Double",
+			"$10,482 Triple",
 			"Semi-suite:",
-			"$14,418 Single",
-			"$12,420 Double",
-			"$11,248 Quad",
+			"$14,994 Single",
+			"$12,916 Double",
+			"$11,700 Quad",
 			"Capacity: 295"
 		],
 		amenities: [
@@ -263,8 +263,8 @@ export const dorms: Dorm[] = [
 			"Communal bathrooms"
 		],
 		info: [
-			"$13,142 Single",
-			"$11,248 Double",
+			"$13,668 Single",
+			"$11,700 Double",
 			"Female only except 2",
 			"Capacity: 86"
 		],
@@ -293,9 +293,9 @@ export const dorms: Dorm[] = [
 			"Decoration style is old"
 		],
 		info: [
-			"$13,448 Apt Triple",
+			"$13,986 Apt Triple",
 			"Studio Apartment:",
-			"$13,098 Double/Triple",
+			"$13,622 Double/Triple",
 			"Co-ed floors",
 			"Apartment-style Housing & dining services on 2nd floor",
 			"Capacity: 125"
@@ -331,7 +331,7 @@ export const dorms: Dorm[] = [
 			"Thin walls—you can hear others' convos"
 		],
 		info: [
-			"$11,248 Double",
+			"$11,698 Double",
 			"Each wing of a floor is one gender",
 			"Capacity: 244",
 			"Elevator",
@@ -360,8 +360,8 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Semi-suite:",
-			"$14,418 Single",
-			"$12,420 Double",
+			"$14,994 Single",
+			"$12,916 Double",
 			"Capacity: 53",
 			"Generally two floors of queer community and one that's not"
 		],
@@ -389,7 +389,7 @@ export const dorms: Dorm[] = [
 			"Lounge/printer access? (also in separate building)"
 		],
 		info: [
-			"$12,420 Semi-Suite Double",
+			"$12,916 Semi-Suite Double",
 			"Capacity: 84"
 		],
 		amenities: [
@@ -416,7 +416,7 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Studio Apartment:",
-			"$13,098 Double/Triple",
+			"$13,622 Double/Triple",
 			"Co-ed floors",
 			"Apartment-style",
 			"Capacity: 24"
