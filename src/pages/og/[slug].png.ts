@@ -117,8 +117,8 @@ const textLines = (
 		.join("");
 
 const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
-	const titleLines = wrapText(title, 25, 2);
-	const descriptionLines = wrapText(description, 50, 3);
+	const titleLines = wrapText(title, 24, 2);
+	const descriptionLines = wrapText(description, 48, 3);
 	const footerText = pathname === "/" ? "cmu.guide" : `cmu.guide${pathname}`;
 	const categoryWidth = Math.max(154, Math.min(360, category.length * 13 + 56));
 
@@ -131,20 +131,20 @@ const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
 					<stop offset="1" stop-color="#08111f" stop-opacity="0.2" />
 				</linearGradient>
 				<style>
-					.text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-					.pill { font: 700 22px Inter, ui-sans-serif, system-ui, sans-serif; fill: rgba(255,255,255,0.94); letter-spacing: 0; }
-					.title { font: 800 78px Inter, ui-sans-serif, system-ui, sans-serif; fill: #ffffff; letter-spacing: 0; }
-					.description { font: 500 45px Inter, ui-sans-serif, system-ui, sans-serif; fill: rgba(255,255,255,0.86); letter-spacing: 0; }
-					.footer { font: 700 24px Inter, ui-sans-serif, system-ui, sans-serif; fill: rgba(255,255,255,0.92); letter-spacing: 0; }
-					.footer-subtle { font: 600 22px Inter, ui-sans-serif, system-ui, sans-serif; fill: rgba(255,255,255,0.74); letter-spacing: 0; }
+					.text { font-family: sans-serif; }
+					.pill { font: 700 22px sans-serif; fill: rgba(255,255,255,0.94); letter-spacing: 0; }
+					.title { font: 800 78px sans-serif; fill: #ffffff; letter-spacing: 0; }
+					.description { font: 500 44px sans-serif; fill: rgba(255,255,255,0.86); letter-spacing: 0; }
+					.footer { font: 700 26px sans-serif; fill: rgba(255,255,255,0.92); letter-spacing: 0; }
+					.footer-subtle { font: 600 26px sans-serif; fill: rgba(255,255,255,0.74); letter-spacing: 0; }
 				</style>
 			</defs>
 			<rect width="1200" height="630" fill="url(#shade)" />
 			<g class="text">
 				${pill("cmu.guide", 64, 182)}
 				${pill(category, 264, categoryWidth)}
-				${textLines(titleLines, 72, 250, 88, "title")}
-				${textLines(descriptionLines, 76, 414, 48, "description")}
+				${textLines(titleLines, 72, 244, 80, "title")}
+				${textLines(descriptionLines, 76, 390, 50, "description")}
 				<rect x="64" y="520" width="1072" height="64" rx="24" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.26)" />
 				<text x="92" y="561" class="footer">${escapeXml(footerText)}</text>
 				<text x="1108" y="561" text-anchor="end" class="footer-subtle">ScottyLabs</text>
