@@ -164,7 +164,7 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
 	return new Response(png, {
 		headers: {
 			"Content-Type": "image/png",
-			"Cache-Control": "public, max-age=31536000, immutable",
+			"Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
 		},
 	});
 };
