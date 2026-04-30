@@ -19,6 +19,11 @@ const defaultDescription =
 const resolvedTitle = title?.trim() || defaultTitle;
 const resolvedDescription = description?.trim() || defaultDescription;
 
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
+
 const frontmatterImage = frontmatter.image as
 	| string
 	| { src?: string }
@@ -27,9 +32,9 @@ const imageSource =
 	typeof frontmatterImage === "string"
 		? frontmatterImage
 		: frontmatterImage?.src;
-const fallbackSocialImage = "/android-icon-192x192.png";
+const generatedSocialImage = `/og${currentPath === "/" ? "/index" : currentPath}.png`;
 const socialImageUrl = new URL(
-	imageSource || fallbackSocialImage,
+	imageSource || generatedSocialImage,
 	Astro.url,
 ).toString();
 
@@ -47,15 +52,9 @@ const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
 	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
-// Remove trailing slash
-let currentPath = Astro.url.pathname;
-if (currentPath !== "/" && currentPath.endsWith("/")) {
-	currentPath = currentPath.slice(0, -1);
-}
-
 const pageUrl = Astro.url.toString();
 const ogType = currentPath === "/" ? "website" : "article";
-const twitterCard = imageSource ? "summary_large_image" : "summary";
+const twitterCard = "summary_large_image";
 
 let filePath = currentPath === "/" ? "index" : currentPath.slice(1);
 
@@ -212,6 +211,8 @@ const headingList = headings as Heading[];
 		<meta property="og:title" content={resolvedTitle} />
 		<meta property="og:description" content={resolvedDescription} />
 		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:url" content={pageUrl} />
