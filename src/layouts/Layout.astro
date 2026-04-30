@@ -52,7 +52,11 @@ const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
 	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
-const pageUrl = Astro.url.toString();
+const normalizedUrl = new URL(Astro.url);
+normalizedUrl.pathname = currentPath;
+normalizedUrl.search = "";
+normalizedUrl.hash = "";
+const pageUrl = normalizedUrl.toString();
 const ogType = currentPath === "/" ? "website" : "article";
 const twitterCard = "summary_large_image";
 
