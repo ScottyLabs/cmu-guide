@@ -11,8 +11,8 @@ import "@/styles/global.css";
 
 const { frontmatter, headings, Content } = Astro.props;
 
-const title = frontmatter.title as string;
-const description = frontmatter.description as string;
+const title = frontmatter.title as string | undefined;
+const description = frontmatter.description as string | undefined;
 const defaultTitle = "cmu.guide";
 const defaultDescription =
 	"Your go-to guide for navigating the Tartan life, academics, and beyond!";
