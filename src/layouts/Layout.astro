@@ -24,6 +24,27 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 	currentPath = currentPath.slice(0, -1);
 }
 
+const publicUrlSource = [
+	import.meta.env.PUBLIC_SITE_URL,
+	import.meta.env.VERCEL_URL,
+	import.meta.env.VERCEL_BRANCH_URL,
+	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
+	import.meta.env.URL,
+	import.meta.env.DEPLOY_URL,
+	import.meta.env.CF_PAGES_URL,
+	import.meta.env.RENDER_EXTERNAL_URL,
+	import.meta.env.RAILWAY_PUBLIC_DOMAIN,
+].find((url): url is string => typeof url === "string" && url.trim().length > 0) ||
+	Astro.url.origin;
+const publicBaseUrl = new URL(
+	publicUrlSource.startsWith("http") ? publicUrlSource : `https://${publicUrlSource}`,
+);
+publicBaseUrl.pathname = "/";
+publicBaseUrl.search = "";
+publicBaseUrl.hash = "";
+
+const pageUrl = new URL(currentPath, publicBaseUrl).toString();
+
 const frontmatterImage = frontmatter.image as
 	| string
 	| { src?: string }
@@ -33,10 +54,7 @@ const imageSource =
 		? frontmatterImage
 		: frontmatterImage?.src;
 const generatedSocialImage = `/og${currentPath === "/" ? "/index" : currentPath}.png`;
-const socialImageUrl = new URL(
-	imageSource || generatedSocialImage,
-	Astro.url,
-).toString();
+const socialImageUrl = new URL(imageSource || generatedSocialImage, pageUrl).toString();
 
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
@@ -52,11 +70,6 @@ const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
 	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
-const normalizedUrl = new URL(Astro.url);
-normalizedUrl.pathname = currentPath;
-normalizedUrl.search = "";
-normalizedUrl.hash = "";
-const pageUrl = normalizedUrl.toString();
 const ogType = currentPath === "/" ? "website" : "article";
 const twitterCard = "summary_large_image";
 
