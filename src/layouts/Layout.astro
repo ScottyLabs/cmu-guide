@@ -26,11 +26,8 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 
 const publicUrlSource = [
 	import.meta.env.PUBLIC_SITE_URL,
-	import.meta.env.VERCEL_URL,
-	import.meta.env.VERCEL_BRANCH_URL,
 	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
 	import.meta.env.URL,
-	import.meta.env.DEPLOY_URL,
 	import.meta.env.CF_PAGES_URL,
 	import.meta.env.RENDER_EXTERNAL_URL,
 	import.meta.env.RAILWAY_PUBLIC_DOMAIN,
