@@ -11,8 +11,48 @@ import "@/styles/global.css";
 
 const { frontmatter, headings, Content } = Astro.props;
 
-const title = frontmatter.title as string;
-const description = frontmatter.description as string;
+const title = frontmatter.title as string | undefined;
+const description = frontmatter.description as string | undefined;
+const defaultTitle = "cmu.guide";
+const defaultDescription =
+	"Your go-to guide for navigating the Tartan life, academics, and beyond!";
+const resolvedTitle = title?.trim() || defaultTitle;
+const resolvedDescription = description?.trim() || defaultDescription;
+
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
+
+const publicUrlSource = [
+	import.meta.env.PUBLIC_SITE_URL,
+	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
+	import.meta.env.URL,
+	import.meta.env.CF_PAGES_URL,
+	import.meta.env.RENDER_EXTERNAL_URL,
+	import.meta.env.RAILWAY_PUBLIC_DOMAIN,
+].find((url): url is string => typeof url === "string" && url.trim().length > 0) ||
+	Astro.url.origin;
+const publicBaseUrl = new URL(
+	publicUrlSource.startsWith("http") ? publicUrlSource : `https://${publicUrlSource}`,
+);
+publicBaseUrl.pathname = "/";
+publicBaseUrl.search = "";
+publicBaseUrl.hash = "";
+
+const pageUrl = new URL(currentPath, publicBaseUrl).toString();
+
+const frontmatterImage = frontmatter.image as
+	| string
+	| { src?: string }
+	| undefined;
+const imageSource =
+	typeof frontmatterImage === "string"
+		? frontmatterImage
+		: frontmatterImage?.src;
+const generatedSocialImage = `/og${currentPath === "/" ? "/index" : currentPath}.png`;
+const socialImageUrl = new URL(imageSource || generatedSocialImage, pageUrl).toString();
+
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
 const hidePageMeta = Boolean(frontmatter.hidePageMeta);
@@ -27,11 +67,8 @@ const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
 	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
-// Remove trailing slash
-let currentPath = Astro.url.pathname;
-if (currentPath !== "/" && currentPath.endsWith("/")) {
-	currentPath = currentPath.slice(0, -1);
-}
+const ogType = currentPath === "/" ? "website" : "article";
+const twitterCard = "summary_large_image";
 
 let filePath = currentPath === "/" ? "index" : currentPath.slice(1);
 
@@ -180,8 +217,24 @@ const headingList = headings as Heading[];
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
+		<meta name="description" content={resolvedDescription} />
+		<link rel="canonical" href={pageUrl} />
 
-		<title>{title}</title>
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:title" content={resolvedTitle} />
+		<meta property="og:description" content={resolvedDescription} />
+		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+
+		<meta name="twitter:card" content={twitterCard} />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={resolvedTitle} />
+		<meta name="twitter:description" content={resolvedDescription} />
+		<meta name="twitter:image" content={socialImageUrl} />
+
+		<title>{resolvedTitle}</title>
 
 		<script is:inline>
 			window.addEventListener("DOMContentLoaded", async () => {
