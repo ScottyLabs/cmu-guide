@@ -17,7 +17,7 @@ type PageModule = {
 const defaultTitle = "cmu.guide";
 const defaultDescription =
 	"Your go-to guide for navigating the Tartan life, academics, and beyond!";
-const backgroundImagePath = "public/background.png";
+const backgroundImagePath = new URL("../../../public/background.png", import.meta.url).pathname;
 
 const pages = {
 	...import.meta.glob<PageModule>("../*.md", { eager: true }),

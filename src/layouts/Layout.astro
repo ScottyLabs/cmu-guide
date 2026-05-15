@@ -24,18 +24,7 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 	currentPath = currentPath.slice(0, -1);
 }
 
-const publicUrlSource = [
-	import.meta.env.PUBLIC_SITE_URL,
-	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
-	import.meta.env.URL,
-	import.meta.env.CF_PAGES_URL,
-	import.meta.env.RENDER_EXTERNAL_URL,
-	import.meta.env.RAILWAY_PUBLIC_DOMAIN,
-].find((url): url is string => typeof url === "string" && url.trim().length > 0) ||
-	Astro.url.origin;
-const publicBaseUrl = new URL(
-	publicUrlSource.startsWith("http") ? publicUrlSource : `https://${publicUrlSource}`,
-);
+const publicBaseUrl = Astro.site ? new URL(Astro.site) : new URL(Astro.url.origin);
 publicBaseUrl.pathname = "/";
 publicBaseUrl.search = "";
 publicBaseUrl.hash = "";
@@ -51,7 +40,7 @@ const imageSource =
 		? frontmatterImage
 		: frontmatterImage?.src;
 const generatedSocialImage = `/og${currentPath === "/" ? "/index" : currentPath}.png`;
-const socialImageUrl = new URL(imageSource || generatedSocialImage, pageUrl).toString();
+const socialImageUrl = new URL(imageSource || generatedSocialImage, publicBaseUrl).toString();
 
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
@@ -271,7 +260,7 @@ const headingList = headings as Heading[];
 					}
 					{
 						!hideDescription && description && (
-							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6">
+							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 break-words">
 								{description}
 							</p>
 						)
