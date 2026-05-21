@@ -5,12 +5,13 @@ import tailwindcss from "@tailwindcss/vite";
 import svelte from "@astrojs/svelte";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import remarkOnlyIfLatex from "./src/utils/remarkOnlyIfLatex";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://cmu.guide",
 	markdown: {
-		remarkPlugins: [remarkMath],
+		remarkPlugins: [remarkMath, remarkOnlyIfLatex],
 		rehypePlugins: [rehypeKatex],
 	},
 	vite: {
@@ -18,7 +19,7 @@ export default defineConfig({
 	},
 	integrations: [
 		mdx({
-			remarkPlugins: [remarkMath],
+			remarkPlugins: [remarkMath, remarkOnlyIfLatex],
 			rehypePlugins: [rehypeKatex],
 		}),
 		svelte(),
