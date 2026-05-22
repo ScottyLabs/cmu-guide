@@ -42,7 +42,7 @@ Before I get into this section, do note that people who took Advanced FYW haven'
 
 ## Application Process + Tips
 ### Portfolio
-One of the most vague of the application (found on the [first-year writing page](https://www.cmu.edu/dietrich/english/about-us/faculty/bios/danielle-zawodny-wetzel.html)) is the portfolio. I submitted a scientific poster I did for class, a 10-page analytical paper I wrote for history and English junior year, a creative short story, and a creative non-fiction piece.
+One of the vaguest parts of the application (found on the [first-year writing page](https://www.cmu.edu/dietrich/english/about-us/faculty/bios/danielle-zawodny-wetzel.html)) is the portfolio. I submitted a scientific poster I did for class, a 10-page analytical paper I wrote for history and English junior year, a creative short story, and a creative non-fiction piece.
 
 There's not a lot of guidance as to what they're looking for, and ultimately I picked pieces I felt could best showcase the breadth and depth of my skill. Here are some ideas to get you started. I am not explicitly endorsing any of these, but often people forget that "writing" can mean many different things:
 
