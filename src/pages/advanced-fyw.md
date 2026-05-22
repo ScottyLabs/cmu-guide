@@ -27,7 +27,7 @@ Before I get into this section, do note that people who took Advanced FYW haven'
 - All your classmates are guaranteed to enjoy writing!
 - You're also guaranteed a specific professor (Professor Wetzel). She's generally pretty good and I personally enjoyed her teaching quite a bit. She's also very open to meeting with you 1:1 to talk about your writing anytime.
 - You learn a lot of nuanced details about the craft of writing: your mileage may vary, but Profetzel taught me about
-- Anecdotally, i's a very fun class if you enjoy writing
+- Anecdotally, it's a very fun class if you enjoy writing
 
 ### Cons
 - You will be writing a lot: around the middle of the semester I started regularly spending half of my weekend time working on my essays. This is because we primarily focused on a few intensive, lengthy papers.  I was perfectly fine with this, but you should assess your own comfort levels
