@@ -14,7 +14,7 @@ Before I get into this section, do note that people who took Advanced FYW haven'
 ### You should take Advanced FYW if...
 - You like any of the pros I've listed below
 - You love writing!
-- You're at the point with your writing where most of the feedback you get aren't really that helpful
+- You're at the point with your writing where most of the feedback you get isn't really that helpful
 - You're not that confident about academic papers that aren't the standard literary analysis or persuasive papers you do in high school, but you're interested in improving
 
 ### You should reconsider taking Advanced FYW if...
