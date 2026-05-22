@@ -1,6 +1,6 @@
 ---
 category: Academic
-categoryOrder: 2
+categoryOrder: 3
 order: 1
 
 title: Advanced First Year Writing

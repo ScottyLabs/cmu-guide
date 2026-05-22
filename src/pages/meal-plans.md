@@ -1,7 +1,7 @@
 ---
 category: Student Life
 categoryOrder: 2
-order: 2
+order: 4
 
 title: Meal Plans
 description: How to use meal plans effectively
