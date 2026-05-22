@@ -26,7 +26,7 @@ Before I get into this section, do note that people who took Advanced FYW haven'
 - You're guaranteed to get into a FYW course your first semester, which some people found difficult to do depending on their registration time
 - All your classmates are guaranteed to enjoy writing!
 - You're also guaranteed a specific professor (Professor Wetzel). She's generally pretty good and I personally enjoyed her teaching quite a bit. She's also very open to meeting with you 1:1 to talk about your writing anytime.
-- You learn a lot of nuanced details about the craft of writing: your mileage may vary, but Profetzel taught me about
+- You learn a lot of nuanced details about the craft of writing: your mileage may vary, but one such detail we learned was about sentence structure complexity and how it looks in AI-generated content vs. human professional writers
 - Anecdotally, it's a very fun class if you enjoy writing
 
 ### Cons
