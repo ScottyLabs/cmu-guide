@@ -380,7 +380,6 @@ export const dorms: Dorm[] = [
 			"Semi-Suite",
 			"Laundry in every building",
 			"Close to Resnik",
-			"Bathroom cleaned everyday",
 			"Common room ground floor"
 		],
 		cons: [
