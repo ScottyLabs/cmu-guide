@@ -70,8 +70,7 @@ export const dorms: Dorm[] = [
 			"$11,700 Double (224 beds)",
 			"$10,482 Triple (6 beds)",
 			"$9,442 Double-as-Triple (40 beds)",
-			"4 floors, ground level",
-			"Is owned by athletics",
+			"4 floors, ground level is owned by athletics",
 			"1st + 2nd Floors gendered by wing, 3rd floors mixed",
 			"Capacity: 232",
 			"A lot of athletes"
