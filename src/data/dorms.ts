@@ -196,8 +196,8 @@ export const dorms: Dorm[] = [
 		],
 		info: [
 			"Semi-suite:",
-			"$14,994 Single (300 beds)",
-			"$12,916 Double (30 beds)",
+			"$14,994 Single (30 beds)",
+			"$12,916 Double (300 beds)",
 			"$11,700 Triple (93 beds)",
 			"Co-ed floors",
 			"Gender inclusive option",
