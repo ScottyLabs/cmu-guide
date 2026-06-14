@@ -29,6 +29,10 @@ const interFontPaths = [
 	projectPath("src", "assets", "fonts", "inter", "Inter-ExtraBold.ttf"),
 ];
 
+if (!existsSync(backgroundImagePath)) {
+	throw new Error(`Missing OG background image: ${backgroundImagePath}`);
+}
+
 for (const fontPath of interFontPaths) {
 	if (!existsSync(fontPath)) {
 		throw new Error(`Missing OG font file: ${fontPath}`);
@@ -36,8 +40,8 @@ for (const fontPath of interFontPaths) {
 }
 
 const pages = {
-	...import.meta.glob<PageModule>("../*.md", { eager: true }),
-	...import.meta.glob<PageModule>("../*.mdx", { eager: true }),
+	...import.meta.glob<PageModule>("../**/*.md", { eager: true }),
+	...import.meta.glob<PageModule>("../**/*.mdx", { eager: true }),
 };
 
 const pageData = Object.entries(pages).map(([path, page]) => {
@@ -185,7 +189,7 @@ export const GET: APIRoute<OgProps> = async ({ props }) => {
 		.png()
 		.toBuffer();
 
-	return new Response(Uint8Array.from(png), {
+	return new Response(png as BodyInit, {
 		headers: {
 			"Content-Type": "image/png",
 			"Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",

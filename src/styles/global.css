@@ -1,9 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
 @plugin "@tailwindcss/typography";
 
-/* Apply dark: classes when .dark class exists */
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/inter/Inter-Regular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/inter/Inter-Medium.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/inter/Inter-SemiBold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/inter/Inter-Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/inter/Inter-ExtraBold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
@@ -32,4 +70,3 @@ h3[id],
 .prose :where(p, li, a, td, th) {
 	overflow-wrap: break-word;
 }
-
