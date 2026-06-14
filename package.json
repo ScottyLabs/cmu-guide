@@ -8,26 +8,26 @@
 		"preview": "astro preview",
 		"astro": "astro"
 	},
-  "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
-    "@astrojs/svelte": "8.1.1",
-    "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/vite": "^4.3.0",
-    "astro": "6.3.6",
-    "bits-ui": "^2.18.1",
-    "katex": "^0.16.47",
-    "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0",
-    "sharp": "^0.34.5",
-    "svelte": "^5.55.9",
-    "tailwindcss": "^4.3.0",
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^24.13.2",
-    "pagefind": "^1.5.2",
-    "svelte-radix": "^3.0.2",
-    "typescript": "^6.0.3",
-   },
+	"dependencies": {
+		"@astrojs/mdx": "^5.0.6",
+		"@astrojs/svelte": "8.1.1",
+		"@resvg/resvg-js": "^2.6.2",
+		"@tailwindcss/vite": "^4.3.1",
+		"astro": "6.3.6",
+		"bits-ui": "^2.18.1",
+		"katex": "^0.16.47",
+		"rehype-katex": "^7.0.1",
+		"remark-math": "^6.0.0",
+		"sharp": "^0.34.5",
+		"svelte": "^5.56.3",
+		"tailwindcss": "^4.3.1"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.9",
+		"@tailwindcss/typography": "^0.5.20",
+		"@types/node": "^24.13.2",
+		"pagefind": "^1.5.2",
+		"svelte-radix": "^3.0.2",
+		"typescript": "^6.0.3"
+	}
 }
