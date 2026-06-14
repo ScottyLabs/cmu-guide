@@ -5,6 +5,8 @@ order: 5
 
 title: Minimal Packing List
 description: By Kavya CS '26
+contributors:
+  - Kavya
 layout: ../layouts/Layout.astro
 ---
 

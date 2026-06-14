@@ -12,6 +12,19 @@ const { frontmatter, headings, Content } = Astro.props;
 
 const title = frontmatter.title as string | undefined;
 const description = frontmatter.description as string | undefined;
+const contributorValues = Array.isArray(frontmatter.contributors)
+	? (frontmatter.contributors as unknown[])
+	: [];
+const contributors = [
+	...new Set(
+		contributorValues
+			.filter((contributor): contributor is string =>
+				typeof contributor === "string",
+			)
+			.map((contributor) => contributor.trim())
+			.filter(Boolean),
+	),
+];
 const defaultTitle = "cmu.guide";
 const defaultDescription =
 	"Your go-to guide for navigating the Tartan life, academics, and beyond!";
@@ -83,7 +96,6 @@ const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pag
 // Get Git metadata
 let lastEdited: string | null = null;
 let lastCommitUrl: string | null = null;
-let authors: string[] = [];
 
 try {
 	const filePathFull = `src/pages/${filePath}`;
@@ -109,20 +121,6 @@ try {
 				day: "numeric",
 			});
 		}
-	}
-
-	// Get unique authors for this specific file
-	const authorOutput = execSync(`git log --format=%an -- "${filePathFull}"`, {
-		encoding: "utf-8",
-	}).trim();
-
-	if (authorOutput) {
-		const uniqueAuthors = [
-			...new Set(authorOutput.split("\n")),
-		] as string[];
-		authors = uniqueAuthors.filter((author): author is string =>
-			Boolean(author),
-		);
 	}
 } catch (e) {
 	// Git info not available (e.g., in dev mode or file not committed)
@@ -292,7 +290,7 @@ const headingList = headings as Heading[];
 									Edit page on GitHub
 								</a>
 
-								{(lastEdited || authors.length > 0) && (
+								{(lastEdited || contributors.length > 0) && (
 									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-700">
 										{lastEdited && lastCommitUrl && (
 											<div class="flex items-center gap-1.5">
@@ -309,13 +307,13 @@ const headingList = headings as Heading[];
 												</a>
 											</div>
 										)}
-										{authors.length > 0 && (
+										{contributors.length > 0 && (
 											<div class="flex items-center gap-1.5 flex-wrap">
 												<span class="text-zinc-500 dark:text-zinc-500">
 													Contributors:
 												</span>
 												<span class="text-zinc-700 dark:text-zinc-300">
-													{authors.join(", ")}
+													{contributors.join(", ")}
 												</span>
 											</div>
 										)}

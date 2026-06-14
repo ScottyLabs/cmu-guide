@@ -5,6 +5,10 @@ order: 1
 
 title: Mooching off of CMU
 description: andrewid free stuff!
+contributors:
+  - terrificjesse
+  - Vidhaat Prashanth
+  - Riztofu
 layout: ../layouts/Layout.astro
 ---
 

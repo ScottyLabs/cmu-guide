@@ -5,6 +5,8 @@ order: 1
 
 title: Accommodations
 description: An overview of accommodations, how to request them, and how to use them.
+contributors:
+  - Amy Wang
 layout: ../layouts/Layout.astro
 ---
 
@@ -85,4 +87,3 @@ My relevant accommodations include: <br>
 Thanks,<br>
 \[your name\]
 ___
-

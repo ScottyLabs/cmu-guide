@@ -5,6 +5,8 @@ order: 2
 
 title: Dorms Overview
 description: An overview of the different types of dorms at CMU
+contributors:
+  - Max Wen
 layout: ../layouts/Layout.astro
 ---
 
