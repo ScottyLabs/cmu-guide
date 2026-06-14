@@ -1,4 +1,7 @@
 import type { APIRoute, GetStaticPaths } from "astro";
+import { Resvg } from "@resvg/resvg-js";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import sharp from "sharp";
 
 type PageFrontmatter = {
@@ -17,7 +20,20 @@ type PageModule = {
 const defaultTitle = "cmu.guide";
 const defaultDescription =
 	"Your go-to guide for navigating the Tartan life, academics, and beyond!";
-const backgroundImagePath = new URL("../../../public/background.png", import.meta.url).pathname;
+const projectPath = (...segments: string[]) => resolve(process.cwd(), ...segments);
+const backgroundImagePath = projectPath("public", "background.png");
+const interFontPaths = [
+	projectPath("src", "assets", "fonts", "inter", "Inter-Medium.ttf"),
+	projectPath("src", "assets", "fonts", "inter", "Inter-SemiBold.ttf"),
+	projectPath("src", "assets", "fonts", "inter", "Inter-Bold.ttf"),
+	projectPath("src", "assets", "fonts", "inter", "Inter-ExtraBold.ttf"),
+];
+
+for (const fontPath of interFontPaths) {
+	if (!existsSync(fontPath)) {
+		throw new Error(`Missing OG font file: ${fontPath}`);
+	}
+}
 
 const pages = {
 	...import.meta.glob<PageModule>("../*.md", { eager: true }),
@@ -131,12 +147,12 @@ const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
 					<stop offset="1" stop-color="#08111f" stop-opacity="0.2" />
 				</linearGradient>
 				<style>
-					.text { font-family: sans-serif; }
-					.pill { font: 700 22px sans-serif; fill: rgba(255,255,255,0.94); letter-spacing: 0; }
-					.title { font: 800 78px sans-serif; fill: #ffffff; letter-spacing: 0; }
-					.description { font: 500 44px sans-serif; fill: rgba(255,255,255,0.86); letter-spacing: 0; }
-					.footer { font: 700 26px sans-serif; fill: rgba(255,255,255,0.92); letter-spacing: 0; }
-					.footer-subtle { font: 600 26px sans-serif; fill: rgba(255,255,255,0.74); letter-spacing: 0; }
+					.text { font-family: Inter; }
+					.pill { font-family: Inter; font-size: 22px; font-weight: 700; fill: rgba(255,255,255,0.94); letter-spacing: 0; }
+					.title { font-family: Inter; font-size: 78px; font-weight: 800; fill: #ffffff; letter-spacing: 0; }
+					.description { font-family: Inter; font-size: 44px; font-weight: 500; fill: rgba(255,255,255,0.86); letter-spacing: 0; }
+					.footer { font-family: Inter; font-size: 26px; font-weight: 700; fill: rgba(255,255,255,0.92); letter-spacing: 0; }
+					.footer-subtle { font-family: Inter; font-size: 26px; font-weight: 600; fill: rgba(255,255,255,0.74); letter-spacing: 0; }
 				</style>
 			</defs>
 			<rect width="1200" height="630" fill="url(#shade)" />
@@ -155,13 +171,21 @@ const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
 
 export const GET: APIRoute<OgProps> = async ({ props }) => {
 	const svg = buildOgSvg(props);
+	const textOverlay = new Resvg(svg, {
+		font: {
+			fontFiles: interFontPaths,
+			loadSystemFonts: false,
+			defaultFontFamily: "Inter",
+			sansSerifFamily: "Inter",
+		},
+	}).render().asPng();
 	const png = await sharp(backgroundImagePath)
 		.resize(1200, 630, { fit: "cover" })
-		.composite([{ input: new TextEncoder().encode(svg) }])
+		.composite([{ input: textOverlay }])
 		.png()
 		.toBuffer();
 
-	return new Response(png, {
+	return new Response(Uint8Array.from(png), {
 		headers: {
 			"Content-Type": "image/png",
 			"Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
