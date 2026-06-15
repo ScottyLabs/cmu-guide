@@ -6,25 +6,14 @@ import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import PrevNext from "@/components/PrevNext.astro";
+import { formatContributors } from "@/utils/contributors";
 import "@/styles/global.css";
 
 const { frontmatter, headings, Content } = Astro.props;
 
 const title = frontmatter.title as string | undefined;
 const description = frontmatter.description as string | undefined;
-const contributorValues = Array.isArray(frontmatter.contributors)
-	? (frontmatter.contributors as unknown[])
-	: [];
-const contributors = [
-	...new Set(
-		contributorValues
-			.filter((contributor): contributor is string =>
-				typeof contributor === "string",
-			)
-			.map((contributor) => contributor.trim())
-			.filter(Boolean),
-	),
-];
+const contributors = formatContributors(frontmatter.contributors);
 const defaultTitle = "cmu.guide";
 const resolvedTitle = title?.trim() || defaultTitle;
 const resolvedDescription = description?.trim();
@@ -281,7 +270,7 @@ const headingList = headings as Heading[];
 					}
 					{
 						!hideDescription && resolvedDescription && (
-							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 break-words">
+							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 wrap-break-word">
 								{resolvedDescription}
 							</p>
 						)

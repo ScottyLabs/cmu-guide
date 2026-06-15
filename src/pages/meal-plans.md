@@ -6,7 +6,7 @@ order: 4
 title: Meal Plans
 description: How to use meal plans effectively
 contributors:
-  - Max Wen
+  - name: Max Wen
 layout: ../layouts/Layout.astro
 ---
 
