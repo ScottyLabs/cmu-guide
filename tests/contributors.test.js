@@ -3,7 +3,7 @@ import { describe, expect, test } from "bun:test";
 import {
 	formatContributor,
 	formatContributors,
-} from "../src/utils/contributors";
+} from "@/utils/contributors.ts";
 
 describe("formatContributor", () => {
 	test("formats a name and email", () => {
