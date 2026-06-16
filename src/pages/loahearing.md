@@ -4,7 +4,7 @@ categoryOrder: 4
 order: 3
 
 title: Hearing About the Leave 
-description: 
+description: ""
 layout: ../layouts/Layout.astro
 ---
 

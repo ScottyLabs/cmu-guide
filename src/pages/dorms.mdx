@@ -5,6 +5,8 @@ order: 3
 
 title: Dorms
 description: A helpful spreadsheet maintained by current students on first year dorms
+contributors:
+  - name: John
 layout: ../layouts/Layout.astro
 
 ---
@@ -35,11 +37,11 @@ All communal bathrooms are staff-cleaned.
 
 ## Dorms:
 
-<nav class="mb-6 text-zinc-700 dark:text-zinc-300">
+<nav className="mb-6 text-zinc-700 dark:text-zinc-300">
 First Year Housing offered:
   {dorms.map((d, i) => (
     <>
-      <a href={`#${d.name.replace(/\s+/g, "-")}`} class="hover:underline">
+      <a href={`#${d.name.replace(/\s+/g, "-")}`} className="hover:underline">
         {d.name}
       </a>
       {i < dorms.length - 1 ? ", " : ""}

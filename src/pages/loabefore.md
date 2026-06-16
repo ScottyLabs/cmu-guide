@@ -4,7 +4,7 @@ categoryOrder: 4
 order: 2
 
 title: Before the Leave 
-description: 
+description: ""
 layout: ../layouts/Layout.astro
 ---
 

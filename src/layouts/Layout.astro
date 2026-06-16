@@ -1,6 +1,5 @@
 ---
 import { GithubLogo } from "svelte-radix";
-// @ts-expect-error Astro frontmatter TS config here does not include Node built-in module types
 import { execSync } from "node:child_process";
 
 import Navbar from "@/components/Navbar.astro";
@@ -11,8 +10,39 @@ import "@/styles/global.css";
 
 const { frontmatter, headings, Content } = Astro.props;
 
-const title = frontmatter.title as string;
-const description = frontmatter.description as string;
+const {
+	title,
+	description,
+	image,
+	contributors = [],
+} = frontmatter;
+
+let currentPath = Astro.url.pathname;
+if (currentPath !== "/" && currentPath.endsWith("/")) {
+	currentPath = currentPath.slice(0, -1);
+}
+
+const deploymentUrl = [
+	import.meta.env.PUBLIC_SITE_URL,
+	import.meta.env.VERCEL_URL,
+	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
+	import.meta.env.URL,
+].find((url): url is string => typeof url === "string" && url.trim().length > 0);
+
+const publicBaseUrl = deploymentUrl
+	? new URL(deploymentUrl.startsWith("http") ? deploymentUrl : `https://${deploymentUrl}`)
+	: Astro.site
+		? new URL(Astro.site)
+		: new URL(Astro.url.origin);
+publicBaseUrl.pathname = "/";
+publicBaseUrl.search = "";
+publicBaseUrl.hash = "";
+
+const pageUrl = new URL(currentPath, publicBaseUrl).toString();
+
+const generatedSocialImage = `/og${currentPath === "/" ? "/index" : currentPath}.png`;
+const socialImageUrl = new URL(image ?? generatedSocialImage, publicBaseUrl).toString();
+
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
 const hidePageMeta = Boolean(frontmatter.hidePageMeta);
@@ -26,11 +56,8 @@ const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
 	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
 
-// Remove trailing slash
-let currentPath = Astro.url.pathname;
-if (currentPath !== "/" && currentPath.endsWith("/")) {
-	currentPath = currentPath.slice(0, -1);
-}
+const ogType = currentPath === "/" ? "website" : "article";
+const twitterCard = "summary_large_image";
 
 let filePath = currentPath === "/" ? "index" : currentPath.slice(1);
 
@@ -47,7 +74,6 @@ const githubEditUrl = `https://github.com/ScottyLabs/cmu-guide/edit/main/src/pag
 // Get Git metadata
 let lastEdited: string | null = null;
 let lastCommitUrl: string | null = null;
-let authors: string[] = [];
 
 try {
 	const filePathFull = `src/pages/${filePath}`;
@@ -73,20 +99,6 @@ try {
 				day: "numeric",
 			});
 		}
-	}
-
-	// Get unique authors for this specific file
-	const authorOutput = execSync(`git log --format=%an -- "${filePathFull}"`, {
-		encoding: "utf-8",
-	}).trim();
-
-	if (authorOutput) {
-		const uniqueAuthors = [
-			...new Set(authorOutput.split("\n")),
-		] as string[];
-		authors = uniqueAuthors.filter((author): author is string =>
-			Boolean(author),
-		);
 	}
 } catch (e) {
 	// Git info not available (e.g., in dev mode or file not committed)
@@ -181,14 +193,40 @@ const headingList = headings as Heading[];
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
+		{description && <meta name="description" content={description} />}
+		<link rel="canonical" href={pageUrl} />
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:title" content={title} />
+		{description && (
+			<meta property="og:description" content={description} />
+		)}
+		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+
+		<meta name="twitter:card" content={twitterCard} />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={title} />
+		{description && (
+			<meta name="twitter:description" content={description} />
+		)}
+		<meta name="twitter:image" content={socialImageUrl} />
 
 		<title>{title}</title>
 
-		<script is:inline>
-			window.addEventListener("DOMContentLoaded", async () => {
-				window.pagefind = await import("/pagefind/pagefind.js");
-				await window.pagefind.init();
-			});
+		<script is:inline define:vars={{ pagefindEnabled: import.meta.env.PROD }}>
+			if (pagefindEnabled) {
+				window.addEventListener("DOMContentLoaded", async () => {
+					try {
+						window.pagefind = await import("/pagefind/pagefind.js");
+						await window.pagefind.init();
+					} catch (error) {
+						console.error("Failed to load the generated Pagefind index.", error);
+					}
+				});
+			}
 		</script>
 
 		<script is:inline>
@@ -213,7 +251,7 @@ const headingList = headings as Heading[];
 			>
 				<main class={pageSpacingClass}>
 					{
-						!hideTitle && title && (
+						!hideTitle && (
 							<h1 class="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
 								{title}
 							</h1>
@@ -221,7 +259,7 @@ const headingList = headings as Heading[];
 					}
 					{
 						!hideDescription && description && (
-							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6">
+							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 wrap-break-word">
 								{description}
 							</p>
 						)
@@ -240,7 +278,7 @@ const headingList = headings as Heading[];
 									Edit page on GitHub
 								</a>
 
-								{(lastEdited || authors.length > 0) && (
+								{(lastEdited || contributors.length > 0) && (
 									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-700">
 										{lastEdited && lastCommitUrl && (
 											<div class="flex items-center gap-1.5">
@@ -257,13 +295,19 @@ const headingList = headings as Heading[];
 												</a>
 											</div>
 										)}
-										{authors.length > 0 && (
+										{contributors.length > 0 && (
 											<div class="flex items-center gap-1.5 flex-wrap">
 												<span class="text-zinc-500 dark:text-zinc-500">
 													Contributors:
 												</span>
 												<span class="text-zinc-700 dark:text-zinc-300">
-													{authors.join(", ")}
+													{contributors
+														.map((contributor: { name: string; email?: string }) =>
+															contributor.email
+																? `${contributor.name} <${contributor.email}>`
+																: contributor.name,
+														)
+														.join(", ")}
 												</span>
 											</div>
 										)}

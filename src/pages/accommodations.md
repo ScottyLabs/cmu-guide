@@ -5,13 +5,15 @@ order: 1
 
 title: Accommodations
 description: An overview of accommodations, how to request them, and how to use them.
+contributors:
+  - name: Amy Wang
 layout: ../layouts/Layout.astro
 ---
 
 ## Resources
 
-* [Official CMU page on obtaining accommodations](https://www.cmu.edu/disability-resources/students/obtaining-accommodations.html)  
-* [Official documentation guidelines](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-guidelines_9-2025.pdf)  
+* [Official CMU page on obtaining accommodations](https://www.cmu.edu/disability-resources/students/obtaining-accommodations.html)
+* [Official documentation guidelines](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-guidelines_9-2025.pdf)
 
 ## How to Apply for Accommodations
 
@@ -19,26 +21,26 @@ layout: ../layouts/Layout.astro
 
 Log in with your Andrew ID and password. There is one form for academic accommodations and one for housing accommodations. They’ll ask for:
 
-1. demographic information (ie. name, address, college),  
-2. a list and descriptions of your disability/disabilities (if you’re unsure what to say, language used in a diagnostic report, by a medical professional, in the DSM, etc are all good), and  
+1. demographic information (ie. name, address, college),
+2. a list and descriptions of your disability/disabilities (if you’re unsure what to say, language used in a diagnostic report, by a medical professional, in the DSM, etc are all good), and
 3. what accommodations you’re requesting (this [disability resources page](https://www.cmu.edu/disability-resources/students/accommodations-descriptions.html) offers a nice but non-comprehensive list of possible accommodations; see \[insert hyperlink in page\] for a larger, but still non-comprehensive list)
 
 ### 2\. Submit documentation of your disability/disabilities
 
-For academic accommodations, a diagnostic report from an evaluation within the last five years will usually qualify. If you don’t have that, or the report doesn’t meet the requirements, CMU has an [academic accommodations form](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-of-disability-for-academic-accommodations-form.pdf) you can send to a provider/healthcare professional after you fill out your name, Andrew ID, and email address.  
-For housing accommodations, you will need to send [this housing accommodations form](https://www.cmu.edu/disability-resources/students/1-10-2025_university-housing-accommodation-application-healthcare-professional-supplement.pdf) to a healthcare professional after you fill out the Authorization to Release Health Care Information section.  
+For academic accommodations, a diagnostic report from an evaluation within the last five years will usually qualify. If you don’t have that, or the report doesn’t meet the requirements, CMU has an [academic accommodations form](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-of-disability-for-academic-accommodations-form.pdf) you can send to a provider/healthcare professional after you fill out your name, Andrew ID, and email address.
+For housing accommodations, you will need to send [this housing accommodations form](https://www.cmu.edu/disability-resources/students/1-10-2025_university-housing-accommodation-application-healthcare-professional-supplement.pdf) to a healthcare professional after you fill out the Authorization to Release Health Care Information section.
 Here are CMU’s [general documentation guidelines](https://www.cmu.edu/disability-resources/policies-guidelines/documentation-guidelines_9-2025.pdf) (as of 11/24/2025):
 
-1. Documentation must be obtained from a **professional with** comprehensive training and experience in the relevant specialty who holds **appropriate licensure or certification**.  
-2. Documentation must be **up to date** and reflect the **current** status of the student’s disability and functional limitations. If the documentation provided does not reflect the current status of the student’s disability or limitations, Disability Resources will need to request more recent documentation which will delay the accommodations process. Note: documentation that is **five years** old or more often does not meet this requirement.  
-3. Documentation must **describe the treatment relationship** between the student and medical or mental health provider (e.g. how long the provider has treated the student, frequency of treatment visits, primary goals of treatment, etc.).  
-4. Documentation must describe in detail **how the student’s disability impacts the student** and substantially limits the student’s ability to engage in one or more major life activities, as well as its impact on participation in academics and/or other aspects of campus life.  
-5. The documentation provided **cannot be from a family member** or someone with a **personal relationship** with the student or the student’s family.  
+1. Documentation must be obtained from a **professional with** comprehensive training and experience in the relevant specialty who holds **appropriate licensure or certification**.
+2. Documentation must be **up to date** and reflect the **current** status of the student’s disability and functional limitations. If the documentation provided does not reflect the current status of the student’s disability or limitations, Disability Resources will need to request more recent documentation which will delay the accommodations process. Note: documentation that is **five years** old or more often does not meet this requirement.
+3. Documentation must **describe the treatment relationship** between the student and medical or mental health provider (e.g. how long the provider has treated the student, frequency of treatment visits, primary goals of treatment, etc.).
+4. Documentation must describe in detail **how the student’s disability impacts the student** and substantially limits the student’s ability to engage in one or more major life activities, as well as its impact on participation in academics and/or other aspects of campus life.
+5. The documentation provided **cannot be from a family member** or someone with a **personal relationship** with the student or the student’s family.
 6. Additional information that is very helpful (but not required) in determining appropriate accommodations includes the specific diagnosis or diagnoses, the treatment history and plan of care, diagnostic methodology, recommended disability accommodations and/or auxiliary aids and services.
 
 ### 3\. Make an appointment with the Office of Disability Resources to discuss your accommodations
 
-Once you’ve submitted the application and any necessary documentation, you should receive an email confirming your application has been received.   
+Once you’ve submitted the application and any necessary documentation, you should receive an email confirming your application has been received.
 Once you receive a second email about making an appointment, log in to the [accommodations portal](https://rainier.accessiblelearning.com/cmu/start) again with your Andrew ID and password, navigate to My Appointments from the dashboard on the left, and click “Request an Appointment.” From there, you should select “Initial Accommodations Meeting” under “Appointment Purposes” and schedule a time to meet with the person who sent you the second email.
 
 ### 4\. Maintain your accommodations
@@ -85,4 +87,3 @@ My relevant accommodations include: <br>
 Thanks,<br>
 \[your name\]
 ___
-

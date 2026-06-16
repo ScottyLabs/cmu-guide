@@ -76,9 +76,16 @@
 	}
 
 	.col {
+		min-width: 0;
 		padding: 8px;
 		border-top: 1px solid black;
 		border-right: 1px solid black;
+	}
+
+	.col ul,
+	.col li {
+		overflow-wrap: break-word;
+		word-break: break-word;
 	}
 
 	.col:last-child {

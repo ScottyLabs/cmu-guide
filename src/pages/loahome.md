@@ -4,7 +4,7 @@ categoryOrder: 4
 order: 4
 
 title: I'm Back Home - Now What? 
-description: 
+description: ""
 layout: ../layouts/Layout.astro
 ---
 First - take a breather. No, seriously! You have been through an extraordinary amount of pain whether you acknowledge it or not, and though the pain may not have ended, please take care of your well-being, whether that means removing yourself from stressors and mental health triggers or staying in contact with friends. After all, the decisions ahead are **vital** and need to be made in a place of emotional stability. 
