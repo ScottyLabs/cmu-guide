@@ -63,7 +63,10 @@ export function slugFromPathname(pathname: string): string {
 }
 
 export function getNavigation(): Promise<NavigationModel> {
-	cachedNavigation ??= buildNavigation();
+	cachedNavigation ??= buildNavigation().catch((error) => {
+		cachedNavigation = undefined;
+		throw error;
+	});
 	return cachedNavigation;
 }
 
