@@ -1,8 +1,4 @@
 ---
-category: Student Life
-categoryOrder: 2
-order: 2
-
 title: Dorms Overview
 description: An overview of the different types of dorms at CMU
 contributors:

@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 2
-
 title: Before the Leave 
 description: ""
 layout: ../layouts/Layout.astro

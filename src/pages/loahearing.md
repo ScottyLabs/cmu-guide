@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 3
-
 title: Hearing About the Leave 
 description: ""
 layout: ../layouts/Layout.astro

@@ -1,8 +1,4 @@
 ---
-category: Academic
-categoryOrder: 3
-order: 4
-
 title: So You Want to Transfer to CS
 description: Document about CS transfer, addl, and minor requirements
 contributors:

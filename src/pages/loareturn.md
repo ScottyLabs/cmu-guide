@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 6
-
 title: Returning to CMU 
 description: ""
 layout: ../layouts/Layout.astro

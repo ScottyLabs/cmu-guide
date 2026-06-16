@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 1
-
 title: Intro 
 description: Returning from an involuntary Leave of Absence.  
 layout: ../layouts/Layout.astro

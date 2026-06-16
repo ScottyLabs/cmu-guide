@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 7
-
 title: Additional Resources 
 description: Many of these are repeats from before, but this list mainly exists to inform you on parts of the LOA process on which I’m not the most familiar. 
 layout: ../layouts/Layout.astro
