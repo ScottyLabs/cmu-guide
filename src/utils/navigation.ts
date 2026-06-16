@@ -4,14 +4,7 @@ type PageFrontmatter = {
 	title?: string;
 	description?: string;
 	hidePrevNext?: boolean;
-	hideInNav?: boolean;
 	nav?: boolean;
-	sidebar?: {
-		hidden?: boolean;
-		label?: string;
-	};
-	sidebarLabel?: string;
-	navTitle?: string;
 };
 
 type PageModule = {
@@ -150,14 +143,14 @@ function buildNavigation(): NavigationModel {
 			const frontmatter = page.frontmatter || {};
 			if (!isVisiblePage(frontmatter)) {
 				throw new Error(
-					`Navigation config references hidden page "${configSlug}" in section "${section.label}". Remove it from src/config/navigation.ts or remove nav: false/hideInNav/sidebar.hidden from the page frontmatter.`,
+					`Navigation config references hidden page "${configSlug}" in section "${section.label}". Remove it from src/config/navigation.ts or remove nav: false from the page frontmatter.`,
 				);
 			}
 
 			const item: NavItem = {
 				slug,
 				href: hrefForSlug(slug),
-				title: titleForPage(slug, frontmatter),
+				title: frontmatter.title || slug,
 				description: frontmatter.description,
 				sectionLabel: section.label,
 				entry: page,
@@ -185,7 +178,7 @@ function buildNavigation(): NavigationModel {
 			[
 				`Visible pages missing from navigationConfig: ${unlistedPages.join(", ")}.`,
 				"Add them to src/config/navigation.ts or mark them as hidden from navigation in frontmatter.",
-				"Supported hidden-nav fields include nav: false, hideInNav: true, or sidebar.hidden: true.",
+				"Use nav: false to hide a page from navigation.",
 			].join(" "),
 		);
 	}
@@ -203,19 +196,6 @@ function slugFromFilePath(filePath: string): string {
 	);
 }
 
-function titleForPage(slug: string, frontmatter: PageFrontmatter): string {
-	return (
-		frontmatter.sidebar?.label ||
-		frontmatter.sidebarLabel ||
-		frontmatter.navTitle ||
-		frontmatter.title ||
-		slug
-	);
-}
-
 function isVisiblePage(frontmatter: PageFrontmatter = {}): boolean {
-	if (frontmatter.nav === false) return false;
-	if (frontmatter.hideInNav) return false;
-	if (frontmatter.sidebar?.hidden) return false;
-	return true;
+	return frontmatter.nav !== false;
 }
