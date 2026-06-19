@@ -15,8 +15,8 @@ export type NavItem = {
 	slug: string;
 	title: string;
 	description?: string;
+	hidePrevNext?: boolean;
 	sectionLabel: string;
-	entry: PageModule;
 };
 
 export type NavSection = {
@@ -126,8 +126,8 @@ function buildNavigation(): NavigationModel {
 				slug,
 				title: frontmatter.title || slug,
 				description: frontmatter.description,
+				hidePrevNext: frontmatter.hidePrevNext,
 				sectionLabel: section.label,
-				entry: page,
 			};
 			bySlug.set(slug, item);
 			return item;
