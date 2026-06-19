@@ -3,14 +3,11 @@ import { Resvg } from "@resvg/resvg-js";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import sharp from "sharp";
+import { getNavigation, hrefForSlug, normalizeSlug } from "@/utils/navigation";
 
 type PageFrontmatter = {
 	title: string;
 	description: string;
-	category: string;
-	sidebar?: {
-		label?: string;
-	};
 };
 
 type PageModule = {
@@ -37,18 +34,21 @@ for (const fontPath of interFontPaths) {
 }
 
 const pages = import.meta.glob<PageModule>("../**/*.{md,mdx}", { eager: true });
+const navigation = getNavigation();
 
 const pageData = Object.entries(pages).map(([path, page]) => {
 	const slug = path.replace(/^\.\.\//, "").replace(/\.(md|mdx)$/, "");
+	const normalizedSlug = normalizeSlug(slug);
 	const { frontmatter } = page;
+	const navItem = navigation.bySlug.get(normalizedSlug);
 
 	return {
 		slug,
 		props: {
 			title: frontmatter.title,
 			description: frontmatter.description,
-			category: frontmatter.sidebar?.label || frontmatter.category,
-			pathname: slug === "index" ? "/" : `/${slug}`,
+			category: navItem?.sectionLabel ?? "cmu.guide",
+			pathname: hrefForSlug(normalizedSlug),
 		},
 	};
 });

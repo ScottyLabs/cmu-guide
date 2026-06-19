@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 4
-
 title: I'm Back Home - Now What? 
 description: ""
 layout: ../layouts/Layout.astro

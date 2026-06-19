@@ -1,8 +1,4 @@
 ---
-category: Leaves of Absence
-categoryOrder: 4
-order: 5
-
 title: If You DO Plan to Return 
 description: ""
 layout: ../layouts/Layout.astro

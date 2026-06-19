@@ -22,18 +22,9 @@ if (currentPath !== "/" && currentPath.endsWith("/")) {
 	currentPath = currentPath.slice(0, -1);
 }
 
-const deploymentUrl = [
-	import.meta.env.PUBLIC_SITE_URL,
-	import.meta.env.VERCEL_URL,
-	import.meta.env.VERCEL_PROJECT_PRODUCTION_URL,
-	import.meta.env.URL,
-].find((url): url is string => typeof url === "string" && url.trim().length > 0);
-
-const publicBaseUrl = deploymentUrl
-	? new URL(deploymentUrl.startsWith("http") ? deploymentUrl : `https://${deploymentUrl}`)
-	: Astro.site
-		? new URL(Astro.site)
-		: new URL(Astro.url.origin);
+const publicBaseUrl = Astro.site
+	? new URL(Astro.site)
+	: new URL(Astro.url.origin);
 publicBaseUrl.pathname = "/";
 publicBaseUrl.search = "";
 publicBaseUrl.hash = "";
@@ -46,9 +37,8 @@ const socialImageUrl = new URL(image ?? generatedSocialImage, publicBaseUrl).toS
 const hideTableOfContents = Boolean(frontmatter.hideTableOfContents);
 const hidePrevNext = Boolean(frontmatter.hidePrevNext);
 const hidePageMeta = Boolean(frontmatter.hidePageMeta);
-const hideHeader = Boolean(frontmatter.hideHeader);
-const hideTitle = hideHeader || Boolean(frontmatter.hideTitle);
-const hideDescription = hideHeader || Boolean(frontmatter.hideDescription);
+const hideTitle = Boolean(frontmatter.hideTitle);
+const hideDescription = Boolean(frontmatter.hideDescription);
 const contentMaxWidthClass =
 	(frontmatter.contentMaxWidth as string) || "max-w-4xl";
 const pageSpacingClass = (frontmatter.pageSpacing as string) || "py-16";

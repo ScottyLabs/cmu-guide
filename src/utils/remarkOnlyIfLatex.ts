@@ -5,7 +5,6 @@ type Frontmatter = { latex?: boolean } & Record<string, unknown>;
 
 type VFileData = {
 	astro?: { frontmatter?: Frontmatter };
-	frontmatter?: Frontmatter;
 };
 
 type VFileLike = { data?: VFileData };
@@ -43,7 +42,7 @@ function replaceMathNodes(node: AstNode) {
 
 export default function remarkOnlyIfLatex() {
 	return (tree: AstNode, vfile: VFileLike) => {
-		const fm = vfile.data?.astro?.frontmatter ?? vfile.data?.frontmatter;
+		const fm = vfile.data?.astro?.frontmatter;
 		if (fm && fm.latex) return; // keep math nodes for latex-enabled files
 		replaceMathNodes(tree);
 	};

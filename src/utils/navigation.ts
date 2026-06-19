@@ -1,55 +1,168 @@
-export interface NavItem {
-	category: string;
-	categoryOrder: number;
-	order: number;
+import { navigationConfig } from "@/config/navigation";
+
+type PageFrontmatter = {
+	title?: string;
+	description?: string;
+	hidePrevNext?: boolean;
+	nav?: boolean;
+};
+
+type PageModule = {
+	frontmatter?: PageFrontmatter;
+};
+
+export type NavItem = {
+	slug: string;
 	title: string;
-	href: string;
+	description?: string;
+	hidePrevNext?: boolean;
+	sectionLabel: string;
+};
+
+export type NavSection = {
+	label: string;
+	items: NavItem[];
+};
+
+export type NavigationModel = {
+	sections: NavSection[];
+	bySlug: Map<string, NavItem>;
+};
+
+const pages = import.meta.glob<PageModule>("../pages/*.{md,mdx}", {
+	eager: true,
+});
+
+let cachedNavigation: NavigationModel | undefined;
+
+export function normalizeSlug(slug: string): string {
+	const trimmed = slug.replace(/^\/+/, "").replace(/\/+$/, "");
+	if (trimmed === "" || trimmed === "index") {
+		return "index";
+	}
+	return trimmed.replace(/\/index$/, "");
 }
 
-export async function getNavigation(): Promise<NavItem[]> {
-	const mdPages = import.meta.glob("../pages/*.md", { eager: true });
-	const mdxPages = import.meta.glob("../pages/*.mdx", { eager: true });
-	const pages = { ...mdPages, ...mdxPages };
-	const navItems: NavItem[] = [];
+export function hrefForSlug(slug: string): string {
+	const normalized = normalizeSlug(slug);
+	return normalized === "index" ? "/" : `/${normalized}`;
+}
+
+export function slugFromPathname(pathname: string): string {
+	return normalizeSlug(pathname.split(/[?#]/, 1)[0]);
+}
+
+export function getNavigation(): NavigationModel {
+	try {
+		cachedNavigation ??= buildNavigation();
+		return cachedNavigation;
+	} catch (error) {
+		cachedNavigation = undefined;
+		throw error;
+	}
+}
+
+function buildNavigation(): NavigationModel {
+	const pageBySlug = new Map<string, PageModule>();
+	const pagePathBySlug = new Map<string, string>();
 
 	for (const [filePath, page] of Object.entries(pages)) {
-		let href = filePath
-			.replace("../pages", "")
-			.replace(/\.(md|mdx)$/, "")
-			.replace(/\/index$/, "");
-
-		if (href === "") href = "/";
-
-		const frontmatter = (page as any).frontmatter || {};
-		if (frontmatter.hideInNav || frontmatter.sidebar?.hidden) {
-			continue;
+		const slug = slugFromFilePath(filePath);
+		const existingPath = pagePathBySlug.get(slug);
+		if (existingPath) {
+			throw new Error(
+				`Duplicate content page slug "${slug}" found in ${existingPath} and ${filePath}.`,
+			);
 		}
 
-		const title =
-			frontmatter.sidebar?.label ||
-			frontmatter.sidebarLabel ||
-			frontmatter.navTitle ||
-			frontmatter.title ||
-			filePath
-				.split("/")
-				.pop()
-				?.replace(/\.(md|mdx)$/, "") ||
-			"Untitled";
-
-		const category = frontmatter.category;
-		const categoryOrder = frontmatter.categoryOrder;
-		const order = frontmatter.order;
-
-		navItems.push({ title, href, order, category, categoryOrder });
+		pageBySlug.set(slug, page);
+		pagePathBySlug.set(slug, filePath);
 	}
 
-	// Sort by categoryOrder, then by order, then by title
-	navItems.sort((a, b) => {
-		if (a.categoryOrder !== b.categoryOrder)
-			return a.categoryOrder - b.categoryOrder;
-		if (a.order !== b.order) return a.order - b.order;
-		return a.title.localeCompare(b.title);
-	});
+	const seenSectionLabels = new Set<string>();
+	const seenConfigSlugs = new Map<string, string>();
+	const sections: NavSection[] = [];
+	const bySlug = new Map<string, NavItem>();
 
-	return navItems;
+	for (const section of navigationConfig) {
+		if (seenSectionLabels.has(section.label)) {
+			throw new Error(
+				`Duplicate navigation section label "${section.label}".`,
+			);
+		}
+		seenSectionLabels.add(section.label);
+
+		if (section.items.length === 0) {
+			throw new Error(
+				`Navigation section "${section.label}" must list at least one page.`,
+			);
+		}
+
+		const items = section.items.map((configSlug) => {
+			const slug = normalizeSlug(configSlug);
+			const previousSection = seenConfigSlugs.get(slug);
+			if (previousSection) {
+				throw new Error(
+					`Duplicate navigation slug "${slug}" listed in "${previousSection}" and "${section.label}".`,
+				);
+			}
+			seenConfigSlugs.set(slug, section.label);
+
+			const page = pageBySlug.get(slug);
+			if (!page) {
+				throw new Error(
+					`Navigation config references missing page "${configSlug}" in section "${section.label}".`,
+				);
+			}
+
+			const frontmatter = page.frontmatter || {};
+			if (!isVisiblePage(frontmatter)) {
+				throw new Error(
+					`Navigation config references hidden page "${configSlug}" in section "${section.label}". Remove it from src/config/navigation.ts or remove nav: false from the page frontmatter.`,
+				);
+			}
+
+			const item: NavItem = {
+				slug,
+				title: frontmatter.title || slug,
+				description: frontmatter.description,
+				hidePrevNext: frontmatter.hidePrevNext,
+				sectionLabel: section.label,
+			};
+			bySlug.set(slug, item);
+			return item;
+		});
+
+		sections.push({ label: section.label, items });
+	}
+
+	const unlistedPages = [...pageBySlug.entries()]
+		.filter(
+			([slug, page]) =>
+				!seenConfigSlugs.has(slug) && isVisiblePage(page.frontmatter),
+		)
+		.map(([slug]) => slug)
+		.sort();
+
+	if (unlistedPages.length > 0) {
+		throw new Error(
+			[
+				`Visible pages missing from navigationConfig: ${unlistedPages.join(", ")}.`,
+				"Add them to src/config/navigation.ts or mark them as hidden from navigation in frontmatter.",
+				"Use nav: false to hide a page from navigation.",
+			].join(" "),
+		);
+	}
+
+	return { sections, bySlug };
+}
+
+function slugFromFilePath(filePath: string): string {
+	return normalizeSlug(
+		filePath.replace("../pages/", "").replace(/\.(md|mdx)$/, ""),
+	);
+}
+
+function isVisiblePage(frontmatter: PageFrontmatter = {}): boolean {
+	return frontmatter.nav !== false;
 }
