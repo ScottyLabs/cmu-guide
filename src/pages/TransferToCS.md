@@ -6,14 +6,6 @@ contributors:
 layout: ../layouts/Layout.astro
 ---
 
-## So You Want To Transfer To SCS
-
-(or double major, or minor, or something)
-
-An SCS Transfer’s Thoughts
-
-Written by Brandon Wu
-
 Last revised, January 2023
 
 Author’s note: This document has long since outlived the audience that it was written for. Regardless, I hope that the information contained within remains helpful to future CMU students. The author has since graduated from CMU, and is happily doing functional programming in the industry.

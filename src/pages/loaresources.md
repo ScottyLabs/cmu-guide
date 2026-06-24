@@ -1,6 +1,8 @@
 ---
-title: Additional Resources 
-description: Many of these are repeats from before, but this list mainly exists to inform you on parts of the LOA process on which I’m not the most familiar. 
+title: Additional Resources
+description: Many of these are repeats from before, but this list mainly exists to inform you on parts of the LOA process on which I’m not the most familiar.
+contributors:
+  - name: Meabyn Bie
 layout: ../layouts/Layout.astro
 ---
 [**Catch-All Page for CMU Resources**](https://www.cmu.edu/student-affairs/resources/index.html)
@@ -18,19 +20,19 @@ layout: ../layouts/Layout.astro
 ## Tuition and Financial Aid Resources
 - [Tuition Returns Explained](https://www.cmu.edu/sfs/financial-aid/policies/docs/return-titleiv.pdf)
 - [Summer Financial Aid (including Tartan Summer Grant application)](https://www.cmu.edu/sfs/financial-aid/summer/)
-- [Fifth-Year Scholars Program](https://www.cmu.edu/student-affairs/get-involved/fifth-year/index.html) 
-- [GradGuard Tuition Insurance](https://gradguard.com/tuition) 
+- [Fifth-Year Scholars Program](https://www.cmu.edu/student-affairs/get-involved/fifth-year/index.html)
+- [GradGuard Tuition Insurance](https://gradguard.com/tuition)
 
 ## CaPS Resources
 - [Landing Page](https://www.cmu.edu/counseling/)
 - [Groups and Skills Clinics](https://www.cmu.edu/counseling/services/groups-workshops.html)
-- [TimelyCare](https://www.cmu.edu/wellbeing/about-us/news/timely-care.html) 
+- [TimelyCare](https://www.cmu.edu/wellbeing/about-us/news/timely-care.html)
 - [Crisis Info Page](https://www.cmu.edu/counseling/get-support/for-yourself.html)
 
 ## Disability Accommodations
 - [Student ODR Accommodations](https://www.cmu.edu/disability-resources/students/obtaining-accommodations.html)
 - [Student Accommodations Policy](https://www.cmu.edu/disability-resources/policies-guidelines/index.html#documentation)
-- [Application Portal for Accommodations](https://rainier.accessiblelearning.com/CMU/ApplicationCenter.aspx?Step=Authenticated) 
+- [Application Portal for Accommodations](https://rainier.accessiblelearning.com/CMU/ApplicationCenter.aspx?Step=Authenticated)
 
 ## Housing Resources
 - [Housing Cancellations Explained](https://www.cmu.edu/housing/resident-services/assignments.html)
@@ -44,9 +46,9 @@ layout: ../layouts/Layout.astro
 
 ## Works Cited
 
-Bie, Meabyn. “Interview with Anonymous, Associate Dean of Student Affairs at CMU.” 20 Feb. 2026. 
+Bie, Meabyn. “Interview with Anonymous, Associate Dean of Student Affairs at CMU.” 20 Feb. 2026.
 
-Cristol, Hope. “Living with Chronic Disease: What Is the Spoon Theory?” Edited by Melinda Ratini, WebMD, WebMD, 30 Apr. 2025, www.webmd.com/multiple-sclerosis/features/spoon-theory. 
+Cristol, Hope. “Living with Chronic Disease: What Is the Spoon Theory?” Edited by Melinda Ratini, WebMD, WebMD, 30 Apr. 2025, www.webmd.com/multiple-sclerosis/features/spoon-theory.
 
 ---
 *P.S. I'm rooting for you :)*

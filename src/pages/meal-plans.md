@@ -2,6 +2,7 @@
 title: Meal Plans
 description: How to use meal plans effectively
 contributors:
+  - name: Justin Peng
   - name: Max Wen
 layout: ../layouts/Layout.astro
 ---
@@ -66,7 +67,3 @@ You get a lot of meal blocks as a freshman. Unless you’re an athlete or someon
 -   [CMU Official Dining Plan Page](https://www.cmu.edu/dining/your-dining-plan/index.html)
 -   [CMUEats](https://cmueats.com)
 -   [CMU Dining Locations](https://apps.studentaffairs.cmu.edu/dining/conceptinfo/?page=listConcepts)
-
-## Acknowledgements
-
-This document was originally created by Justin Peng (sauce_sauce).

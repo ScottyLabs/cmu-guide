@@ -8,22 +8,18 @@ layout: ../layouts/Layout.astro
 
 (hopefully) useful for: CMU undergraduate students curious about getting more major(s)
 
-## General disclaimer
-
-- *Written by*: Myrin  
-- *Last edited*: 03/19/2024  
-- For more specific and up-to-date information and requirements, inquire with your / the relevant academic advisor.
+For more specific and up-to-date information and requirements, inquire with your / the relevant academic advisor.
 
 ---
 
 ## Outline
 
-1. Your buffet of options for academic pursuit  
-2. Double-majoring: Getting an additional major vs. a dual degree  
-3. Feasibility  
-4. Flexibility in changing your mind  
-5. Recommended considerations  
-6. Me  
+1. Your buffet of options for academic pursuit
+2. Double-majoring: Getting an additional major vs. a dual degree
+3. Feasibility
+4. Flexibility in changing your mind
+5. Recommended considerations
+6. Me
 7. Additional resources
 
 ---
@@ -34,12 +30,12 @@ You’re not limited to just getting more major(s), although you’re certainly 
 
 See your many ~formalized~ academic options as an undergraduate student here, including getting a 5th-year masters or a salad of minors:
 
-- [“Undergraduate Options”](http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateoptions/)  
+- [“Undergraduate Options”](http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateoptions/)
 - [“Undergraduate Options”](http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateoptions/undergraduateoptions.pdf) (PDF)
 
 There are also many less formalized/structured options for academic pursuit, such as:
 
-- Doing research: like through a CMU-supported summer research program, as part of your thesis for college honors, or just to explore different interest areas  
+- Doing research: like through a CMU-supported summer research program, as part of your thesis for college honors, or just to explore different interest areas
 - Participating in a myriad of competitions: like hackathons, the Putnam Competition, and many others
 
 This section is just to provide some possibilities otherwise outside the scope of this document. You’re swimming in choice to appease academic appetite, so pick and choose whatever fits you best!
@@ -68,8 +64,8 @@ For an additional major, you just need to:
 
 For a dual degree, you’ll need to:
 
-1. Complete the major-specific requirements for your 2nd major  
-2. Complete the core curriculum (think: general education requirements) of the school your 2nd major belongs to  
+1. Complete the major-specific requirements for your 2nd major
+2. Complete the core curriculum (think: general education requirements) of the school your 2nd major belongs to
 3. Complete 90 free units (essentially raises the minimum number of units required for graduation by 90)
 
 The first requirement is the same across both, and you might naturally collect 90 free units (likelihood rises with amount of AP/transfer credit), but completing the entire core curriculum of another program can be nigh impossible (and vastly unnecessary). Of course, if both of your majors are within the same school (e.g., both under MCS), this requirement is automatically satisfied. Otherwise, it’s absolutely pointless to attempt.
@@ -130,5 +126,5 @@ CMU offers so many interesting courses, and I highly encourage you to try them. 
 
 ## Additional Resources
 
-**“Specifically, I want to get another major in Computer Science.”**  
+**“Specifically, I want to get another major in Computer Science.”**
 See: [“So You Want To Transfer to SCS”](https://cmu.guide/TransferToCS/)

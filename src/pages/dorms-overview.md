@@ -2,6 +2,7 @@
 title: Dorms Overview
 description: An overview of the different types of dorms at CMU
 contributors:
+  - name: Justin Peng
   - name: Max Wen
 layout: ../layouts/Layout.astro
 ---
@@ -41,7 +42,3 @@ Apartment dorms are different from residence hall dorms in that each room comes 
 - [CMU Official Housing Page](https://www.cmu.edu/housing/our-communities/first-year/index.html)
 - [2026-2027 Housing Rates](https://www.cmu.edu/housing/forms/26-27-housing-rates-non-staff.pdf)
 - <a href="/dorms">Dorms Options 2026-2027</a>
-
-## Acknowledgements
-
-This document was originally created by Justin Peng (sauce_sauce).

@@ -1,8 +1,8 @@
 ---
 title: Minimal Packing List
-description: By Kavya CS '26
+description: Recommended items to bring to CMU
 contributors:
-  - name: Kavya
+  - name: Kavya Ramesh
 layout: ../layouts/Layout.astro
 ---
 
