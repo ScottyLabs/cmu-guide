@@ -48,7 +48,6 @@
 
 <style>
 	.card {
-		border: 1px solid black;
 		border-radius: 12px;
 		overflow: hidden;
 	}
@@ -78,8 +77,7 @@
 	.col {
 		min-width: 0;
 		padding: 8px;
-		border-top: 1px solid black;
-		border-right: 1px solid black;
+		border-right: 1px solid #e4e4e7;
 	}
 
 	.col ul,
