@@ -127,9 +127,26 @@ const textLines = (
 		)
 		.join("");
 
+const titleY = 244;
+const titleLineHeight = 80;
+const descriptionX = 76;
+const descriptionLineHeight = 50;
+
+const descriptionTextLines = (lines: string[], y: number) =>
+	lines
+		.map((line, index) => {
+			const wordSpacing =
+				index < lines.length - 1 && line.length >= 40 && line.split(" ").length >= 9
+					? ' word-spacing="8"'
+					: "";
+			return `<text x="${descriptionX}" y="${y + index * descriptionLineHeight}" class="description"${wordSpacing}>${escapeXml(line)}</text>`;
+		})
+		.join("");
+
 const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
 	const titleLines = wrapText(title, 24, 2);
-	const descriptionLines = wrapText(description, 48, 3);
+	const descriptionLines = wrapText(description, 47, 4);
+	const descriptionY = titleY + (titleLines.length - 1) * titleLineHeight + 86;
 	const footerText = pathname === "/" ? "cmu.guide" : `cmu.guide${pathname}`;
 	const categoryWidth = Math.max(154, Math.min(360, category.length * 13 + 56));
 
@@ -154,8 +171,8 @@ const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
 			<g class="text">
 				${pill("cmu.guide", 64, 182)}
 				${pill(category, 264, categoryWidth)}
-				${textLines(titleLines, 72, 244, 80, "title")}
-				${textLines(descriptionLines, 76, 390, 50, "description")}
+				${textLines(titleLines, 72, titleY, titleLineHeight, "title")}
+				${descriptionTextLines(descriptionLines, descriptionY)}
 				<rect x="64" y="520" width="1072" height="64" rx="24" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.26)" />
 				<text x="92" y="561" class="footer">${escapeXml(footerText)}</text>
 				<text x="1108" y="561" text-anchor="end" class="footer-subtle">ScottyLabs</text>
