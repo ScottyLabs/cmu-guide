@@ -134,13 +134,10 @@ const descriptionLineHeight = 50;
 
 const descriptionTextLines = (lines: string[], y: number) =>
 	lines
-		.map((line, index) => {
-			const wordSpacing =
-				index < lines.length - 1 && line.length >= 40 && line.split(" ").length >= 9
-					? ` word-spacing="8"`
-					: "";
-			return `<text x="${descriptionX}" y="${y + index * descriptionLineHeight}" class="description"${wordSpacing}>${escapeXml(line)}</text>`;
-		})
+		.map(
+			(line, index) =>
+				`<text x="${descriptionX}" y="${y + index * descriptionLineHeight}" class="description">${escapeXml(line)}</text>`,
+		)
 		.join("");
 
 const buildOgSvg = ({ title, description, category, pathname }: OgProps) => {
