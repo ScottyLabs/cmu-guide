@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import PrevNext from "@/components/PrevNext.astro";
+import { getPageDescription } from "@/utils/pageDescription";
 import "@/styles/global.css";
 
 const { frontmatter, headings, Content } = Astro.props;
@@ -16,6 +17,7 @@ const {
 	image,
 	contributors = [],
 } = frontmatter;
+const displayDescription = getPageDescription({ description, contributors });
 
 let currentPath = Astro.url.pathname;
 if (currentPath !== "/" && currentPath.endsWith("/")) {
@@ -183,14 +185,16 @@ const headingList = headings as Heading[];
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
-		{description && <meta name="description" content={description} />}
+		{displayDescription && (
+			<meta name="description" content={displayDescription} />
+		)}
 		<link rel="canonical" href={pageUrl} />
 
 		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={title} />
-		{description && (
-			<meta property="og:description" content={description} />
+		{displayDescription && (
+			<meta property="og:description" content={displayDescription} />
 		)}
 		<meta property="og:image" content={socialImageUrl} />
 		<meta property="og:image:width" content="1200" />
@@ -199,8 +203,8 @@ const headingList = headings as Heading[];
 		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:url" content={pageUrl} />
 		<meta name="twitter:title" content={title} />
-		{description && (
-			<meta name="twitter:description" content={description} />
+		{displayDescription && (
+			<meta name="twitter:description" content={displayDescription} />
 		)}
 		<meta name="twitter:image" content={socialImageUrl} />
 
@@ -248,9 +252,9 @@ const headingList = headings as Heading[];
 						)
 					}
 					{
-						!hideDescription && description && (
+						!hideDescription && displayDescription && (
 							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 wrap-break-word">
-								{description}
+								{displayDescription}
 							</p>
 						)
 					}
