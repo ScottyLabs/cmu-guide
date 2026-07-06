@@ -12,13 +12,14 @@ export function getPageDescription({
 	description,
 	contributors = [],
 }: PageDescriptionInput): string | undefined {
-	if (description?.trim()) {
-		return description;
+	const normalizedDescription = description?.trim();
+	if (normalizedDescription) {
+		return normalizedDescription;
 	}
 
 	const names = contributors
 		.map((contributor) => contributor.name?.trim())
-		.filter(Boolean);
+		.filter((name): name is string => Boolean(name));
 
 	return names.length > 0 ? `By ${names.join(", ")}` : undefined;
 }
