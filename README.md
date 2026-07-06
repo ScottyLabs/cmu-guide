@@ -12,12 +12,11 @@ First-time working on this project? Follow these steps, assuming no prior progra
   - Paste in the URL `https://github.com/ScottyLabs/cmu-guide.git` when prompted.
   - Open the repository.
 4. Open the terminal in your project. For VSCode, you can use the shortcut <kbd>ctrl+\`</kbd> (backtick, same button as tilde ~).
-5. Run `deno install`.
 
 Do the following whenever you want to work on the project:
 
-6. Run `deno task dev`. This starts a local dev server for this website!
-7. Follow the localhost link in the terminal output. For VSCode, hold down <kbd>command</kbd> or <kbd>ctrl</kbd> when clicking on the link.
+5. Run `deno task dev`. This fetches dependencies and starts a local dev server for this website!
+6. Follow the localhost link in the terminal output. For VSCode, hold down <kbd>command</kbd> or <kbd>ctrl</kbd> when clicking on the link.
 
 Now, whenever you edit a file and save it (<kbd>command+s</kbd> or <kbd>ctrl+s</kbd>), your local server will automatically reload to reflect your changes! This means you don't have to quit and rerun the dev command whenever you make changes, as long as your server is running.
 
@@ -35,8 +34,7 @@ This project uses [Deno](https://deno.com/). All commands are run from the root 
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `deno install`            | Installs dependencies                            |
-| `deno task dev`           | Starts local dev server at `localhost:4321`      |
+| `deno task dev`           | Fetches dependencies and starts local dev server at `localhost:4321` |
 | `deno task build`         | Build your production site to `./dist/`          |
 | `deno task preview`       | Preview your build locally, before deploying     |
 | `deno task astro -- ...`  | Run CLI commands like `astro add`, `astro check` |
