@@ -4,10 +4,12 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import sharp from "sharp";
 import { getNavigation, hrefForSlug, normalizeSlug } from "@/utils/navigation";
+import { getPageDescription, type Contributor } from "@/utils/pageDescription";
 
 type PageFrontmatter = {
 	title: string;
-	description: string;
+	description?: string;
+	contributors?: Contributor[];
 };
 
 type PageModule = {
@@ -46,7 +48,7 @@ const pageData = Object.entries(pages).map(([path, page]) => {
 		slug,
 		props: {
 			title: frontmatter.title,
-			description: frontmatter.description,
+			description: getPageDescription(frontmatter) ?? "",
 			category: navItem?.sectionLabel ?? "cmu.guide",
 			pathname: hrefForSlug(normalizedSlug),
 		},
