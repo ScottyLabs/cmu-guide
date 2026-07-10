@@ -20,7 +20,7 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 	},
 	{
 		label: "Academic",
-		items: ["advanced-fyw", "mms", "TransferMajors", "TransferToCS"],
+		items: ["advanced-fyw", "mms", "information-systems-courses", "TransferMajors", "TransferToCS"],
 	},
 	{
 		label: "Leaves of Absence",
