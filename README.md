@@ -35,12 +35,16 @@ This project uses [Deno](https://deno.com/). All commands are run from the root 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `deno task dev`           | Fetches dependencies and starts local dev server at `localhost:4321` |
+| `deno task check`         | Checks Astro and TypeScript diagnostics                             |
 | `deno task build`         | Build your production site to `./dist/`          |
 | `deno task preview`       | Preview your build locally, before deploying     |
 | `deno task astro -- ...`  | Run CLI commands like `astro add`, `astro check` |
 | `deno task astro -- --help` | Get help using the Astro CLI                   |
 
 Since pagefind requires a build artifact, search will only work on `deno task preview` after running `deno task build`.
+
+> [!WARNING]
+> If you used this project before it migrated from Bun to Deno and a Deno command reports an unexpected dependency or type-resolution error, stop any running dev server, delete the ignored `node_modules` folder, then run `deno task build` or `deno task dev` again. Deno will recreate its dependency layout from the tracked `deno.lock`.
 
 ## Project Structure
 
