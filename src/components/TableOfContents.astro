@@ -147,16 +147,8 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 				a.setAttribute("data-slug", id);
 				a.setAttribute("data-dorm-link", "");
 				a.textContent = dorm.name;
-				a.style.cssText =
-					"display: block; padding: 4px 0 4px 32px; color: #71717a; text-decoration: none; border-left: 1px solid #e4e4e7; margin-left: -16px; font-size: 0.875rem;";
-				a.addEventListener(
-					"mouseenter",
-					() => (a.style.color = "#18181b"),
-				);
-				a.addEventListener(
-					"mouseleave",
-					() => (a.style.color = "#71717a"),
-				);
+				a.className =
+					"block text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors border-l border-zinc-200 dark:border-zinc-700 -ml-4 py-1 pl-8";
 				li.appendChild(a);
 				toc.appendChild(li);
 			});
