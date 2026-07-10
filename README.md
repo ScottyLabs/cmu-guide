@@ -4,19 +4,19 @@
 First-time working on this project? Follow these steps, assuming no prior programming experience:
 
 1. [Set up Git](https://docs.github.com/en/get-started/git-basics/set-up-git#setting-up-git) if you haven't already.
-1. Download your favorite code editor (we recommend [Visual Studio Code](https://code.visualstudio.com/)).
-2. Install [Deno](https://deno.com/).
-3. Clone this repository. For VSCode, this means you will do the following:
+2. Download your favorite code editor (we recommend [Visual Studio Code](https://code.visualstudio.com/)).
+3. Install [Deno](https://deno.com/).
+4. Clone this repository. For VSCode, this means you will do the following:
   - Click the topmost file explorer icon in the sidebar.
   - Click on "Clone Repository".
   - Paste in the URL `https://github.com/ScottyLabs/cmu-guide.git` when prompted.
   - Open the repository.
-4. Open the terminal in your project. For VSCode, you can use the shortcut <kbd>ctrl+\`</kbd> (backtick, same button as tilde ~).
+5. Open the terminal in your project. For VSCode, you can use the shortcut <kbd>ctrl+\`</kbd> (backtick, same button as tilde ~).
 
 Do the following whenever you want to work on the project:
 
-5. Run `deno task dev`. This fetches dependencies and starts a local dev server for this website!
-6. Follow the localhost link in the terminal output. For VSCode, hold down <kbd>command</kbd> or <kbd>ctrl</kbd> when clicking on the link.
+6. Run `deno task dev`. This fetches dependencies and starts a local dev server for this website!
+7. Follow the localhost link in the terminal output. For VSCode, hold down <kbd>command</kbd> or <kbd>ctrl</kbd> when clicking on the link.
 
 Now, whenever you edit a file and save it (<kbd>command+s</kbd> or <kbd>ctrl+s</kbd>), your local server will automatically reload to reflect your changes! This means you don't have to quit and rerun the dev command whenever you make changes, as long as your server is running.
 
