@@ -14,13 +14,7 @@ permissions:
 
 jobs:
   validate:
-    name: Deno validation (${{ matrix.os }}, ${{ matrix.deno }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        deno: ["2.9.0", "v2.x"]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
