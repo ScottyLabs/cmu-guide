@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   # Allows running this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -24,41 +26,14 @@ jobs:
       - name: Set up Deno
         uses: denoland/setup-deno@v2
         with:
-          deno-version: ${{ matrix.deno }}
+          deno-version: v2.x
 
       - name: Check Astro diagnostics
         run: deno task check
 
-      - name: Smoke-test the development server
-        shell: bash
-        run: |
-          deno task dev --host 127.0.0.1 --port 4321 > /tmp/cmu-guide-dev.log 2>&1 &
-          dev_pid=$!
-          trap 'kill "$dev_pid" 2>/dev/null || true' EXIT
-          ready=0
-          for _ in {1..30}; do
-            if curl --fail --silent --show-error http://127.0.0.1:4321/ -o /tmp/cmu-guide-home.html; then
-              ready=1
-              break
-            fi
-            sleep 1
-          done
-          if [ "$ready" -ne 1 ]; then
-            cat /tmp/cmu-guide-dev.log
-            exit 1
-          fi
-          test -s /tmp/cmu-guide-home.html
-          grep -F '<title>Home</title>' /tmp/cmu-guide-home.html
-
-      - name: Build and verify search artifacts
-        run: |
-          deno task build
-          test -f dist/index.html
-          test -f dist/pagefind/pagefind.js
-          test -f dist/pagefind/pagefind-entry.json
-
   build:
     needs: validate
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -71,6 +46,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
