@@ -46,7 +46,7 @@ const contentMaxWidthClass =
 const pageSpacingClass = (frontmatter.pageSpacing as string) || "py-16";
 const contentBodyClass =
 	(frontmatter.contentBodyClass as string) ||
-	"prose prose-zinc prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:prose-invert lg:prose-base";
+	"prose prose-zinc prose-a:text-ui-link dark:prose-invert lg:prose-base";
 
 const ogType = currentPath === "/" ? "website" : "article";
 const twitterCard = "summary_large_image";
@@ -234,7 +234,7 @@ const headingList = headings as Heading[];
 		</script>
 	</head>
 
-	<body class="bg-white dark:bg-zinc-900 min-h-screen">
+	<body class="bg-ui-canvas min-h-screen">
 		<Navbar />
 		<Sidebar />
 
@@ -246,14 +246,14 @@ const headingList = headings as Heading[];
 				<main class={pageSpacingClass}>
 					{
 						!hideTitle && (
-							<h1 class="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+							<h1 class="text-4xl lg:text-5xl font-bold text-ui-text-primary mb-4">
 								{title}
 							</h1>
 						)
 					}
 					{
 						!hideDescription && displayDescription && (
-							<p class="text-xl lg:text-2xl text-zinc-600 dark:text-zinc-400 mb-6 wrap-break-word">
+							<p class="text-xl lg:text-2xl text-ui-text-secondary mb-6 wrap-break-word">
 								{displayDescription}
 							</p>
 						)
@@ -266,24 +266,24 @@ const headingList = headings as Heading[];
 									href={githubEditUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline"
+									class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-ui-border text-ui-text-secondary hover:bg-ui-surface-subtle hover:text-ui-text-primary transition-colors no-underline"
 								>
 									<GithubLogo class="size-4" />
 									Edit page on GitHub
 								</a>
 
 								{(lastEdited || contributors.length > 0) && (
-									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400 mt-4 pb-6 mb-8 border-b border-zinc-200 dark:border-zinc-700">
+									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ui-text-secondary mt-4 pb-6 mb-8 border-b border-ui-border">
 										{lastEdited && lastCommitUrl && (
 											<div class="flex items-center gap-1.5">
-												<span class="text-zinc-500 dark:text-zinc-500">
+												<span class="text-ui-text-muted">
 													Last edited:
 												</span>
 												<a
 													href={lastCommitUrl}
 													target="_blank"
 													rel="noopener noreferrer"
-													class="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-600 underline-offset-2 transition-colors"
+													class="text-ui-text-secondary hover:text-ui-text-primary underline decoration-ui-decoration underline-offset-2 transition-colors"
 												>
 													{lastEdited}
 												</a>
@@ -291,10 +291,10 @@ const headingList = headings as Heading[];
 										)}
 										{contributors.length > 0 && (
 											<div class="flex items-center gap-1.5 flex-wrap">
-												<span class="text-zinc-500 dark:text-zinc-500">
+												<span class="text-ui-text-muted">
 													Contributors:
 												</span>
-												<span class="text-zinc-700 dark:text-zinc-300">
+												<span class="text-ui-text-secondary">
 													{contributors
 														.map((contributor: { name: string; email?: string }) =>
 															contributor.email
