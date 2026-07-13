@@ -8,7 +8,7 @@ import Button from "@/components/Button.svelte";
 ---
 
 <nav
-	class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700"
+	class="fixed top-0 left-0 right-0 z-50 bg-ui-canvas border-b border-ui-border"
 	data-pagefind-ignore
 	transition:persist
 >
@@ -21,12 +21,12 @@ import Button from "@/components/Button.svelte";
 				data-mobile-menu-button
 				data-menu-open="false"
 			>
-				<HamburgerMenu class="size-6 dark:invert menu-icon-hamburger" />
-				<Cross2 class="size-6 dark:invert menu-icon-cross hidden" />
+				<HamburgerMenu class="size-6 text-ui-icon menu-icon-hamburger" />
+				<Cross2 class="size-6 text-ui-icon menu-icon-cross hidden" />
 			</Button>
 
 			<!-- Logo -->
-			<a href="/" class="font-bold text-lg dark:text-white">
+			<a href="/" class="font-bold text-lg text-ui-icon">
 				cmu.guide
 			</a>
 		</div>
@@ -43,7 +43,7 @@ import Button from "@/components/Button.svelte";
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<GithubLogo class="size-6 dark:invert" />
+					<GithubLogo class="size-6 text-ui-icon" />
 				</LinkButton>
 
 				<ThemeToggle client:load />
