@@ -54,8 +54,34 @@ layout: ../layouts/Layout.astro
 
 ### Free Things
 
-- **New York Times** — <https://myaccount.nytimes.com/verification/edupass>
-- **Wall Street Journal** — <https://education.wsj.com/search-students/>
+- **Wall Street Journal** — [Access instructions](https://library.cmu.edu/about/news/2019-10/digital-wsj-access) Free digital access to the Wall Street Journal.
+- **NYT Games** — [Activation link](https://www.nytimes.com/subscription/redeem/games?campaignId=8JX8Y&gift_code=7d90fd8b1f0b4dce)
+    Free access to NYT Games; log into your NYT account first, then click “redeem,” or enter subscription code `78e482d7deac76f2` on the [NYT Website](https://www.nytimes.com/subscription/redeem/games?campaignId=88XHH&gift_code=78e482d7deac76f2).
+- **NYT News** — [Access link](http://www.accessnyt.com/)
+    Free digital access to NYT News; enter “Carnegie Mellon University – Pittsburgh” as your school.
+- **Pittsburgh Post-Gazette** — [Access instructions](https://docs.google.com/gview?embedded=1&url=https%3A%2F%2Fwww.cmu.edu%2Fstugov%2Fsenate%2Ffiles%2Fppg-how-to-access.pdf) / [Quick link](https://library.cmu.edu/services/journals-newspapers)
+    Free digital access to the Pittsburgh Post-Gazette.
+- **Ground News** — Coming Soon! [Learn more](https://ground.news/about)
+- **USA Today** — [Activate here](https://cm.usatoday.com/enterprise-access/?organization=CMU)
+    Free digital access to USA Today.
+- **The Economist** — [Log in with your Andrew email](https://www.economist.com)
+    Free access to The Economist with your Andrew email; use the email field because the “SSO” button will not work correctly.
+- **The Washington Post** — [Access link](https://guides.library.cmu.edu/az/databases?q=Washington%20post%20digital%20access)
+    Free digital access to The Washington Post.
+- **Financial Times** — [Access link](https://guides.library.cmu.edu/az/databases?q=ft.com)
+    Free digital access to the Financial Times.
+- **Bloomberg** — [Access link](https://guides.library.cmu.edu/az/databases?q=bloomberg.com)
+    Free access to Bloomberg.com.
+- **Foreign Policy and Affairs** — [Access link](https://guides.library.cmu.edu/az/databases?q=foreign%20affairs%20magazine%20online)
+    Free access to Foreign Policy and Affairs Magazine Online.
+- **The New Yorker** — [Access link](https://cmu.idm.oclc.org/login?url=https://archives.newyorker.com/)
+    Free access to The New Yorker archive.
+- **Harper’s Monthly** — [Access link](https://harpers-org.cmu.idm.oclc.org/issues/)
+    Free access to Harper’s Magazine issues.
+- **Microsoft Copilot** — [Access link](https://www.cmu.edu/computing/services/ai/copilot/index.html)
+    Free access to Microsoft Copilot with your CMU account.
+- **LinkedIn Learning** — [Access link](https://www.cmu.edu/web/training/linkedin-learning.html)
+    Free access to LinkedIn Learning courses.
 - **Academic journals, databases, etc.** — <https://guides.library.cmu.edu/az.php>
 - **GitHub Pro** — <https://education.github.com/benefits>
 - **Overleaf Premium** — <https://www.overleaf.com/>
