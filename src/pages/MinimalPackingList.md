@@ -150,6 +150,7 @@ REMINDER: Think about storage when buying/bringing stuff! if you live farther th
 - ✓✓✓ umbrella(absolute must!)
 - ✓✓✓ heavy coat(you will die without one)
 - ✓✓✓ snow/weather boots(absolute must)
+- ✓✓✓ gloves
 - ✓✓ layers!!! (hoodies/crewnecks - it's really warm inside classrooms so it's nice to have layers)
 - ✓✓ one pair of nice shoes
 - ✓✓ waterproof boots
