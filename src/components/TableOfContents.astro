@@ -78,6 +78,18 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 				}
 			}
 
+			function clearActiveLink(slug: string) {
+				const tocLink = tocElement.querySelector(
+					`[data-toc-link][data-slug="${slug}"]`,
+				);
+
+				tocLink?.classList.remove(
+					"!text-ui-text-primary",
+					"font-medium",
+					"!border-l-ui-text-primary",
+				);
+			}
+
 			// Handle clicks on TOC links
 			links.forEach((link) => {
 				link.addEventListener("click", () => {
@@ -105,8 +117,12 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 					entries.forEach((entry) => {
 						const id = entry.target.getAttribute("id");
-						if (entry.isIntersecting && id) {
-							setActiveLink(id);
+						if (id) {
+							if (entry.isIntersecting) {
+								setActiveLink(id);
+							} else {
+								clearActiveLink(id);
+							}
 						}
 					});
 				},
