@@ -29,6 +29,10 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 		],
 	},
 	{
+		label: "Miscellaneous",
+		items: ["MoochingOffCMU", "shows"],
+	},
+	{
 		label: "Leaves of Absence",
 		items: [
 			"loaintro",
@@ -39,9 +43,5 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 			"loareturn",
 			"loaresources",
 		],
-	},
-	{
-		label: "Miscellaneous",
-		items: ["MoochingOffCMU", "shows"],
 	},
 ];
