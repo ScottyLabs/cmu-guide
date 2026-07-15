@@ -20,7 +20,13 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 	},
 	{
 		label: "Academic",
-		items: ["advanced-fyw", "mms", "information-systems-courses", "TransferMajors", "TransferToCS"],
+		items: [
+			"advanced-fyw",
+			"mms",
+			"information-systems-courses",
+			"TransferMajors",
+			"TransferToCS",
+		],
 	},
 	{
 		label: "Leaves of Absence",
@@ -36,6 +42,6 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 	},
 	{
 		label: "Miscellaneous",
-		items: ["MoochingOffCMU"],
+		items: ["MoochingOffCMU", "shows"],
 	},
 ];
