@@ -28,6 +28,24 @@ To contribute your changes to the repo:
 
 Your pull request will be reviewed, and if merged, it will be published to cmu.guide!
 
+## Creating a New Article
+
+1. In `src/pages`, create a file ending in `.md` (or use `.mdx` if your article uses Svelte components or LaTeX).
+2. In `src/navigation/config.ts`, add your file name as an item in its respective category.
+3. Now go to the file you just created. Copy this frontmatter to the top of your file and fill in the values:
+```yaml
+---
+title: [ADD YOUR TITLE HERE]
+description: [ADD YOUR DESCRIPTION]
+contributors:
+  - name: [ADD YOUR FIRST AND LAST NAME HERE]
+layout: ../layouts/Layout.astro
+---
+```
+You will change everything except for `layout`. If your article uses LaTeX, also add `latex: true`.
+
+4. Write your article under the frontmatter! When you are done, commit your changes and submit a pull request.
+
 ## Usage
 
 This project uses [Deno](https://deno.com/). All commands are run from the root of the project, from a terminal:
