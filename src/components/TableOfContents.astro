@@ -20,10 +20,10 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 	aria-label="On this page"
 	data-toc
 >
-	<div class="bg-white/0 dark:bg-transparent">
+	<div class="bg-transparent">
 		<div class="flex items-center gap-2 mb-3">
-			<HamburgerMenu class="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-			<p class="text-zinc-500 dark:text-zinc-400">On this page</p>
+			<HamburgerMenu class="w-4 h-4 text-ui-text-muted" />
+			<p class="text-ui-text-muted">On this page</p>
 		</div>
 
 		<ul class="pl-4">
@@ -34,7 +34,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 							href={`#${h.slug}`}
 							data-toc-link
 							data-slug={h.slug}
-							class={`block text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors border-l border-zinc-200 dark:border-zinc-700 -ml-4 py-1 ${h.depth === 3 ? "pl-8" : "pl-4"}`}
+							class={`block text-ui-text-muted hover:text-ui-text-primary transition-colors border-l border-ui-border -ml-4 py-1 ${h.depth === 3 ? "pl-8" : "pl-4"}`}
 						>
 							{h.text}
 						</a>
@@ -59,11 +59,9 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 			function setActiveLink(slug: string) {
 				links.forEach((link) => {
 					link.classList.remove(
-						"!text-zinc-900",
-						"dark:!text-zinc-100",
+						"!text-ui-text-primary",
 						"font-medium",
-						"!border-l-zinc-900",
-						"dark:!border-l-zinc-100",
+						"!border-l-ui-text-primary",
 					);
 				});
 
@@ -73,11 +71,9 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 				if (tocLink) {
 					tocLink.classList.add(
-						"!text-zinc-900",
-						"dark:!text-zinc-100",
+						"!text-ui-text-primary",
 						"font-medium",
-						"!border-l-zinc-900",
-						"dark:!border-l-zinc-100",
+						"!border-l-ui-text-primary",
 					);
 				}
 			}
@@ -148,7 +144,7 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 				a.setAttribute("data-dorm-link", "");
 				a.textContent = dorm.name;
 				a.className =
-					"block text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors border-l border-zinc-200 dark:border-zinc-700 -ml-4 py-1 pl-8";
+					"block text-ui-text-muted hover:text-ui-text-primary transition-colors border-l border-ui-border -ml-4 py-1 pl-8";
 				li.appendChild(a);
 				toc.appendChild(li);
 			});
@@ -167,11 +163,9 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 					links.forEach((link) => {
 						if (link.hasAttribute("data-dorm-link")) {
 							link.classList.remove(
-								"!text-zinc-900",
-								"dark:!text-zinc-100",
+								"!text-ui-text-primary",
 								"font-medium",
-								"!border-l-zinc-900",
-								"dark:!border-l-zinc-100",
+								"!border-l-ui-text-primary",
 							);
 						}
 					});
@@ -200,11 +194,9 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 							);
 							if (tocLink) {
 								tocLink.classList.add(
-									"!text-zinc-900",
-									"dark:!text-zinc-100",
+									"!text-ui-text-primary",
 									"font-medium",
-									"!border-l-zinc-900",
-									"dark:!border-l-zinc-100",
+									"!border-l-ui-text-primary",
 								);
 							}
 						}

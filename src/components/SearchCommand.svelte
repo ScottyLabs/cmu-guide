@@ -48,13 +48,13 @@
 
 <Dialog.Root bind:open={dialogOpen}>
 	<Dialog.Trigger
-		class="mr-2 md:mr-0 p-2 md:p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 md:bg-zinc-100 md:hover:bg-zinc-200 md:dark:bg-zinc-800 md:dark:hover:bg-zinc-700 transition-all inline-flex items-center md:min-w-80 justify-between"
+		class="mr-2 md:mr-0 p-2 md:p-3 rounded-lg hover:bg-ui-control-hover md:bg-ui-surface-selected md:hover:bg-ui-surface-selected-hover transition-all inline-flex items-center md:min-w-80 justify-between"
 	>
 		<div class="flex flex-row gap-2 items-center">
 			<MagnifyingGlass
-				class="size-6 text-black dark:text-white md:text-zinc-400 md:dark:text-zinc-400"
+				class="size-6 text-ui-icon md:text-ui-text-faint"
 			/>
-			<span class="hidden md:inline text-sm text-zinc-400">
+			<span class="hidden md:inline text-sm text-ui-text-faint">
 				Search the guide...
 			</span>
 		</div>
@@ -67,7 +67,7 @@
 
 	<Dialog.Portal>
 		<Dialog.Overlay
-			class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+			class="fixed inset-0 z-50 bg-ui-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
 		/>
 		<Dialog.Content
 			class="fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] md:max-w-[640px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]"
@@ -80,16 +80,16 @@
 			<Command.Root
 				loop={true}
 				shouldFilter={false}
-				class="flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xl"
+				class="flex h-full w-full flex-col overflow-hidden rounded-xl border border-ui-border bg-ui-surface shadow-2xl"
 			>
 				<div
-					class="flex items-center border-b border-zinc-200 dark:border-zinc-700 px-4"
+					class="flex items-center border-b border-ui-border px-4"
 				>
 					<MagnifyingGlass
-						class="w-5 h-5 text-zinc-400 dark:text-zinc-500"
+						class="w-5 h-5 text-ui-text-disabled"
 					/>
 					<Command.Input
-						class="flex h-12 w-full bg-transparent py-3 px-3 text-sm outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 disabled:cursor-not-allowed disabled:opacity-50 dark:text-white"
+						class="flex h-12 w-full bg-transparent py-3 px-3 text-sm text-ui-icon outline-none placeholder:text-ui-text-muted disabled:cursor-not-allowed disabled:opacity-50"
 						placeholder="Search the guide..."
 						value={searchQuery}
 						oninput={(e) => handleSearch(e.currentTarget.value)}
@@ -102,26 +102,26 @@
 				>
 					{#if searchQuery.length === 0}
 						<div
-							class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
+							class="py-12 text-center text-sm text-ui-text-muted"
 						>
 							<MagnifyingGlass
-								class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
+								class="w-10 h-10 mx-auto mb-3 text-ui-text-empty-icon"
 							/>
 							<p>Start typing to search...</p>
 						</div>
 					{:else if searchResults.length === 0}
 						<Command.Empty
-							class="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400"
+							class="py-12 text-center text-sm text-ui-text-muted"
 						>
 							<FileText
-								class="w-10 h-10 mx-auto mb-3 text-zinc-300 dark:text-zinc-600"
+								class="w-10 h-10 mx-auto mb-3 text-ui-text-empty-icon"
 							/>
 							<p>No results found for "{searchQuery}"</p>
 						</Command.Empty>
 					{:else}
 						<Command.Group>
 							<Command.GroupHeading
-								class="px-2 py-2 text-xs font-semibold text-zinc-500 dark:text-zinc-400"
+								class="px-2 py-2 text-xs font-semibold text-ui-text-muted"
 							>
 								Results
 							</Command.GroupHeading>
@@ -129,22 +129,22 @@
 								{#each searchResults as result}
 									<Command.Item
 										value={result.url}
-										class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-zinc-100 dark:hover:bg-zinc-700 data-selected:bg-zinc-100 dark:data-selected:bg-zinc-700 transition-colors"
+										class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-ui-surface-selected data-selected:bg-ui-surface-selected transition-colors"
 										onclick={() =>
 											handleResultClick(result.url)}
 									>
 										<File
-											class="w-4 h-4 mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0"
+											class="w-4 h-4 mt-0.5 text-ui-text-disabled shrink-0"
 										/>
 										<div class="flex-1 min-w-0">
 											<div
-												class="font-medium text-sm text-zinc-900 dark:text-zinc-100 truncate"
+												class="font-medium text-sm text-ui-text-primary truncate"
 											>
 												{result.meta.title ||
 													"Untitled"}
 											</div>
 											<div
-												class="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-1"
+												class="text-xs text-ui-text-secondary line-clamp-2 mt-1"
 											>
 												{@html result.excerpt}
 											</div>
@@ -157,7 +157,7 @@
 				</Command.List>
 
 				<div
-					class="border-t border-zinc-200 dark:border-zinc-700 px-4 py-2 text-xs text-zinc-500 dark:text-zinc-400"
+					class="border-t border-ui-border px-4 py-2 text-xs text-ui-text-muted"
 				>
 					<div class="flex items-center justify-between">
 						<span>

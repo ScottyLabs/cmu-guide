@@ -77,7 +77,7 @@
 	.col {
 		min-width: 0;
 		padding: 8px;
-		border-right: 1px solid #e4e4e7;
+		border-right: 1px solid var(--ui-border);
 	}
 
 	.col ul,

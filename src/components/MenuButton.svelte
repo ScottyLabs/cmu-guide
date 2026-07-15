@@ -10,12 +10,12 @@
 
 <button
 	onclick={toggle}
-	class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 transition-colors"
+	class="md:hidden p-2 rounded-lg hover:bg-ui-control-hover transition-colors"
 	aria-label="Toggle menu"
 >
 	{#if isOpen}
-		<Cross2 class="size-6 dark:invert" />
+		<Cross2 class="size-6 text-ui-icon" />
 	{:else}
-		<HamburgerMenu class="size-6 dark:invert" />
+		<HamburgerMenu class="size-6 text-ui-icon" />
 	{/if}
 </button>

@@ -2,7 +2,7 @@
 	import type { Snippet } from "svelte";
 
 	const BASE_CLASSES =
-		"p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-600 transition-colors";
+		"p-2 rounded-lg hover:bg-ui-control-hover transition-colors";
 
 	let {
 		class: className = "",

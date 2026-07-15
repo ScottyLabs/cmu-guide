@@ -2,6 +2,78 @@
 @import "katex/dist/katex.min.css";
 @plugin "@tailwindcss/typography";
 
+:root {
+	--ui-canvas: #ffffff;
+	--ui-surface: #ffffff;
+	--ui-surface-subtle: #fafafa;
+	--ui-surface-selected: #f4f4f5;
+	--ui-surface-selected-hover: #e4e4e7;
+	--ui-control-hover: #f3f4f6;
+	--ui-text-primary: #18181b;
+	--ui-text-secondary: #52525b;
+	--ui-text-muted: #71717a;
+	--ui-text-disabled: #a1a1aa;
+	--ui-text-faint: #a1a1aa;
+	--ui-text-empty-icon: #d4d4d8;
+	--ui-icon: #000000;
+	--ui-border: #e4e4e7;
+	--ui-border-strong: #d4d4d8;
+	--ui-control-border: #e4e4e7;
+	--ui-link: #2563eb;
+	--ui-decoration: #d4d4d8;
+	--ui-key-surface: #ffffff;
+	--ui-overlay: rgb(0 0 0 / 0.5);
+	--ui-dialog-overlay: rgb(0 0 0 / 0.8);
+}
+
+.dark {
+	--ui-canvas: #18181b;
+	--ui-surface: #27272a;
+	--ui-surface-subtle: #27272a;
+	--ui-surface-selected: #27272a;
+	--ui-surface-selected-hover: #3f3f46;
+	--ui-control-hover: #52525b;
+	--ui-text-primary: #f4f4f5;
+	--ui-text-secondary: #d4d4d8;
+	--ui-text-muted: #a1a1aa;
+	--ui-text-disabled: #71717a;
+	--ui-text-faint: #a1a1aa;
+	--ui-text-empty-icon: #52525b;
+	--ui-icon: #ffffff;
+	--ui-border: #3f3f46;
+	--ui-border-strong: #52525b;
+	--ui-control-border: #71717a;
+	--ui-link: #60a5fa;
+	--ui-decoration: #52525b;
+	--ui-key-surface: #52525b;
+	--ui-overlay: rgb(0 0 0 / 0.5);
+	--ui-dialog-overlay: rgb(0 0 0 / 0.8);
+}
+
+@theme inline {
+	--color-ui-canvas: var(--ui-canvas);
+	--color-ui-surface: var(--ui-surface);
+	--color-ui-surface-subtle: var(--ui-surface-subtle);
+	--color-ui-surface-selected: var(--ui-surface-selected);
+	--color-ui-surface-selected-hover: var(--ui-surface-selected-hover);
+	--color-ui-control-hover: var(--ui-control-hover);
+	--color-ui-text-primary: var(--ui-text-primary);
+	--color-ui-text-secondary: var(--ui-text-secondary);
+	--color-ui-text-muted: var(--ui-text-muted);
+	--color-ui-text-disabled: var(--ui-text-disabled);
+	--color-ui-text-faint: var(--ui-text-faint);
+	--color-ui-text-empty-icon: var(--ui-text-empty-icon);
+	--color-ui-icon: var(--ui-icon);
+	--color-ui-border: var(--ui-border);
+	--color-ui-border-strong: var(--ui-border-strong);
+	--color-ui-control-border: var(--ui-control-border);
+	--color-ui-link: var(--ui-link);
+	--color-ui-decoration: var(--ui-decoration);
+	--color-ui-key-surface: var(--ui-key-surface);
+	--color-ui-overlay: var(--ui-overlay);
+	--color-ui-dialog-overlay: var(--ui-dialog-overlay);
+}
+
 @font-face {
 	font-family: "Inter";
 	src:
