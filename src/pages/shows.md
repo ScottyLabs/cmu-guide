@@ -10,11 +10,12 @@ layout: ../layouts/Layout.astro
 CMU Drama has two types of shows, **Mainstages** (also called Subscription Series) and **Studio Series**. Mainstages are our major productions, such as the yearly musical (effective 26-27 season, SOD will be doing two musicals a year!), and the shows that take place in the Choskey, our major venue. Studio Series are the shows that take place in the Rauh, a small black box theatre in Purnell. You can see what shows we are doing each year, along with the type of show they are, on [our website](https://drama.cmu.edu/performances/).
 
 ### How to see a Studio Series
-Studio series run on a drop system online. The day before the performance at noon, about 90 tickets will drop, however this is a forever fluctuating number depending on how we set up the venue and how many cast reserves there are. These are known to sell out within minutes, but I have been able to get almost every single show!
+Studio Series runs on an online ticket-drop system. The day before the performance at noon, about 90 tickets will drop; however, this is a fluctuating number depending on how we set up the venue and how many cast reserves there are. These are known to sell out within minutes, but I have been able to get almost every single show!
+
 Here is the timeline I follow:
-11:55 am: Log into the website. Keep in mind that the tickets **do not** drop on the normal CMU Drama website. You must go to our [university ticket website](https://cmudrama.universitytickets.com/). Use your Andrew ID to log in. After you log in, navigate to the show performance.
-11:59 am: Start refreshing the website till the clock hits Noon.
-12:00 pm: Select how many tickets you want in the side bar, it should have a drop down. Click confirm. Checkout as quickly as possible, just because you selected your tickets **does not** mean they’re being held.
+- 11:55 am: Log into the website. Keep in mind that the tickets **do not** drop on the normal CMU Drama website. You must go to our [university ticket website](https://cmudrama.universitytickets.com/). Use your Andrew ID to log in. After you log in, navigate to the show performance.
+- 11:59 am: Start refreshing the website until the clock hits noon.
+- 12:00 pm: Select how many tickets you want in the sidebar; it should have a dropdown. Click confirm. Check out as quickly as possible. Just because you selected your tickets **does not** mean they’re being held.
 
 ### How to see a Mainstage
 Mainstage tickets become available at the beginning of the school year, but do not typically sell out very fast, with the exception of mainstage shows performing in the Rauh. Unfortunately, our policies have changed recently and Non-SoD students no longer get free tickets. SoD students are not likely to give them out freely either, as we only get two per show. You can either purchase these for **$11** at the box office in Purnell, or online at our [university ticket website](https://cmudrama.universitytickets.com/).
@@ -25,7 +26,7 @@ Enjoy new student-made work that is some of the best, and worst, theatre you wil
 Each show is individually sold, and all performances are **free**!
 
 ### The Waitlist
-For all free performances, including Studio Series and Playground, CMU Drama runs a waitlist that begins 30 minutes before the house opens, typically at 7pm. You’ll go to the box office and ask to be placed on the waiting list. If anyone doesn't show up, and we have spare seats, the Box Office will start pulling names in order of sign ups, so it’s first come first serve. You are **not** guaranteed to get into the show whatsoever, and your party may be split. Seating in the Rauh is open, so you’ll still be able to pick your seat from what's available. **Waitlist is not available for shows in the Chosky.**
+For all free performances, including Studio Series and Playground, CMU Drama runs a waitlist that begins 30 minutes before the house opens, typically at 7pm. You’ll go to the box office and ask to be placed on the waitlist. If anyone doesn't show up and we have spare seats, the Box Office will start pulling names in order of sign-ups, so it’s first-come, first-served. You are **not** guaranteed to get into the show whatsoever, and your party may be split. Seating in the Rauh is open, so you’ll still be able to pick your seat from what's available. **Waitlist is not available for shows in the Choskey.**
 
 ## CFA Performances
 (UNFINISHED)
