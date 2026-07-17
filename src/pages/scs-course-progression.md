@@ -9,7 +9,7 @@ layout: ../layouts/Layout.astro
 
 NOTE: The following info is (mostly) a condensed version of various documents Veronica Peet (your first-year advisor) sends out about course selection. This is not intended to be a substitute for those documents - you should read Veronica’s course selection documents thoroughly as well.
 
-This course progression also assumes you are going for the B.S Computer Science. If you are Comp Bio, AI, etc, there will be some differences in the core classes you take. In particular, Comp Bio majors tend to substitute 15-150: Principles of Functional Programming for 02-251: Great Ideas in Comp Bio in freshman spring.
+This course progression also assumes you are going for the B.S in Computer Science. If you are Comp Bio, AI, etc, there will be some differences in the core classes you take. In particular, Comp Bio majors tend to substitute 15-150: Principles of Functional Programming for 02-251: Great Ideas in Comp Bio in freshman spring.
 
 ## SCS Transfer Credit
 
