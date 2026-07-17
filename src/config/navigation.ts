@@ -23,6 +23,7 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 		items: [
 			"advanced-fyw",
 			"mms",
+			"scs-course-progression",
 			"information-systems-courses",
 			"TransferMajors",
 			"TransferToCS",
