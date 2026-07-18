@@ -21,6 +21,7 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 	{
 		label: "Academic",
 		items: [
+			"course-registration",
 			"advanced-fyw",
 			"mms",
 			"scs-course-progression",
