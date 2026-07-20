@@ -10,12 +10,6 @@ layout: ../layouts/Layout.astro
 import DormGrid from "../components/DormGrid.svelte";
 import { dorms } from "../data/dorms";
 
-<script is:inline set:html={`
-    window.__dorms__ = ${JSON.stringify(dorms).replace(/</g, '\\u003c')};
-    window.dispatchEvent(new CustomEvent("dorms-ready"));
-`} />
-
-
 ## Preface
 The following data has been produced and maintained by current students. This rendition is based off of this
 [spreadsheet](https://docs.google.com/spreadsheets/d/1FkCaGv6nZAVP808w4iK7Awe5jEgMs-mg4xdmH-6jsr8/edit?usp=sharing).
