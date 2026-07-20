@@ -46,6 +46,11 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 </aside>
 
 <script>
+	const activeLinkClasses = [
+		"!text-ui-text-primary",
+		"font-medium",
+		"!border-l-ui-text-primary",
+	];
 	let cleanupTOC: (() => void) | null = null;
 
 	function initTOC() {
@@ -53,196 +58,174 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 		const tocElements = document.querySelectorAll("[data-toc]");
 		const headings = Array.from(document.querySelectorAll("h2[id], h3[id]"));
-		if (!tocElements.length || !headings.length) return;
+		const dormAnchors = Array.from(
+			document.querySelectorAll<HTMLElement>("[data-dorm-anchor]"),
+		);
+		const dorms = dormAnchors.length ? (window as any).__dorms__ : undefined;
+		const cleanups: Array<() => void> = [];
 
-		let animationFrame: number | null = null;
+		tocElements.forEach((tocElement) => {
+			const tocList = tocElement.querySelector("ul");
+			if (!tocList) return;
 
-		function setActiveLink(tocElement: Element, slug?: string) {
-			const links = tocElement.querySelectorAll(
-				"[data-toc-link]:not([data-dorm-link])",
+			tocList.querySelectorAll("[data-dorm-link]").forEach((link) =>
+				link.closest("li")?.remove(),
 			);
 
-			links.forEach((link) => {
-				link.classList.remove(
-					"!text-ui-text-primary",
-					"font-medium",
-					"!border-l-ui-text-primary",
+			if (dorms?.length) {
+				dorms.forEach((dorm: any) => {
+					const id = dorm.name.replace(/\s+/g, "-");
+					const li = document.createElement("li");
+					const link = document.createElement("a");
+					link.href = `#${id}`;
+					link.setAttribute("data-toc-link", "");
+					link.setAttribute("data-slug", id);
+					link.setAttribute("data-dorm-link", "");
+					link.textContent = dorm.name;
+					link.className =
+						"block text-ui-text-muted hover:text-ui-text-primary transition-colors border-l border-ui-border -ml-4 py-1 pl-8";
+					li.appendChild(link);
+					tocList.appendChild(li);
+				});
+			}
+
+			const links = Array.from(
+				tocElement.querySelectorAll<HTMLElement>("[data-toc-link]"),
+			);
+			const staticLinks = links.filter(
+				(link) => !link.hasAttribute("data-dorm-link"),
+			);
+			if (!staticLinks.length) return;
+
+			let userClicked = false;
+			let clickTimeout: ReturnType<typeof setTimeout> | null = null;
+			const visibleHeadingIds = new Set<string>();
+			const visibleDormIds = new Set<string>();
+			let activeStaticSlug = staticLinks[0].getAttribute("data-slug")!;
+
+			function renderActiveLink() {
+				links.forEach((link) => {
+					link.classList.remove(...activeLinkClasses);
+				});
+
+				const activeDormSlug = dormAnchors.reduce<string | undefined>(
+					(lastVisibleSlug, dormAnchor) =>
+						visibleDormIds.has(dormAnchor.id)
+							? dormAnchor.id
+							: lastVisibleSlug,
+					undefined,
 				);
-			});
+				const activeSlug = activeDormSlug ?? activeStaticSlug;
 
-			const tocLink = slug
-				? Array.from(links).find(
-					(link) => link.getAttribute("data-slug") === slug,
-				)
-				: undefined;
+				const tocLink = tocElement.querySelector(
+					`[data-toc-link][data-slug="${activeSlug}"]`,
+				);
+				tocLink?.classList.add(...activeLinkClasses);
+			}
 
-			tocLink?.classList.add(
-				"!text-ui-text-primary",
-				"font-medium",
-				"!border-l-ui-text-primary",
-			);
-		}
-
-		function scheduleActiveLinkUpdate() {
-			if (animationFrame !== null) return;
-
-			animationFrame = requestAnimationFrame(() => {
-				animationFrame = null;
-				updateActiveLinks();
-			});
-		}
-
-		function updateActiveLinks() {
-			const readingLine = window.matchMedia("(min-width: 1024px)").matches
-				? 112
-				: 80;
-			const atPageEnd =
-				window.innerHeight + window.scrollY >=
-				document.documentElement.scrollHeight - 1;
-			const hasVisibleDormAnchor = Array.from(
-				document.querySelectorAll("[data-dorm-anchor]"),
-			).some((anchor) => {
-				const { top, bottom } = anchor.getBoundingClientRect();
-				return bottom > 0 && top < window.innerHeight;
-			});
-			let activeHeading = atPageEnd ? headings.at(-1)! : headings[0];
-
-			if (!atPageEnd) {
-				for (const heading of headings) {
-					if (heading.getBoundingClientRect().top > readingLine) break;
-					activeHeading = heading;
+			function updateActiveStaticLink() {
+				const lastVisibleId = headings.reduce<string | undefined>(
+					(lastVisibleSlug, heading) =>
+						visibleHeadingIds.has(heading.id)
+							? heading.id
+							: lastVisibleSlug,
+					undefined,
+				);
+				if (lastVisibleId) {
+					activeStaticSlug = lastVisibleId;
 				}
 			}
 
-			const activeSlug = activeHeading.id;
+			renderActiveLink();
 
-			tocElements.forEach((tocElement) => {
-				setActiveLink(tocElement, hasVisibleDormAnchor ? undefined : activeSlug);
+			// Handle clicks on TOC links
+			staticLinks.forEach((link) => {
+				const handleClick = () => {
+					const slug = link.getAttribute("data-slug");
+					if (slug) {
+						userClicked = true;
+						activeStaticSlug = slug;
+						renderActiveLink();
+
+						if (clickTimeout) {
+							clearTimeout(clickTimeout);
+						}
+
+						// Re-enable intersection observer after scroll settles
+						clickTimeout = setTimeout(() => {
+							userClicked = false;
+							updateActiveStaticLink();
+							renderActiveLink();
+						}, 1000);
+					}
+				};
+
+				link.addEventListener("click", handleClick);
+				cleanups.push(() => link.removeEventListener("click", handleClick));
 			});
-		}
 
-		tocElements.forEach((tocElement) => {
-			const links = tocElement.querySelectorAll(
-				"[data-toc-link]:not([data-dorm-link])",
+			const headingObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						if (!id) return;
+
+						if (entry.isIntersecting) {
+							visibleHeadingIds.add(id);
+						} else {
+							visibleHeadingIds.delete(id);
+						}
+					});
+
+					if (!userClicked) {
+						updateActiveStaticLink();
+						renderActiveLink();
+					}
+				},
+				{
+					rootMargin: "-100px 0px -66%",
+					threshold: 1,
+				},
 			);
 
-			links.forEach((link) => {
-				link.addEventListener("click", () => {
-					const slug = link.getAttribute("data-slug");
-					if (slug) setActiveLink(tocElement, slug);
-				});
+			headings.forEach((heading) => headingObserver.observe(heading));
+			cleanups.push(() => headingObserver.disconnect());
+			cleanups.push(() => {
+				if (clickTimeout) clearTimeout(clickTimeout);
 			});
+
+			const dormObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						if (!id) return;
+
+						if (entry.isIntersecting) {
+							visibleDormIds.add(id);
+						} else {
+							visibleDormIds.delete(id);
+						}
+					});
+
+					if (!userClicked) renderActiveLink();
+				},
+				{
+					rootMargin: "-100px 0px -66%",
+					threshold: 0,
+				},
+			);
+
+			dormAnchors.forEach((dormAnchor) => dormObserver.observe(dormAnchor));
+			cleanups.push(() => dormObserver.disconnect());
 		});
 
-		window.addEventListener("scroll", scheduleActiveLinkUpdate, { passive: true });
-		window.addEventListener("resize", scheduleActiveLinkUpdate);
-		updateActiveLinks();
-
 		cleanupTOC = () => {
-			if (animationFrame !== null) cancelAnimationFrame(animationFrame);
-			window.removeEventListener("scroll", scheduleActiveLinkUpdate);
-			window.removeEventListener("resize", scheduleActiveLinkUpdate);
+			cleanups.forEach((cleanup) => cleanup());
 		};
 	}
 
-	// Re-initialize after Astro page transitions
-	function initDormTOC() {
-		const dorms = (window as any).__dorms__;
-		if (!dorms?.length) return;
-
-		const allTocs = document.querySelectorAll("[data-toc] ul");
-
-		allTocs.forEach((toc: Element) => {
-			toc.querySelectorAll("[data-dorm-link]").forEach((el) =>
-				el.remove(),
-			);
-
-			dorms.forEach((dorm: any) => {
-				const id = dorm.name.replace(/\s+/g, "-");
-				const li = document.createElement("li");
-				const a = document.createElement("a");
-				a.href = `#${id}`;
-				a.setAttribute("data-toc-link", "");
-				a.setAttribute("data-slug", id);
-				a.setAttribute("data-dorm-link", "");
-				a.textContent = dorm.name;
-				a.className =
-					"block text-ui-text-muted hover:text-ui-text-primary transition-colors border-l border-ui-border -ml-4 py-1 pl-8";
-				li.appendChild(a);
-				toc.appendChild(li);
-			});
-		});
-
-		requestAnimationFrame(() => {
-			const tocElements = document.querySelectorAll("[data-toc]");
-			tocElements.forEach((tocElement) => {
-				const links = tocElement.querySelectorAll("[data-toc-link]");
-				if (!links.length) return;
-
-				// Track which dorm anchors are currently visible
-				const visibleIds = new Set<string>();
-
-				function clearDormLinks() {
-					links.forEach((link) => {
-						if (link.hasAttribute("data-dorm-link")) {
-							link.classList.remove(
-								"!text-ui-text-primary",
-								"font-medium",
-								"!border-l-ui-text-primary",
-							);
-						}
-					});
-				}
-
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							const id = entry.target.getAttribute("id");
-							if (!id) return;
-
-							if (entry.isIntersecting) {
-								visibleIds.add(id);
-							} else {
-								visibleIds.delete(id);
-							}
-						});
-
-						// Clear all dorm links first, then highlight the last visible one
-						clearDormLinks();
-
-						if (visibleIds.size > 0) {
-							const lastVisibleId = [...visibleIds].at(-1);
-							const tocLink = tocElement.querySelector(
-								`[data-toc-link][data-slug="${lastVisibleId}"]`,
-							);
-							if (tocLink) {
-								tocLink.classList.add(
-									"!text-ui-text-primary",
-									"font-medium",
-									"!border-l-ui-text-primary",
-								);
-							}
-						}
-					},
-					{
-						rootMargin: "-100px 0px -66%",
-						threshold: 0,
-					},
-				);
-
-				document
-					.querySelectorAll("[data-dorm-anchor]")
-					.forEach((el) => {
-						observer.observe(el);
-					});
-			});
-		});
-	}
-
 	initTOC();
-	initDormTOC();
 
-	window.addEventListener("dorms-ready", initDormTOC);
+	window.addEventListener("dorms-ready", initTOC);
 	document.addEventListener("astro:after-swap", initTOC);
-	document.addEventListener("astro:after-swap", initDormTOC);
 </script>
