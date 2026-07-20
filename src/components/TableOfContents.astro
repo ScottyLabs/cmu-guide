@@ -46,100 +46,103 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 </aside>
 
 <script>
+	let cleanupTOC: (() => void) | null = null;
+
 	function initTOC() {
+		cleanupTOC?.();
+
 		const tocElements = document.querySelectorAll("[data-toc]");
+		const headings = Array.from(document.querySelectorAll("h2[id], h3[id]"));
+		if (!tocElements.length || !headings.length) return;
+
+		let animationFrame: number | null = null;
+
+		function setActiveLink(tocElement: Element, slug?: string) {
+			const links = tocElement.querySelectorAll(
+				"[data-toc-link]:not([data-dorm-link])",
+			);
+
+			links.forEach((link) => {
+				link.classList.remove(
+					"!text-ui-text-primary",
+					"font-medium",
+					"!border-l-ui-text-primary",
+				);
+			});
+
+			const tocLink = slug
+				? Array.from(links).find(
+					(link) => link.getAttribute("data-slug") === slug,
+				)
+				: undefined;
+
+			tocLink?.classList.add(
+				"!text-ui-text-primary",
+				"font-medium",
+				"!border-l-ui-text-primary",
+			);
+		}
+
+		function scheduleActiveLinkUpdate() {
+			if (animationFrame !== null) return;
+
+			animationFrame = requestAnimationFrame(() => {
+				animationFrame = null;
+				updateActiveLinks();
+			});
+		}
+
+		function updateActiveLinks() {
+			const readingLine = window.matchMedia("(min-width: 1024px)").matches
+				? 112
+				: 80;
+			const atPageEnd =
+				window.innerHeight + window.scrollY >=
+				document.documentElement.scrollHeight - 1;
+			const hasVisibleDormAnchor = Array.from(
+				document.querySelectorAll("[data-dorm-anchor]"),
+			).some((anchor) => {
+				const { top, bottom } = anchor.getBoundingClientRect();
+				return bottom > 0 && top < window.innerHeight;
+			});
+			let activeHeading = atPageEnd ? headings.at(-1)! : headings[0];
+
+			if (!atPageEnd) {
+				for (const heading of headings) {
+					if (heading.getBoundingClientRect().top > readingLine) break;
+					activeHeading = heading;
+				}
+			}
+
+			const activeSlug = activeHeading.id;
+
+			tocElements.forEach((tocElement) => {
+				setActiveLink(tocElement, hasVisibleDormAnchor ? undefined : activeSlug);
+			});
+		}
 
 		tocElements.forEach((tocElement) => {
 			const links = tocElement.querySelectorAll(
 				"[data-toc-link]:not([data-dorm-link])",
 			);
-			if (!links.length) return;
 
-			let userClicked = false;
-			let clickTimeout: ReturnType<typeof setTimeout> | null = null;
-			const visibleHeadingIds = new Set<string>();
-
-			function clearActiveLinks() {
-				links.forEach((link) => {
-					link.classList.remove(
-						"!text-ui-text-primary",
-						"font-medium",
-						"!border-l-ui-text-primary",
-					);
-				});
-			}
-
-			function setActiveLink(slug: string) {
-				clearActiveLinks();
-
-				const tocLink = tocElement.querySelector(
-					`[data-toc-link][data-slug="${slug}"]`,
-				);
-
-				if (tocLink) {
-					tocLink.classList.add(
-						"!text-ui-text-primary",
-						"font-medium",
-						"!border-l-ui-text-primary",
-					);
-				}
-			}
-
-			function reconcileActiveLink() {
-				const lastVisibleId = [...visibleHeadingIds].at(-1);
-				if (lastVisibleId) {
-					setActiveLink(lastVisibleId);
-				} else {
-					clearActiveLinks();
-				}
-			}
-
-			// Handle clicks on TOC links
 			links.forEach((link) => {
 				link.addEventListener("click", () => {
 					const slug = link.getAttribute("data-slug");
-					if (slug) {
-						userClicked = true;
-						setActiveLink(slug);
-
-						if (clickTimeout) {
-							clearTimeout(clickTimeout);
-						}
-
-						// Re-enable intersection observer after scroll settles
-						clickTimeout = setTimeout(() => {
-							userClicked = false;
-							reconcileActiveLink();
-						}, 1000);
-					}
+					if (slug) setActiveLink(tocElement, slug);
 				});
 			});
-
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						const id = entry.target.getAttribute("id");
-						if (!id) return;
-
-						if (entry.isIntersecting) {
-							visibleHeadingIds.add(id);
-						} else {
-							visibleHeadingIds.delete(id);
-						}
-					});
-
-					if (!userClicked) reconcileActiveLink();
-				},
-				{
-					rootMargin: "-100px 0px -66%",
-					threshold: 1,
-				},
-			);
-
-			// Observe all headings
-			const headings = document.querySelectorAll("h2[id], h3[id]");
-			headings.forEach((heading) => observer.observe(heading));
 		});
+
+		window.addEventListener("scroll", scheduleActiveLinkUpdate, { passive: true });
+		window.addEventListener("resize", scheduleActiveLinkUpdate);
+		updateActiveLinks();
+
+		cleanupTOC = () => {
+			if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+			window.removeEventListener("scroll", scheduleActiveLinkUpdate);
+			window.removeEventListener("resize", scheduleActiveLinkUpdate);
+		};
 	}
 
 	// Re-initialize after Astro page transitions
