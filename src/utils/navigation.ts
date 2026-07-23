@@ -5,6 +5,7 @@ type PageFrontmatter = {
 	description?: string;
 	hidePrevNext?: boolean;
 	nav?: boolean;
+	subarticleOrder?: number;
 };
 
 type PageModule = {
@@ -19,9 +20,13 @@ export type NavItem = {
 	sectionLabel: string;
 };
 
+export type NavParentItem = NavItem & {
+	subarticles: NavItem[];
+};
+
 export type NavSection = {
 	label: string;
-	items: NavItem[];
+	items: NavParentItem[];
 };
 
 export type NavigationModel = {
@@ -29,7 +34,7 @@ export type NavigationModel = {
 	bySlug: Map<string, NavItem>;
 };
 
-const pages = import.meta.glob<PageModule>("../pages/*.{md,mdx}", {
+const pages = import.meta.glob<PageModule>("../pages/**/*.{md,mdx}", {
 	eager: true,
 });
 
@@ -80,7 +85,7 @@ function buildNavigation(): NavigationModel {
 	}
 
 	const seenSectionLabels = new Set<string>();
-	const seenConfigSlugs = new Map<string, string>();
+	const seenNavigationSlugs = new Map<string, string>();
 	const sections: NavSection[] = [];
 	const bySlug = new Map<string, NavItem>();
 
@@ -100,13 +105,13 @@ function buildNavigation(): NavigationModel {
 
 		const items = section.items.map((configSlug) => {
 			const slug = normalizeSlug(configSlug);
-			const previousSection = seenConfigSlugs.get(slug);
+			const previousSection = seenNavigationSlugs.get(slug);
 			if (previousSection) {
 				throw new Error(
 					`Duplicate navigation slug "${slug}" listed in "${previousSection}" and "${section.label}".`,
 				);
 			}
-			seenConfigSlugs.set(slug, section.label);
+			seenNavigationSlugs.set(slug, section.label);
 
 			const page = pageBySlug.get(slug);
 			if (!page) {
@@ -122,12 +127,65 @@ function buildNavigation(): NavigationModel {
 				);
 			}
 
-			const item: NavItem = {
+			const subarticleOrders = new Map<number, string>();
+			const subarticles = [...pageBySlug.entries()]
+				.filter(([childSlug, childPage]) => {
+					const relativeSlug = childSlug.slice(slug.length + 1);
+					return (
+						childSlug.startsWith(`${slug}/`) &&
+						!relativeSlug.includes("/") &&
+						isVisiblePage(childPage.frontmatter)
+					);
+				})
+				.map(([childSlug, childPage]) => {
+					const childFrontmatter = childPage.frontmatter || {};
+					const order = childFrontmatter.subarticleOrder;
+					if (
+						typeof order !== "number" ||
+						!Number.isInteger(order) ||
+						order <= 0
+					) {
+						throw new Error(
+							`Subarticle "${childSlug}" under "${slug}" must set subarticleOrder to a positive integer.`,
+						);
+					}
+
+					const existingSlug = subarticleOrders.get(order);
+					if (existingSlug) {
+						throw new Error(
+							`Duplicate subarticleOrder ${order} under "${slug}" for "${existingSlug}" and "${childSlug}".`,
+						);
+					}
+					subarticleOrders.set(order, childSlug);
+
+					const previousSection = seenNavigationSlugs.get(childSlug);
+					if (previousSection) {
+						throw new Error(
+							`Duplicate navigation slug "${childSlug}" listed in "${previousSection}" and as a subarticle of "${slug}".`,
+						);
+					}
+					seenNavigationSlugs.set(childSlug, section.label);
+
+					const child: NavItem = {
+						slug: childSlug,
+						title: childFrontmatter.title || childSlug,
+						description: childFrontmatter.description,
+						hidePrevNext: childFrontmatter.hidePrevNext,
+						sectionLabel: section.label,
+					};
+					bySlug.set(childSlug, child);
+					return { item: child, order };
+				})
+				.sort((a, b) => a.order - b.order)
+				.map(({ item }) => item);
+
+			const item: NavParentItem = {
 				slug,
 				title: frontmatter.title || slug,
 				description: frontmatter.description,
 				hidePrevNext: frontmatter.hidePrevNext,
 				sectionLabel: section.label,
+				subarticles,
 			};
 			bySlug.set(slug, item);
 			return item;
@@ -139,7 +197,8 @@ function buildNavigation(): NavigationModel {
 	const unlistedPages = [...pageBySlug.entries()]
 		.filter(
 			([slug, page]) =>
-				!seenConfigSlugs.has(slug) && isVisiblePage(page.frontmatter),
+				!seenNavigationSlugs.has(slug) &&
+				isVisiblePage(page.frontmatter),
 		)
 		.map(([slug]) => slug)
 		.sort();
@@ -147,7 +206,9 @@ function buildNavigation(): NavigationModel {
 	if (unlistedPages.length > 0) {
 		throw new Error(
 			[
-				`Visible pages missing from navigationConfig: ${unlistedPages.join(", ")}.`,
+				`Visible pages missing from navigationConfig: ${
+					unlistedPages.join(", ")
+				}.`,
 				"Add them to src/config/navigation.ts or mark them as hidden from navigation in frontmatter.",
 				"Use nav: false to hide a page from navigation.",
 			].join(" "),
