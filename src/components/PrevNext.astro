@@ -8,7 +8,9 @@ import { ArrowLeft, ArrowRight } from "svelte-radix";
 
 const navigation = getNavigation();
 const items = navigation.sections
-	.flatMap((section) => section.items)
+	.flatMap((section) =>
+		section.items.flatMap((item) => [item, ...item.subarticles]),
+	)
 	.filter((item) => !item.hidePrevNext);
 const currentSlug = slugFromPathname(Astro.url.pathname);
 const currentIndex = items.findIndex((item) => item.slug === currentSlug);
