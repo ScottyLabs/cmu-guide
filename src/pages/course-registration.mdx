@@ -5,32 +5,33 @@ contributors:
   - name: Max Wen
 layout: ../layouts/Layout.astro
 ---
+
+import ExpandableText from "../components/ExpandableText.astro";
+
 Every CMU student remembers the stress of their first course registration. It's fast-paced, and you rarely get a perfect schedule on your first try. To help you prepare, this article explains how the registration process works, how to build your first-semester plan, and how to navigate waitlists strategically.
 
 ## Using this guide
 In this article, we use examples that refer to course info pages. You can access any course's info page in **Student Information Online (SIO)** by adding a course to [your planned schedule](https://s3.andrew.cmu.edu/sio/#schedule-plan) and clicking on the Info ℹ️ icon of the course in the right sidebar. Try adding 21-241 to your planned schedule and opening its info page:
-<div><details>
-<summary><b>Example (21-241)</b></summary>
+<ExpandableText title="Example (21-241)">
 [Open the Plan Course Schedule page in SIO](https://s3.andrew.cmu.edu/sio/#schedule-plan). Type "21-241" in the top right box labeled "Add course to planned schedule", then hit Enter:
 ![Adding 21-241 to your planned schedule](../assets/add-course-to-plan.png)
 Click on the Info ℹ️ icon of 21-241's box in the right sidebar. You should see something similar to this:
 ![21-241's Info Page](../assets/21241-info.png)
 If you scroll down, you will see the course description, prerequisites, and reservations, among other things. We'll explain what these mean later in this article.
 ![21-241's Info Page](../assets/21241-info2.png)
-</details></div>
+</ExpandableText>
 
 ## Course basics
 ### Lectures and Sections
 Many large courses have a **lecture** taught by instructors and an associated **section** (also known as recitation, precept, or lab), which are smaller meeting times usually led by Teaching Assistants (TAs). Lectures are denoted by numbers, and sections are denoted by letters. In SIO, the section you select determines which lecture and additional meeting times you attend.
 
-<div><details>
-<summary><b>Example (21-241)</b></summary>
+<ExpandableText title="Example (21-241)">
 According to this image, if you register for 21-241 Section B, that means you will go to
 - Lecture 2 on Mondays, Wednesdays, and Fridays from 9:00 to 9:50 AM, <u>and</u>
 - Section B on Tuesdays and Thursdays from 12:00 to 12:50 PM.
 
 ![21-241's Info Page](../assets/21241-info.png)
-</details></div>
+</ExpandableText>
 
 Smaller courses usually have sections only - in which case, the process is the same: register for the course's section.
 
@@ -40,11 +41,10 @@ Unless you can afford a plane ride 3-5 times a week, do not register for section
 ### Minis
 Most courses run for the entire semester, but some courses, known as **minis**, run for half a semester. The number at the end of a section indicates which half it is in: in the Fall, there is Mini 1 and 2, and in the Spring, there is Mini 3 and 4.
 
-<div><details>
-<summary><b>Example (76-107)</b></summary>
+<ExpandableText title="Example (76-107)">
 76-107: Writing About Data is a mini course. Sections A1, B1, C1, D1, E1, F1, and G1 take place in the first half of the semester, while the other sections take place in the second half of the semester.
 ![76-107's Info Page](../assets/76107-info.png)
-</details></div>
+</ExpandableText>
 
 #### First-Year Writing Minis
 If you choose [Pathway 1 of the First-Year Writing requirement](https://www.cmu.edu/dietrich/english/academic-programs/writing-and-communication/fyw-course-options-and-topics.html#:~:text=Pathway%201%20%2D%20Two%20Mini%20Courses,-Choose), make sure that the section number of one of your minis ends in a 1 and that the other ends in a 2 when you register for the mini courses. This will ensure that you schedule one mini for the first half of the semester and the other for the second half.
@@ -54,12 +54,11 @@ For example, you might choose 76-106 B1 and 76-107 A2. You would <u>not</u> choo
 ### Locations
 All classroom locations are walkable within 10 minutes of each other except for **Mellon Institute (MI)**, which is about 15 minutes away from the University Center.
 
-<div><details>
-<summary><b>Example (76-101)</b></summary>
+<ExpandableText title="Example (76-101)">
 Below is an excerpt of 76-101's info page. The fifth column contains the locations of each section. Here, Section LL takes place in the Mellon Institute (MI), so be mindful of that!
 
 ![76-101's Info Page](../assets/76101-info.png)
-</details></div>
+</ExpandableText>
 
 ### Units
 The minimum number of units to achieve full-time status is 36 units, but the recommended course load is usually higher (around 40-50 units). Exceeding your max units, i.e. **overloading**, is not permitted in the first semester. You can find your maximum units by going to [Enrollment Status in SIO](https://s3.andrew.cmu.edu/sio/mpa/grades/enrollmentstatus).
@@ -124,15 +123,14 @@ You may also find it helpful to use the academic planning tool [Stellic](https:/
 ### Find available sections
 You can view whether or not you would be able to get into a section right away by looking at the "Can I get in?" column of a course's info page in SIO. If it says "Available", then that means you can add that section immediately without any waitlist, though availability can change before you complete registration.
 
-<div><details>
-<summary><b>Example (21-241)</b></summary>
+<ExpandableText title="Example (21-241)">
 From this image, you can immediately get into Sections A, C, D, B, H, and J, since they show up as "Available." If you try to register for Sections E, F, G, or I, then you will be waitlisted. You will not be able to add sections marked as "Special Permission" or "Reservations Not Met."
 
 ![21-241's Info Page](../assets/21241-info.png)
 
 To see what reservations each section has, scroll down the info page and look at the Reservations box. In this scenario, we can see that Section K is reserved for first-year SCS students.
 ![21-241's Info Page](../assets/21241-info2.png)
-</details></div>
+</ExpandableText>
 
 ### What is a good schedule?
 This is a difficult question to answer because it depends a lot on the individual. Consider:
@@ -180,59 +178,58 @@ Rest assured, there is still hope, as long as you are patient and flexible. Whil
 ### Your current section
 When you are invited to join a waitlisted section, you will either
 1. Be added directly to the section, if it doesn't conflict with another course or cause you to exceed your max units
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Email</b></summary>
-> Dear [STUDENT NAME],
->
-> You have now been registered from the waitlist for [COURSE NAME AND SECTION] for Fall 2026.
->
-> If you no longer wish to be registered for this course, you must log into SIO Registration and drop this course. If you have difficulty in dropping this course, please contact your academic advisor.
->
-> If you have any questions about this, please contact the teaching department of this course.
->
-> Sincerely,<br/>
-> University Registrar's Office
-</details></div>
+
+   <ExpandableText title="Example Email">
+   > Dear [STUDENT NAME],
+   >
+   > You have now been registered from the waitlist for [COURSE NAME AND SECTION] for Fall 2026.
+   >
+   > If you no longer wish to be registered for this course, you must log into SIO Registration and drop this course. If you have difficulty in dropping this course, please contact your academic advisor.
+   >
+   > If you have any questions about this, please contact the teaching department of this course.
+   >
+   > Sincerely,<br/>
+   > University Registrar's Office
+   </ExpandableText>
 
 2. Or receive an email invitation to join within 72 hours (24 hours starting the week before the semester begins)
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Email</b></summary>
-> Dear [STUDENT NAME],
->
-> You are invited to register from the waitlist of [COURSE NAME AND SECTION] for Fall 2026.
->
-> We are unable to process this registration due to either a course schedule conflict and/or the number of units that you are currently carrying prohibit additional course registration. Details can be found by selecting 'Process Invite' in the Waitlist section of your SIO Registration page.
-> This invitation will expire on [EXPIRATION DATE]. If the invitation is not processed by you in SIO to become successfully registered for the course, you will be dropped from the waitlist.
->
-> To accept the invitation:
-> 1. On your SIO: Registration page, review and resolve the conflict(s) for [COURSE SECTION].
-> 2. Once resolved, select 'Process Invite' for [COURSE SECTION] in the Waitlist section of your Registration page.
->
-> If you are no longer interested in being on the waitlist or becoming registered for [COURSE SECTION], select 'Remove' for [COURSE SECTION] in the Waitlist section of your Registration page.
->
-> IMPORTANT: You are not registered for [COURSE SECTION] until you successfully complete the 'Process Invite' action on SIO Registration.
->
-> REMINDER: This invitation will expire on [EXPIRATION DATE].
->
-> If you have any questions about this, please contact the teaching department of this course.
->
-> *** Please do not reply to this message as it was sent from an unmonitored address. Questions should be directed to the teaching/course department. ***
->
-> Sincerely,<br/>
-> University Registrar's Office
-</details></div>
+
+   <ExpandableText title="Example Email">
+   > Dear [STUDENT NAME],
+   >
+   > You are invited to register from the waitlist of [COURSE NAME AND SECTION] for Fall 2026.
+   >
+   > We are unable to process this registration due to either a course schedule conflict and/or the number of units that you are currently carrying prohibit additional course registration. Details can be found by selecting 'Process Invite' in the Waitlist section of your SIO Registration page.
+   > This invitation will expire on [EXPIRATION DATE]. If the invitation is not processed by you in SIO to become successfully registered for the course, you will be dropped from the waitlist.
+   >
+   > To accept the invitation:
+   > 1. On your SIO: Registration page, review and resolve the conflict(s) for [COURSE SECTION].
+   > 2. Once resolved, select 'Process Invite' for [COURSE SECTION] in the Waitlist section of your Registration page.
+   >
+   > If you are no longer interested in being on the waitlist or becoming registered for [COURSE SECTION], select 'Remove' for [COURSE SECTION] in the Waitlist section of your Registration page.
+   >
+   > IMPORTANT: You are not registered for [COURSE SECTION] until you successfully complete the 'Process Invite' action on SIO Registration.
+   >
+   > REMINDER: This invitation will expire on [EXPIRATION DATE].
+   >
+   > If you have any questions about this, please contact the teaching department of this course.
+   >
+   > *** Please do not reply to this message as it was sent from an unmonitored address. Questions should be directed to the teaching/course department. ***
+   >
+   > Sincerely,<br/>
+   > University Registrar's Office
+   </ExpandableText>
 
 This is why it is so important to **check your email regularly**! You do not want to miss this email invitation if you are let off the waitlist.
 
 #### The 10% Rule
 A general rule of thumb is that if your waitlist position is 10% or less of the section's enrollment capacity, then you are usually in a good position to get in!
 
-<div><details>
-<summary><b>Example (21-241)</b></summary>
+<ExpandableText title="Example (21-241)">
 In this image, Section F has an enrollment capacity of 30 and 8 students on the waitlist. According to the 10% Rule, you have a solid chance of getting into Section F if your waitlist position is 1st, 2nd, or 3rd.
 
 ![21-241's Info Page](../assets/21241-info.png)
-</details></div>
+</ExpandableText>
 
 #### Contact the department
 After four weeks, you may want to try emailing the course's [department contact](https://www.cmu.edu/hub/registrar/registration/waitlist-policy.html) about your waitlist status. Instructors do not typically manage the waitlist.
@@ -247,8 +244,7 @@ Think of it like a grocery store line: if you are in a long queue for a cashier 
 
 There is no email notification that will let you know about this, so it's vital to **check the info page of your waitlisted courses on SIO regularly**! You may also want to make a mental note of which sections don't conflict with your other courses.
 
-<div><details>
-<summary><b>Example (15-213)</b></summary>
+<ExpandableText title="Example (15-213)">
 Imagine that on registration day, you wanted to register for 15-213, but every section was waitlisted. You waitlisted yourself for section B and added a backup course.
 
 Every day after that, you refreshed SIO and checked 15-213's info page. For most of the month, it stayed the same with some small fluctuations in waitlist numbers, and you began to lose hope.
@@ -260,7 +256,7 @@ However, one night, you refreshed SIO. Out of the blue, you saw the following:
 Section I became available! It didn't conflict with your other courses (you noted this down beforehand), so you dropped your backup course and switched to Section I. Voila! You made it.
 
 Now, not every scenario is as clean as this one, but you get the idea - **check SIO regularly**!
-</details></div>
+</ExpandableText>
 
 There is a lot of tough decision making if you end up having waitlisted courses. For example, you might find another available section, but it conflicts with one of your desired courses: do you drop your current course and switch sections, or hold out hope on your current waitlist?
 

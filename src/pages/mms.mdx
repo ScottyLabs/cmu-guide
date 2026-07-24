@@ -8,6 +8,8 @@ layout: ../layouts/Layout.astro
 latex: true
 ---
 
+import ExpandableText from "../components/ExpandableText.astro";
+
 The **Mathematical Maturity Survey** (MMS) is a placement exam for first-year students interested in starting in honors or advanced mathematics courses, especially [21-242 Matrix Theory](https://www.courses.scottylabs.org/course/21-242). It is intended for students with prior exposure to college mathematics beyond calculus, and students must register in advance to take the exam.
 
 The MMS is only used for placement in the first semester. After the first semester, placement in honors courses is based on performance in CMU courses.
@@ -32,28 +34,28 @@ The vast majority of students either receive no placement or are placed into 21-
 The MMS lasts approximately 2.5 hours and is held at 8:00 AM on Monday of orientation week. The exam is administered in person on paper and consists of four sections:
 
 1. **Problem Solving (Multiple Choice):** This section tests mathematical intuition through short multiple-choice questions in a similar style to those seen on the [American Mathematics Competitions (AMC)](https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions). Questions involve algebra, combinatorics, number theory, geometry, probability, logic, and other olympiad-style topics.
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Question</b></summary>
-An organization has 100 developers. Every developer knows at least one of Python, Java, or Rust. There are 50 who know Python, 40 who know Java, and 45 who know Rust. If 30 developers know at least two languages, how many know all three? <br/> (A) 5 (B) 10 (C) 15 (D) 20 (E) 25
-</details></div>
+
+   <ExpandableText title="Example Question">
+   An organization has 100 developers. Every developer knows at least one of Python, Java, or Rust. There are 50 who know Python, 40 who know Java, and 45 who know Rust. If 30 developers know at least two languages, how many know all three? <br/> (A) 5 (B) 10 (C) 15 (D) 20 (E) 25
+   </ExpandableText>
 
 2. **Problem Solving (Short Answer):** Similar to the previous section, but you will write short numeric or algebraic answers.
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Question</b></summary>
-You roll a fair six-sided die twice. You gain an amount of money in dollars equal to the number shown on the first roll minus the number shown on the second roll. For example, rolling a 6 followed by a 2 results in a gain of \$4. Conversely, rolling a 1 followed by a 4 results in a loss of \$3. Find the probability that the first roll is a 3 given that you lose money.
-</details></div>
+
+   <ExpandableText title="Example Question">
+   You roll a fair six-sided die twice. You gain an amount of money in dollars equal to the number shown on the first roll minus the number shown on the second roll. For example, rolling a 6 followed by a 2 results in a gain of \$4. Conversely, rolling a 1 followed by a 4 results in a loss of \$3. Find the probability that the first roll is a 3 given that you lose money.
+   </ExpandableText>
 
 3. **Introductory Discrete Math:** This section assesses familiarity with proof techniques and discrete mathematical reasoning. You will be asked to write rigorous, well-organized proofs.
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Question</b></summary>
-Consider the sequence defined by $a_1 = 1, a_n = 2a_{n-1}+2, \forall n \in \mathbb{N}, n \geq 2$. Derive an explicit formula for the sequence. Then, prove that your formula is correct using the Principle of Mathematical Induction.
-</details></div>
+
+   <ExpandableText title="Example Question">
+   Consider the sequence defined by $a_1 = 1, a_n = 2a_{n-1}+2, \forall n \in \mathbb{N}, n \geq 2$. Derive an explicit formula for the sequence. Then, prove that your formula is correct using the Principle of Mathematical Induction.
+   </ExpandableText>
 
 4. **Proof-Based Linear Algebra:** This section assesses mathematical maturity through linear algebra and proof-writing. It emphasizes proofs, not computation.
-<div style="padding-left: 30px;"><details>
-<summary><b>Example Question</b></summary>
-Let $\mathbf{q}_1,\dots,\mathbf{q}_k\in\mathbb{R}^n$ be an orthonormal list of vectors (using the Euclidean inner product on $\mathbb{R}^n$) with $k \ge 2$, and let $\mathbf{v} \in \operatorname{span}(\mathbf{q}_1,\dots,\mathbf{q}_k)^\perp$. Prove that if $\mathbf{v} \neq \mathbf{0}$, then no two distinct vectors in the list $\mathbf{v}+\mathbf{q}_1,\dots,\mathbf{v}+\mathbf{q}_k$ are orthogonal.
-</details></div>
+
+   <ExpandableText title="Example Question">
+   Let $\mathbf{q}_1,\dots,\mathbf{q}_k\in\mathbb{R}^n$ be an orthonormal list of vectors (using the Euclidean inner product on $\mathbb{R}^n$) with $k \ge 2$, and let $\mathbf{v} \in \operatorname{span}(\mathbf{q}_1,\dots,\mathbf{q}_k)^\perp$. Prove that if $\mathbf{v} \neq \mathbf{0}$, then no two distinct vectors in the list $\mathbf{v}+\mathbf{q}_1,\dots,\mathbf{v}+\mathbf{q}_k$ are orthogonal.
+   </ExpandableText>
 
 You will have the full duration of the exam to work on these sections, and you can move freely between them at any time.
 
