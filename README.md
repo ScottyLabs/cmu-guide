@@ -39,11 +39,12 @@ title: [ADD YOUR TITLE HERE]
 description: [ADD YOUR DESCRIPTION]
 contributors:
   - name: [ADD YOUR FIRST AND LAST NAME HERE]
+    pronouns: [OPTIONAL PRONOUNS]
+    email: [OPTIONAL PUBLIC EMAIL]
 layout: ../layouts/Layout.astro
 ---
 ```
-You will change everything except for `layout`. If your article uses LaTeX, also add `latex: true`.
-
+You will change everything except for `layout`. Pronouns and email are optional; only include information that the contributor has agreed to publish. If an email is provided, readers can click the contributor's name to copy it. If your article uses LaTeX, also add `latex: true`.
 4. Write your article under the frontmatter! When you are done, commit your changes and submit a pull request.
 
 ## Usage
