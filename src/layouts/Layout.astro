@@ -376,30 +376,44 @@ const headingList = headings as Heading[];
 			}
 		</div>
 
-		<script>
-			const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>(
-				"[data-contributor-email]",
-			);
+		<script is:inline lang="ts">
+			function initContributorEmailCopy() {
+				const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>(
+					"[data-contributor-email]",
+				);
 
-			for (const button of copyEmailButtons) {
-				const email = button.dataset.contributorEmail;
-				const tooltip = button.querySelector<HTMLElement>("[data-copy-tooltip]");
-				if (!email || !tooltip) continue;
+				for (const button of copyEmailButtons) {
+					if (button.dataset.copyEmailInitialized === "true") continue;
+					button.dataset.copyEmailInitialized = "true";
 
-				const defaultTooltip = tooltip.textContent ?? "";
-				button.addEventListener("click", async () => {
-					try {
-						await navigator.clipboard.writeText(email);
-						tooltip.textContent = `Copied email (${email})`;
-					} catch {
-						tooltip.textContent = "Unable to copy email";
-					}
+					const email = button.dataset.contributorEmail;
+					const tooltip = button.querySelector<HTMLElement>(
+						"[data-copy-tooltip]",
+					);
+					if (!email || !tooltip) continue;
 
-					window.setTimeout(() => {
-						tooltip.textContent = defaultTooltip;
-					}, 1800);
-				});
+					const defaultTooltip = tooltip.textContent ?? "";
+					let resetTimeoutId: number | undefined;
+
+					button.addEventListener("click", async () => {
+						if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
+
+						try {
+							await navigator.clipboard.writeText(email);
+							tooltip.textContent = `Copied email (${email})`;
+						} catch {
+							tooltip.textContent = "Unable to copy email";
+						}
+
+						resetTimeoutId = window.setTimeout(() => {
+							tooltip.textContent = defaultTooltip;
+						}, 1800);
+					});
+				}
 			}
+
+			initContributorEmailCopy();
+			document.addEventListener("astro:after-swap", initContributorEmailCopy);
 		</script>
 	</body>
 </html>
