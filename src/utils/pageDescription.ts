@@ -1,6 +1,7 @@
 export type Contributor = {
 	name?: string;
 	email?: string;
+	pronouns?: string;
 };
 
 type PageDescriptionInput = {
