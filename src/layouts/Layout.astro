@@ -312,24 +312,26 @@ const headingList = headings as Heading[];
 																{index > 0 && ", "}
 																<span class="inline-flex items-baseline">
 																	{email ? (
-																		<button
-																			type="button"
-																			data-contributor-email={email}
-																			aria-label={`Copy email for ${name}: ${email}`}
-																			class="group relative inline-block cursor-copy text-ui-text-secondary hover:text-ui-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ui-link transition-colors"
-																		>
-																			<span class="underline decoration-dotted decoration-ui-decoration underline-offset-2">
-																				{name}
-																			</span>
-																			<span
-																				role="tooltip"
-																				aria-live="polite"
-																				data-copy-tooltip
-																				class="pointer-events-none invisible absolute bottom-full left-0 z-20 mb-2 w-max max-w-72 translate-x-0 rounded border border-ui-border bg-ui-surface px-2 py-1 text-xs font-normal text-ui-text-primary shadow-sm opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 sm:left-1/2 sm:-translate-x-1/2"
-																			>
-																				{`Click to copy email (${email})`}
-																			</span>
-																		</button>
+								<button
+									type="button"
+									data-contributor-email={email}
+									aria-label={`Copy email for ${name}`}
+									aria-describedby={`contributor-email-tooltip-${index}`}
+									class="group relative inline-block cursor-copy text-ui-text-secondary hover:text-ui-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ui-link transition-colors"
+								>
+									<span class="underline decoration-dotted decoration-ui-decoration underline-offset-2">
+										{name}
+									</span>
+									<span
+										id={`contributor-email-tooltip-${index}`}
+										role="tooltip"
+										aria-live="polite"
+										data-copy-tooltip
+										class="pointer-events-none invisible absolute bottom-full left-0 z-20 mb-2 w-max max-w-72 translate-x-0 rounded border border-ui-border bg-ui-surface px-2 py-1 text-xs font-normal text-ui-text-primary shadow-sm opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 sm:left-1/2 sm:-translate-x-1/2"
+									>
+										{`Click to copy email (${email})`}
+									</span>
+								</button>
 																	) : (
 																		name
 																	)}
