@@ -2,7 +2,7 @@
 title: Hitchhiker's Guide to IS
 description: here is a guide for your IS course progression
 contributors:
-  - name: Yiyoung Liu
+  - "Yiyoung Liu"
 layout: ../layouts/Layout.astro
 ---
 

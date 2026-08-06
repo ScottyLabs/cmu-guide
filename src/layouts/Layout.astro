@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import PrevNext from "@/components/PrevNext.astro";
+import { resolveContributors } from "@/config/contributors";
 import { getPageDescription } from "@/utils/pageDescription";
 import "@/styles/global.css";
 
@@ -17,7 +18,11 @@ const {
 	image,
 	contributors = [],
 } = frontmatter;
-const displayDescription = getPageDescription({ description, contributors });
+const resolvedContributors = resolveContributors(contributors);
+const displayDescription = getPageDescription({
+	description,
+	contributors: resolvedContributors,
+});
 
 let currentPath = Astro.url.pathname;
 if (currentPath !== "/" && currentPath.endsWith("/")) {
@@ -272,7 +277,7 @@ const headingList = headings as Heading[];
 									Edit page on GitHub
 								</a>
 
-								{(lastEdited || contributors.length > 0) && (
+								{(lastEdited || resolvedContributors.length > 0) && (
 									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ui-text-secondary mt-4 pb-6 mb-8 border-b border-ui-border">
 										{lastEdited && lastCommitUrl && (
 											<div class="flex items-center gap-1.5">
@@ -289,19 +294,54 @@ const headingList = headings as Heading[];
 												</a>
 											</div>
 										)}
-										{contributors.length > 0 && (
+										{resolvedContributors.length > 0 && (
 											<div class="flex items-center gap-1.5 flex-wrap">
 												<span class="text-ui-text-muted">
 													Contributors:
 												</span>
 												<span class="text-ui-text-secondary">
-													{contributors
-														.map((contributor: { name: string; email?: string }) =>
-															contributor.email
-																? `${contributor.name} <${contributor.email}>`
-																: contributor.name,
-														)
-														.join(", ")}
+													{resolvedContributors.map((contributor, index) => {
+														const name = contributor.name.trim();
+														const email = contributor.email?.trim();
+														const pronouns = contributor.pronouns?.trim();
+
+														return (
+															<>
+																{index > 0 && ", "}
+																<span class="inline-flex items-baseline">
+																	{email ? (
+								<button
+									type="button"
+									data-contributor-email={email}
+									aria-label={`Copy email for ${name}`}
+									aria-describedby={`contributor-email-tooltip-${index}`}
+									class="group relative inline-block cursor-copy text-ui-text-secondary hover:text-ui-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ui-link transition-colors"
+								>
+									<span class="underline decoration-dotted decoration-ui-decoration underline-offset-2">
+										{name}
+									</span>
+									<span
+										id={`contributor-email-tooltip-${index}`}
+										role="tooltip"
+										aria-live="polite"
+										data-copy-tooltip
+										class="pointer-events-none invisible absolute bottom-full left-0 z-20 mb-2 w-max max-w-72 translate-x-0 rounded border border-ui-border bg-ui-surface px-2 py-1 text-xs font-normal text-ui-text-primary shadow-sm opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100 sm:left-1/2 sm:-translate-x-1/2"
+									>
+										{`Click to copy email (${email})`}
+									</span>
+								</button>
+																	) : (
+																		name
+																	)}
+																	{pronouns && (
+																		<span class="ml-1 text-ui-text-muted">
+																			({pronouns})
+																		</span>
+																	)}
+																</span>
+															</>
+														);
+													})}
 												</span>
 											</div>
 										)}
@@ -335,5 +375,45 @@ const headingList = headings as Heading[];
 				)
 			}
 		</div>
+
+		<script>
+			function initContributorEmailCopy() {
+				const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>(
+					"[data-contributor-email]",
+				);
+
+				for (const button of copyEmailButtons) {
+					if (button.dataset.copyEmailInitialized === "true") continue;
+					button.dataset.copyEmailInitialized = "true";
+
+					const email = button.dataset.contributorEmail;
+					const tooltip = button.querySelector<HTMLElement>(
+						"[data-copy-tooltip]",
+					);
+					if (!email || !tooltip) continue;
+
+					const defaultTooltip = tooltip.textContent ?? "";
+					let resetTimeoutId: number | undefined;
+
+					button.addEventListener("click", async () => {
+						if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
+
+						try {
+							await navigator.clipboard.writeText(email);
+							tooltip.textContent = `Copied email (${email})`;
+						} catch {
+							tooltip.textContent = "Unable to copy email";
+						}
+
+						resetTimeoutId = window.setTimeout(() => {
+							tooltip.textContent = defaultTooltip;
+						}, 1800);
+					});
+				}
+			}
+
+			initContributorEmailCopy();
+			document.addEventListener("astro:after-swap", initContributorEmailCopy);
+		</script>
 	</body>
 </html>

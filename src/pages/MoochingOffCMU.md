@@ -2,10 +2,10 @@
 title: Mooching off of CMU
 description: andrewid free stuff!
 contributors:
-  - name: Nicholas Marshall
-  - name: Jesse Li
-  - name: Vidhaat Prashanth
-  - name: Anissa Li
+  - "Nicholas Marshall"
+  - "Jesse Li"
+  - "Vidhaat Prashanth"
+  - "Anissa Li"
 layout: ../layouts/Layout.astro
 ---
 

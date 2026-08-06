@@ -2,7 +2,7 @@
 title: Accommodations
 description: An overview of accommodations, how to request them, and how to use them.
 contributors:
-  - name: Amy Wang
+  - "Amy Wang"
 layout: ../layouts/Layout.astro
 ---
 

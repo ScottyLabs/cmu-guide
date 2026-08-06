@@ -2,7 +2,7 @@
 title: Shows & Performances
 description: How to see shows and performances at CMU
 contributors:
-  - name: Ryan Hoffman
+  - "Ryan Hoffman"
 layout: ../layouts/Layout.astro
 ---
 

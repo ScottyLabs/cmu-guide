@@ -2,7 +2,7 @@
 title: Returning to CMU
 description: ""
 contributors:
-  - name: Meabyn Bie
+  - "Meabyn Bie"
 layout: ../layouts/Layout.astro
 ---
 First of all… **congratulations!** You’ve fought so hard to return and now it’s truly happened! Now that you’re back, take a moment to celebrate. Walk around campus, give your friends a hug, marvel in delight at the Pittsburgh night skyline. You so deserve it.
