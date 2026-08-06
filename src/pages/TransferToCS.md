@@ -2,7 +2,7 @@
 title: So You Want to Transfer to CS
 description: Document about CS transfer, addl, and minor requirements
 contributors:
-  - name: Brandon Wu
+  - "Brandon Wu"
 layout: ../layouts/Layout.astro
 ---
 
