@@ -4,7 +4,7 @@ description: andrewid free stuff!
 contributors:
   - name: Nicholas Marshall
   - name: Jesse Li
-  - name: Vidhaat Prashanth
+  - name: Violet Connor
   - name: Anissa Li
 layout: ../layouts/Layout.astro
 ---
