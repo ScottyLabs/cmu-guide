@@ -21,7 +21,7 @@ export const contributorProfiles = {
 	"Nicholas Marshall": {},
 	"Ryan Hoffman": {},
 	"Taylor Roberts": {},
-	"Vidhaat Prashanth": {},
+	"Violet Connor": {},
 	"Yinuo Huang": {},
 	"Yiyoung Liu": {},
 } satisfies Record<string, ContributorMetadata>;
