@@ -4,6 +4,7 @@
     "npm:@astrojs/check@~0.9.9": "0.9.9_typescript@6.0.3",
     "npm:@astrojs/mdx@^5.0.6": "5.0.6_astro@6.3.6__@types+node@24.13.2_@types+node@24.13.2",
     "npm:@astrojs/svelte@8.1.1": "8.1.1_astro@6.3.6__@types+node@24.13.2_svelte@5.56.4_typescript@6.0.3_@types+node@24.13.2",
+    "npm:@ctrl/tinycolor@4.2.1": "4.2.1",
     "npm:@resvg/resvg-js@^2.6.2": "2.6.2",
     "npm:@tailwindcss/typography@~0.5.20": "0.5.20_tailwindcss@4.3.2",
     "npm:@tailwindcss/vite@^4.3.1": "4.3.2_vite@7.3.6__@types+node@24.13.2_@types+node@24.13.2",
@@ -188,6 +189,9 @@
         "fast-wrap-ansi",
         "sisteransi"
       ]
+    },
+    "@ctrl/tinycolor@4.2.1": {
+      "integrity": "sha512-Vh5uy9Y1JBMId6J1f68TMXnZrTCvNdo9Fu2k0d1YnJngR+sM5kWTKl441c/3TFs+cG0NWOjRWgQ/iaWhbYx+7A=="
     },
     "@emmetio/abbreviation@2.3.3": {
       "integrity": "sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==",
@@ -3654,6 +3658,7 @@
         "npm:@astrojs/check@~0.9.9",
         "npm:@astrojs/mdx@^5.0.6",
         "npm:@astrojs/svelte@8.1.1",
+        "npm:@ctrl/tinycolor@4.2.1",
         "npm:@resvg/resvg-js@^2.6.2",
         "npm:@tailwindcss/typography@~0.5.20",
         "npm:@tailwindcss/vite@^4.3.1",
