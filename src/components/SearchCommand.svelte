@@ -129,7 +129,7 @@
 								{#each searchResults as result}
 									<Command.Item
 										value={result.url}
-										class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-ui-surface-selected data-selected:bg-ui-surface-selected transition-colors"
+										class="flex items-start gap-3 rounded-lg px-3 py-3 cursor-pointer select-none hover:bg-ui-surface-selected-hover data-selected:bg-ui-surface-selected-hover data-selected:inset-ring-2 data-selected:inset-ring-ui-focus transition-colors"
 										onclick={() =>
 											handleResultClick(result.url)}
 									>

@@ -1,4 +1,5 @@
 .home-shell {
+	--home-focus: var(--ui-focus);
 	--home-accent: #c41230;
 	--home-duration-fast: 160ms;
 	--home-duration-base: 220ms;
@@ -128,7 +129,7 @@
 }
 
 .home-btn:focus-visible {
-	outline: 2px solid var(--home-accent);
+	outline: 2px solid var(--home-focus);
 	outline-offset: 2px;
 	box-shadow: var(--home-shadow-1), var(--home-glow-soft);
 }
@@ -296,7 +297,7 @@
 }
 
 .home-card:focus-visible {
-	outline: 2px solid rgb(113 113 122 / 0.8);
+	outline: 2px solid var(--home-focus);
 	outline-offset: 2px;
 }
 
