@@ -11,12 +11,12 @@
 	--ui-control-hover: #f3f4f6;
 	--ui-text-primary: #18181b;
 	--ui-text-secondary: #52525b;
-	--ui-text-muted: #71717a;
+	--ui-text-muted: #6d6e71;
 	--ui-text-disabled: #a1a1aa;
-	--ui-text-faint: #a1a1aa;
+	--ui-text-faint: #6d6e71;
 	--ui-text-empty-icon: #d4d4d8;
 	--ui-icon: #000000;
-	--ui-border: #e4e4e7;
+	--ui-border: #e0e0e0;
 	--ui-border-strong: #d4d4d8;
 	--ui-control-border: #e4e4e7;
 	--ui-link: #2563eb;
