@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar.astro";
 import Sidebar from "@/components/Sidebar.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import PrevNext from "@/components/PrevNext.astro";
+import Contributors from "@/components/Contributors.astro";
+import { resolveContributors } from "@/config/contributors";
 import { getPageDescription } from "@/utils/pageDescription";
 import "@/styles/global.css";
 
@@ -17,7 +19,11 @@ const {
 	image,
 	contributors = [],
 } = frontmatter;
-const displayDescription = getPageDescription({ description, contributors });
+const resolvedContributors = resolveContributors(contributors);
+const displayDescription = getPageDescription({
+	description,
+	contributors: resolvedContributors,
+});
 
 let currentPath = Astro.url.pathname;
 if (currentPath !== "/" && currentPath.endsWith("/")) {
@@ -272,7 +278,7 @@ const headingList = headings as Heading[];
 									Edit page on GitHub
 								</a>
 
-								{(lastEdited || contributors.length > 0) && (
+								{(lastEdited || resolvedContributors.length > 0) && (
 									<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ui-text-secondary mt-4 pb-6 mb-8 border-b border-ui-border">
 										{lastEdited && lastCommitUrl && (
 											<div class="flex items-center gap-1.5">
@@ -289,22 +295,7 @@ const headingList = headings as Heading[];
 												</a>
 											</div>
 										)}
-										{contributors.length > 0 && (
-											<div class="flex items-center gap-1.5 flex-wrap">
-												<span class="text-ui-text-muted">
-													Contributors:
-												</span>
-												<span class="text-ui-text-secondary">
-													{contributors
-														.map((contributor: { name: string; email?: string }) =>
-															contributor.email
-																? `${contributor.name} <${contributor.email}>`
-																: contributor.name,
-														)
-														.join(", ")}
-												</span>
-											</div>
-										)}
+										{resolvedContributors.length > 0 && <Contributors contributors={resolvedContributors} />}
 									</div>
 								)}
 							</>
@@ -335,5 +326,45 @@ const headingList = headings as Heading[];
 				)
 			}
 		</div>
+
+		<script>
+			function initContributorEmailCopy() {
+				const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>(
+					"[data-contributor-email]",
+				);
+
+				for (const button of copyEmailButtons) {
+					if (button.dataset.copyEmailInitialized === "true") continue;
+					button.dataset.copyEmailInitialized = "true";
+
+					const email = button.dataset.contributorEmail;
+					const tooltip = button.querySelector<HTMLElement>(
+						"[data-copy-tooltip]",
+					);
+					if (!email || !tooltip) continue;
+
+					const defaultTooltip = tooltip.textContent ?? "";
+					let resetTimeoutId: number | undefined;
+
+					button.addEventListener("click", async () => {
+						if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
+
+						try {
+							await navigator.clipboard.writeText(email);
+							tooltip.textContent = `Copied email (${email})`;
+						} catch {
+							tooltip.textContent = "Unable to copy email";
+						}
+
+						resetTimeoutId = window.setTimeout(() => {
+							tooltip.textContent = defaultTooltip;
+						}, 1800);
+					});
+				}
+			}
+
+			initContributorEmailCopy();
+			document.addEventListener("astro:after-swap", initContributorEmailCopy);
+		</script>
 	</body>
 </html>

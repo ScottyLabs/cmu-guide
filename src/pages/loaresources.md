@@ -2,7 +2,7 @@
 title: Additional Resources
 description: Many of these are repeats from before, but this list mainly exists to inform you on parts of the LOA process on which I’m not the most familiar.
 contributors:
-  - name: Meabyn Bie
+  - "Meabyn Bie"
 layout: ../layouts/Layout.astro
 ---
 [**Catch-All Page for CMU Resources**](https://www.cmu.edu/student-affairs/resources/index.html)

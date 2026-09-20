@@ -3,13 +3,17 @@ import { Resvg } from "@resvg/resvg-js";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import sharp from "sharp";
+import {
+	resolveContributors,
+	type ContributorName,
+} from "@/config/contributors";
 import { getNavigation, hrefForSlug, normalizeSlug } from "@/utils/navigation";
-import { getPageDescription, type Contributor } from "@/utils/pageDescription";
+import { getPageDescription } from "@/utils/pageDescription";
 
 type PageFrontmatter = {
 	title: string;
 	description?: string;
-	contributors?: Contributor[];
+	contributors?: ContributorName[];
 };
 
 type PageModule = {
@@ -48,7 +52,10 @@ const pageData = Object.entries(pages).map(([path, page]) => {
 		slug,
 		props: {
 			title: frontmatter.title,
-			description: getPageDescription(frontmatter) ?? "",
+			description: getPageDescription({
+				description: frontmatter.description,
+				contributors: resolveContributors(frontmatter.contributors ?? []),
+			}) ?? "",
 			category: navItem?.sectionLabel ?? "cmu.guide",
 			pathname: hrefForSlug(normalizedSlug),
 		},

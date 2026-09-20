@@ -2,8 +2,8 @@
 title: Dorms Overview
 description: An overview of the different types of dorms at CMU
 contributors:
-  - name: Justin Peng
-  - name: Max Wen
+  - "Justin Peng"
+  - "Max Wen"
 layout: ../layouts/Layout.astro
 ---
 

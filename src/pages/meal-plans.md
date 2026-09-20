@@ -2,8 +2,8 @@
 title: Meal Plans
 description: How to use meal plans effectively
 contributors:
-  - name: Justin Peng
-  - name: Max Wen
+  - "Justin Peng"
+  - "Max Wen"
 layout: ../layouts/Layout.astro
 ---
 

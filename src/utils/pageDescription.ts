@@ -1,11 +1,8 @@
-export type Contributor = {
-	name?: string;
-	email?: string;
-};
+import type { ContributorProfile } from "@/config/contributors";
 
 type PageDescriptionInput = {
 	description?: string;
-	contributors?: Contributor[];
+	contributors?: ContributorProfile[];
 };
 
 export function getPageDescription({
@@ -18,7 +15,7 @@ export function getPageDescription({
 	}
 
 	const names = contributors
-		.map((contributor) => contributor.name?.trim())
+		.map((contributor) => contributor.name.trim())
 		.filter((name): name is string => Boolean(name));
 
 	return names.length > 0 ? `By ${names.join(", ")}` : undefined;

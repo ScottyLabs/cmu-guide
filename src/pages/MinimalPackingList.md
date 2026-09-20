@@ -2,7 +2,7 @@
 title: Minimal Packing List
 description: Recommended items to bring to CMU
 contributors:
-  - name: Kavya Ramesh
+  - "Kavya Ramesh"
 layout: ../layouts/Layout.astro
 ---
 
