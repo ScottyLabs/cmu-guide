@@ -22,6 +22,7 @@
 	--ui-link: #2563eb;
 	--ui-decoration: #d4d4d8;
 	--ui-key-surface: #ffffff;
+	--ui-focus: #6d6e71;
 	--ui-overlay: rgb(0 0 0 / 0.5);
 	--ui-dialog-overlay: rgb(0 0 0 / 0.8);
 }
@@ -46,6 +47,7 @@
 	--ui-link: #60a5fa;
 	--ui-decoration: #52525b;
 	--ui-key-surface: #52525b;
+	--ui-focus: #e0e0e0;
 	--ui-overlay: rgb(0 0 0 / 0.5);
 	--ui-dialog-overlay: rgb(0 0 0 / 0.8);
 }
@@ -70,6 +72,7 @@
 	--color-ui-link: var(--ui-link);
 	--color-ui-decoration: var(--ui-decoration);
 	--color-ui-key-surface: var(--ui-key-surface);
+	--color-ui-focus: var(--ui-focus);
 	--color-ui-overlay: var(--ui-overlay);
 	--color-ui-dialog-overlay: var(--ui-dialog-overlay);
 }
