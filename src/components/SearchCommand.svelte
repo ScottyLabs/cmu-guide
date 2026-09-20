@@ -48,13 +48,13 @@
 
 <Dialog.Root bind:open={dialogOpen}>
 	<Dialog.Trigger
-		class="mr-2 md:mr-0 p-2 md:p-3 rounded-lg hover:bg-ui-control-hover md:bg-ui-surface-selected md:hover:bg-ui-surface-selected-hover transition-all inline-flex items-center md:min-w-80 justify-between"
+		class="group mr-2 md:mr-0 p-2 md:p-3 rounded-lg hover:bg-ui-control-hover md:bg-ui-surface-selected md:hover:bg-ui-surface-selected-hover transition-all inline-flex items-center md:min-w-80 justify-between"
 	>
 		<div class="flex flex-row gap-2 items-center">
 			<MagnifyingGlass
-				class="size-6 text-ui-icon md:text-ui-text-faint"
+				class="size-6 text-ui-icon md:text-ui-text-faint md:group-hover:text-ui-text-secondary"
 			/>
-			<span class="hidden md:inline text-sm text-ui-text-faint">
+			<span class="hidden md:inline text-sm text-ui-text-faint md:group-hover:text-ui-text-secondary">
 				Search the guide...
 			</span>
 		</div>
