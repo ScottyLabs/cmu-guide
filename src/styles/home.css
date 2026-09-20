@@ -51,6 +51,52 @@
 		inset 0 1px 0 rgb(255 255 255 / 0.04);
 }
 
+.home-hero-blob {
+	--blob-travel: 60%;
+	filter: blur(48px);
+	border-radius: 42% 58% 65% 35% / 55% 38% 62% 45%;
+	animation: home-blob-left 12s ease-in-out -3s infinite;
+}
+
+.home-hero-blob--right {
+	border-radius: 62% 38% 43% 57% / 40% 60% 40% 60%;
+	animation-name: home-blob-right;
+	animation-duration: 16s;
+	animation-delay: -9s;
+}
+
+@keyframes home-blob-left {
+	0%,
+	100% {
+		transform: translate(0, 0) rotate(-12deg) scale(1, 1.08);
+	}
+	33% {
+		transform: translate(var(--blob-travel), 18%) rotate(24deg) scale(1.2, 0.9);
+	}
+	66% {
+		transform: translate(12%, 30%) rotate(-16deg) scale(0.9, 1.18);
+	}
+}
+
+@keyframes home-blob-right {
+	0%,
+	100% {
+		transform: translate(0, 0) rotate(10deg) scale(1.08, 1);
+	}
+	33% {
+		transform: translate(calc(-1 * var(--blob-travel)), -18%) rotate(-24deg) scale(0.9, 1.2);
+	}
+	66% {
+		transform: translate(-12%, -30%) rotate(16deg) scale(1.18, 0.9);
+	}
+}
+
+@media (max-width: 639px) {
+	.home-hero-blob {
+		--blob-travel: 30%;
+	}
+}
+
 .home-hero-lede {
 	line-height: 1.7;
 }
@@ -340,6 +386,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+	.home-hero-blob {
+		animation: none;
+		transform: none;
+	}
+
 	.home-reveal,
 	.home-card-grid > .home-card {
 		opacity: 1;
