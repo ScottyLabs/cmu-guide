@@ -1,9 +1,12 @@
 <script>
+	import { bannerColors } from "@/utils/bannerColors";
+
 	export let dorm;
+	$: colors = bannerColors(dorm.color);
 </script>
 
 <div id={dorm.name.replace(/\s+/g, "-")} class="card" data-dorm-anchor>
-	<div class="banner" style={`background-color: ${dorm.color || "#3b82f6"}`}>
+	<div class="banner" style:background-color={colors.background} style:color={colors.foreground}>
 		{dorm.name}
 	</div>
 
@@ -53,7 +56,6 @@
 	}
 
 	.banner {
-		color: white;
 		font-weight: 600;
 		padding: 8px 12px;
 	}
