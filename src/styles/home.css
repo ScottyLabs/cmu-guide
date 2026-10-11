@@ -42,6 +42,14 @@
 	line-height: 1.15;
 }
 
+.home-icon {
+	stroke: currentColor;
+	stroke-width: 0.4;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	overflow: visible;
+}
+
 .home-hero {
 	position: relative;
 	overflow: hidden;
@@ -300,21 +308,6 @@
 	outline-offset: 2px;
 }
 
-.home-card-arrow {
-	display: inline-block;
-	margin-left: 0.35rem;
-	color: currentcolor;
-	transform: translateX(0);
-	transition: transform var(--home-duration-base) var(--home-ease-standard);
-	opacity: 0.84;
-}
-
-.home-card:hover .home-card-arrow,
-.home-card:focus-visible .home-card-arrow {
-	transform: translateX(0.35px);
-	opacity: 0.94;
-}
-
 .home-panel {
 	position: relative;
 	overflow: hidden;
@@ -400,7 +393,6 @@
 
 	.home-btn,
 	.home-card,
-	.home-card-arrow,
 	.home-panel {
 		transition-duration: 0ms !important;
 	}

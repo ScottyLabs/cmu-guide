@@ -13,6 +13,7 @@ pageSpacing: py-8 md:py-10 lg:py-12
 ---
 
 import "../styles/home.css";
+import { Home, ArrowDown, Backpack, Accessibility, Star, GithubLogo, DiscordLogo } from "svelte-radix";
 import Kbd from "@/components/Kbd.svelte";
 
 export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
@@ -57,8 +58,9 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
 
   <section id="start-here" aria-labelledby="start-here-title" class="home-reveal space-y-5 md:space-y-6 scroll-mt-28">
     <div>
-      <h2 id="start-here-title" class="home-section-title text-3xl md:text-4xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+      <h2 id="start-here-title" class="home-section-title flex items-center gap-2 text-3xl md:text-4xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
         Start here
+        <ArrowDown size="1em" class="home-icon shrink-0" aria-hidden="true" focusable="false" />
       </h2>
       <p class="mt-2 text-base md:text-lg text-zinc-700 dark:text-zinc-300">
         Essential guides to kickstart your CMU experience
@@ -69,7 +71,7 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
         href="/dorms-overview"
         class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
       >
-        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Housing and Dorms <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <h3 class="flex items-center gap-3 text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100"><Home size="24" class="home-icon shrink-0" aria-hidden="true" focusable="false" /><span>Housing and Dorms</span></h3>
         <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300 break-words">
           Compare living options, dorm realities, and move-in basics.
         </p>
@@ -79,7 +81,7 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
         href="/MinimalPackingList"
         class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
       >
-        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Packing for CMU <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <h3 class="flex items-center gap-3 text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100"><Backpack size="24" class="home-icon shrink-0" aria-hidden="true" focusable="false" /><span>Packing for CMU</span></h3>
         <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300 break-words">
           A practical packing list from student experience.
         </p>
@@ -89,7 +91,7 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
         href="/accommodations"
         class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
       >
-        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Accommodations <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <h3 class="flex items-center gap-3 text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100"><Accessibility size="24" class="home-icon shrink-0" aria-hidden="true" focusable="false" /><span>Accommodations</span></h3>
         <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300 break-words">
           Understand the process, documentation, and support options.
         </p>
@@ -99,7 +101,7 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
         href="/MoochingOffCMU"
         class="home-card group block h-full rounded-xl border border-zinc-300/95 dark:border-zinc-600/72 bg-white/95 dark:bg-zinc-800/82 p-6 md:p-7 shadow-sm no-underline"
       >
-        <h3 class="text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Student Perks and Freebies <span class="home-card-arrow" aria-hidden="true">&rarr;</span></h3>
+        <h3 class="flex items-center gap-3 text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100"><Star size="24" class="home-icon shrink-0" aria-hidden="true" focusable="false" /><span>Student Perks and Freebies</span></h3>
         <p class="mt-2.5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 transition-colors group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-focus-visible:text-zinc-700 dark:group-focus-visible:text-zinc-300 break-words">
           Use benefits, discounts, and free resources around campus.
         </p>
@@ -134,16 +136,18 @@ export const SCOTTYLABS_DISCORD_URL = "https://go.scottylabs.org/discord";
             href="https://github.com/scottylabs/cmu-guide"
             target="_blank"
             rel="noopener noreferrer"
-            class="home-btn home-btn--secondary home-btn--quiet inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 font-medium text-zinc-700 dark:text-zinc-300 no-underline"
+            class="home-btn home-btn--secondary home-btn--quiet inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 font-medium text-zinc-700 dark:text-zinc-300 no-underline"
           >
+            <GithubLogo size="20" class="home-icon shrink-0" aria-hidden="true" focusable="false" />
             <span>Contribute on GitHub</span>
           </a>
           <a
             href={SCOTTYLABS_DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            class="home-btn home-btn--tertiary home-btn--quiet inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 text-center font-medium text-zinc-700 dark:text-zinc-300 no-underline"
+            class="home-btn home-btn--tertiary home-btn--quiet inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-zinc-300/60 dark:border-zinc-700/60 px-4 py-2.5 text-center font-medium text-zinc-700 dark:text-zinc-300 no-underline"
           >
+            <DiscordLogo size="20" class="home-icon shrink-0" aria-hidden="true" focusable="false" />
             <span class="text-center">Join our Discord</span>
           </a>
         </div>
