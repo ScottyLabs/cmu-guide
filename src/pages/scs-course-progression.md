@@ -2,8 +2,8 @@
 title: SCS Course Progression
 description: How to select courses as an SCS student
 contributors:
-  - name: Andrew Zhou
-  - name: Taylor Roberts
+  - "Andrew Zhou"
+  - "Taylor Roberts"
 layout: ../layouts/Layout.astro
 ---
 

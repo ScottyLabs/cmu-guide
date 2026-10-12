@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { contributorProfiles } from "./config/contributors";
 
 const pages = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/pages" }),
@@ -9,14 +10,7 @@ const pages = defineCollection({
 			title: z.string(),
 			description: z.string(),
 			contributors: z
-				.array(
-					z
-						.object({
-							name: z.string(),
-							email: z.string().optional(),
-						})
-						.strict(),
-				)
+				.array(z.enum(Object.keys(contributorProfiles)))
 				.optional(),
 			layout: z.string(),
 			image: z.string().optional(),

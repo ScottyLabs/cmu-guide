@@ -2,7 +2,7 @@
 title: Advanced First Year Writing
 description: An overview of the Advanced FYW application process and a review of the course itself.
 contributors:
-  - name: Amy Wang
+  - "Amy Wang"
 layout: ../layouts/Layout.astro
 ---
 

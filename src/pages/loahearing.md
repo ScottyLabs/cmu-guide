@@ -2,7 +2,7 @@
 title: Hearing About the Leave
 description: ""
 contributors:
-  - name: Meabyn Bie
+  - "Meabyn Bie"
 layout: ../layouts/Layout.astro
 ---
 

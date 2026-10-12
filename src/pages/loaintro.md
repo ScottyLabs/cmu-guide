@@ -2,7 +2,7 @@
 title: Intro
 description: Returning from an involuntary Leave of Absence.
 contributors:
-  - name: Meabyn Bie
+  - "Meabyn Bie"
 layout: ../layouts/Layout.astro
 ---
 
