@@ -18,9 +18,7 @@ const { contributors } = Astro.props;
 			const email = contributor.email?.trim();
 			const pronouns = contributor.pronouns?.trim();
 			return (
-				<>
-					{index > 0 && ", "}
-					<span class="inline-flex items-baseline">
+				<>{index > 0 && ", "}<span class="inline-flex items-baseline">
 						{email ? (
 							<button
 								type="button"
@@ -50,8 +48,7 @@ const { contributors } = Astro.props;
 								({pronouns})
 							</span>
 						)}
-					</span>
-				</>
+					</span></>
 			);
 		})}
 	</span>
