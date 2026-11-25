@@ -1,8 +1,7 @@
 import { mostReadable } from "@ctrl/tinycolor";
 
-export function bannerColors(color?: string) {
-	const background = color || "#3b82f6";
-	const foreground = mostReadable(background, ["black", "white"])!.toHexString();
+export function bannerColors(color: string) {
+	const foreground = mostReadable(color, ["black", "white"])!.toHexString();
 
-	return { background, foreground };
+	return { background: color, foreground };
 }

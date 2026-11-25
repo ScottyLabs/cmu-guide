@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
+	import type { Dorm } from "@/data/dorms";
 	import DormCard from "./DormCard.svelte";
-	export let dorms = [];
+	export let dorms: Dorm[] = [];
 </script>
 
 <div class="grid">
