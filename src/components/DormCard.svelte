@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+	import type { Dorm } from "@/data/dorms";
 	import { bannerColors } from "@/utils/bannerColors";
 
-	export let dorm;
+	export let dorm: Dorm;
 	$: colors = bannerColors(dorm.color);
 </script>
 
