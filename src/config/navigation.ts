@@ -36,14 +36,6 @@ export const navigationConfig: readonly NavigationConfigSection[] = [
 	},
 	{
 		label: "Leaves of Absence",
-		items: [
-			"loaintro",
-			"loabefore",
-			"loahearing",
-			"loahome",
-			"loaplanning",
-			"loareturn",
-			"loaresources",
-		],
+		items: ["loaintro"],
 	},
 ];

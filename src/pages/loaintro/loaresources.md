@@ -3,7 +3,8 @@ title: Additional Resources
 description: Many of these are repeats from before, but this list mainly exists to inform you on parts of the LOA process on which I’m not the most familiar.
 contributors:
   - name: Meabyn Bie
-layout: ../layouts/Layout.astro
+layout: ../../layouts/Layout.astro
+subarticleOrder: 6
 ---
 [**Catch-All Page for CMU Resources**](https://www.cmu.edu/student-affairs/resources/index.html)
 
@@ -52,4 +53,4 @@ Cristol, Hope. “Living with Chronic Disease: What Is the Spoon Theory?” Edit
 
 ---
 *P.S. I'm rooting for you :)*
-![alt text](../assets/Picture12.png)
+![alt text](../../assets/Picture12.png)

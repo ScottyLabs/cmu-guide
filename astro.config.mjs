@@ -10,6 +10,14 @@ import remarkOnlyIfLatex from "./src/utils/remarkOnlyIfLatex";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://cmu.guide",
+	redirects: {
+		"/loabefore": "/loaintro/loabefore",
+		"/loahearing": "/loaintro/loahearing",
+		"/loahome": "/loaintro/loahome",
+		"/loaplanning": "/loaintro/loaplanning",
+		"/loareturn": "/loaintro/loareturn",
+		"/loaresources": "/loaintro/loaresources",
+	},
 	markdown: {
 		remarkPlugins: [remarkMath, remarkOnlyIfLatex],
 		rehypePlugins: [rehypeKatex],
