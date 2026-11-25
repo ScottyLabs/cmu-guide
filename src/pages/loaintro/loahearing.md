@@ -3,7 +3,8 @@ title: Hearing About the Leave
 description: ""
 contributors:
   - name: Meabyn Bie
-layout: ../layouts/Layout.astro
+layout: ../../layouts/Layout.astro
+subarticleOrder: 2
 ---
 
 If your circumstances keep getting worse or if a sudden, life-threatening crisis happens, **this is where a mandate can escalate into a leave of absence**. I’ll be honest, things can get **tense and uncertain** very quickly at this point as your mandate team responds to the situation. I was terrified in the days after my crisis about what would happen, and know that it’s absolutely valid if you are feeling nervous as well, because you’re going through something painful and difficult.
