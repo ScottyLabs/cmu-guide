@@ -4,7 +4,7 @@ Data was last grabbed May 11th, 2026
 
 export interface Dorm {
 	name: string;
-	color?: string; // Banner color
+	color: string; // Banner color
 	pros: string[];
 	cons: string[];
 	info: string[];
