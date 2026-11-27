@@ -72,6 +72,26 @@ const sections = navigation.sections.filter((section) =>
 										>
 											<span>{item.title}</span>
 										</a>
+										{item.subarticles.length > 0 && (
+											<ul class="ml-3 border-l border-ui-border pl-2 space-y-0.5">
+												{item.subarticles.map((subarticle) => (
+													<li>
+														<a
+															href={hrefForSlug(subarticle.slug)}
+															class:list={[
+																"flex items-center px-3 py-1.5 text-[13px] rounded-lg transition-colors",
+																currentPath === hrefForSlug(subarticle.slug)
+																	? "bg-ui-surface-selected text-ui-text-primary font-medium"
+																	: "text-ui-text-secondary hover:bg-ui-surface-selected hover:text-ui-text-primary",
+															]}
+															data-sidebar-link
+														>
+															<span>{subarticle.title}</span>
+														</a>
+													</li>
+												))}
+											</ul>
+										)}
 									</li>
 								))}
 						</ul>
